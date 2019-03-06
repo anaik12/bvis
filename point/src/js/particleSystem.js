@@ -354,7 +354,7 @@ var ParticleSystem = function() {
 
     var planeG = new THREE.PlaneGeometry(24, 20);
 	var imgMaterial = new THREE.MeshBasicMaterial({ //CHANGED to MeshBasicMaterial
-	map: new THREE.TextureLoader().load('https://anaik3.people.uic.edu/bvis/brainImg.png'), side: THREE.DoubleSide});
+	map: new THREE.TextureLoader().load('https://github.com/anaik12/bvis/blob/master/point/brainImg.png'), side: THREE.DoubleSide});
 	var plane = new THREE.Mesh(planeG, imgMaterial);
 	plane.overdraw = true;
 	sceneObject.add(plane);
