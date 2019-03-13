@@ -146,7 +146,7 @@ var lineChart1 = function() {
     var lines = document.getElementsByClassName('line');
 
     var mousePerLine = mouseG.selectAll('.mouse-per-line')
-      .data(cities)
+      .data(data)
       .enter()
       .append("g")
       .attr("class", "mouse-per-line");
