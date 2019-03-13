@@ -153,9 +153,11 @@ var lineChart1 = function() {
 
     mousePerLine.append("circle")
       .attr("r", 7)
-      .style("stroke", function(d) {
-        return color(d.name);
-      })
+      .style("stroke", "red"
+      //   function(d) {
+      //   return color(d.name);
+      // }
+      )
       .style("fill", "none")
       .style("stroke-width", "1px")
       .style("opacity", "0");
