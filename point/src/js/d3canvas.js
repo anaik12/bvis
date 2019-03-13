@@ -114,6 +114,13 @@ var d3Canvas = function() {
 								// svgContainer.selectAll("circle").data(keyvalues)
 	       //                   .enter().append("circle").style("fill", "red");
 								// .style("fill", "red"); 
+								d.pulse = !d.pulse;
+								      if (d.pulse) {
+								        var selected_circles = d3.select(this);
+								        pulsate(selected_circles);
+
+								      }
+
 								var linechart1 = new lineChart1();
 								var cellname = "cell" + d.cell;
         						linechart1.render(cellname);
@@ -138,7 +145,38 @@ var d3Canvas = function() {
 							// .attr("fill", "none");
 							// .attr("fill", "#990099");//#FF69B4");
 							// .attr("fill", function (d) {  return getcolor(d.concentration);});
+					function pulsate(selection) {
+				    recursive_transitions();
 
+				    function recursive_transitions() {
+				      if (selection.data()[0].pulse) {
+				        selection.transition()
+				            .duration(400)
+				            .attr("stroke-width", 2)
+				            .attr("r", 8)
+				            .attr("fill", "lightblue")
+				            .attr("opacity","0.7")
+				            .ease(d3.easeSin)
+				            .transition()
+				            .duration(800)
+				            .attr('stroke-width', 3)
+				            .attr("r", 12)
+				            .ease(d3.easeBounce)
+				            .on("end", recursive_transitions);
+				      } else {
+				        // transition back to normal
+				        selection.transition()
+				            .duration(200)
+				            .attr("r", "none")
+				            .attr("stroke", function(d){ return getcolor_comm(d.comm1);})
+				            .attr("r", 9 )
+				            .attr("stroke-width", "1px")
+				            .attr("opacity", 1)
+				            .attr("fill", "none");
+				            // .attr("stroke-dasharray", "1, 0");
+				      }
+				    }
+				}
 		}
 	}
 
