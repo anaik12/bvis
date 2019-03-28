@@ -264,7 +264,7 @@ var ParticleSystem = function() {
             var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
             var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
             var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-            // positions.push( x, z, y );
+            positions.push( x, z, y );
         //             // colors
             var colormax = 357.19;
             var colormin = 0;
@@ -320,7 +320,7 @@ var ParticleSystem = function() {
                 // positions.push( x, z, y );
             }
             
-             positions.push( x, z, y );
+             // positions.push( x, z, y );
             
             color.setRGB( cx, cy, cz );
             colors.push( color.r, color.g, color.b );
