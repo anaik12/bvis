@@ -261,7 +261,7 @@ var ParticleSystem = function() {
         var geometry = new THREE.BufferGeometry( radius, radius, height, 32 );
         for(var i = 0; i< data.length; i++) {
   
-            var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
+            var x = (data[i].X - 9) ;//* height + 2 * pi * radius * radius  ;
             var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
             var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
             positions.push( x, z, y );
