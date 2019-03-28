@@ -309,7 +309,7 @@ var ParticleSystem = function() {
             var cx = colorvalues[4].r;
             var cy = colorvalues[4].g;
             var cz = colorvalues[4].b;
-            // positions.push( x, z, y );
+            positions.push( x, z, y );
 
             four = four + 1;
             }
