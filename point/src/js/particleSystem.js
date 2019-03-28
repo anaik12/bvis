@@ -173,11 +173,11 @@ var ParticleSystem = function() {
 
             four = four + 1;
             }
-            else{
-                var cx = 0;
-                var cy = 0;
-                var cz = 0;
-            }
+            // else{
+            //     var cx = 0;
+            //     var cy = 0;
+            //     var cz = 0;
+            // }
             
             
             color.setRGB(cx, cy, cz);
