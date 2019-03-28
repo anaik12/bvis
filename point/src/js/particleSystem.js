@@ -210,7 +210,7 @@ var ParticleSystem = function() {
     // var material = new THREE.PointsMaterial( { color: 0x8800ff, map:sprite, size: 10, sizeAttenuation: false, alphaTest: 0.2, transparent: true  } );
     var textureLoader = new THREE.TextureLoader();
 
-    var sprite = textureLoader.load( 'data/ball.png');
+    var sprite = textureLoader.load( 'data/disc.png');
     // var sprite = textureLoader.load( 'data/snowflake1.png' );
 
         
@@ -334,7 +334,7 @@ var ParticleSystem = function() {
         // material= new THREE.PointsMaterial({size:0.0005, color:"red", opacity:0.3});
    var textureLoader = new THREE.TextureLoader();
 
-    var sprite = textureLoader.load( 'data/ball.png');
+    var sprite = textureLoader.load( 'data/disc.png');
     // var sprite = textureLoader.load( 'data/snowflake1.png' );
 
         
@@ -486,7 +486,7 @@ var ParticleSystem = function() {
         
     var textureLoader = new THREE.TextureLoader();
 
-    var sprite = textureLoader.load( 'data/ball.png');
+    var sprite = textureLoader.load( 'data/disc.png');
     // var sprite = textureLoader.load( 'data/snowflake1.png' );
 
         
