@@ -313,12 +313,12 @@ var ParticleSystem = function() {
 
             four = four + 1;
             }
-            else{
-                var cx = 0.5;
-                var cy = 0.5;
-                var cz = 0.5;
-                // positions.push( x, z, y );
-            }
+            // else{
+            //     var cx = 0.5;
+            //     var cy = 0.5;
+            //     var cz = 0.5;
+            //     // positions.push( x, z, y );
+            // }
             
              // positions.push( x, z, y );
             
