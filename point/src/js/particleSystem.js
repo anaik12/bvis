@@ -158,21 +158,21 @@ var ParticleSystem = function() {
             var cz = colorvalues[2].b;
             two = two + 1;
             }
-            else 
-            if(data[i].concentration == 3){
-            var cx = colorvalues[3].r;
-            var cy = colorvalues[3].g;
-            var cz = colorvalues[3].b;
-            three = three + 1;
-            }
-            else 
-            if(data[i].concentration == 4){
-            var cx = colorvalues[4].r;
-            var cy = colorvalues[4].g;
-            var cz = colorvalues[4].b;
+            // else 
+            // if(data[i].concentration == 3){
+            // var cx = colorvalues[3].r;
+            // var cy = colorvalues[3].g;
+            // var cz = colorvalues[3].b;
+            // three = three + 1;
+            // }
+            // else 
+            // if(data[i].concentration == 4){
+            // var cx = colorvalues[4].r;
+            // var cy = colorvalues[4].g;
+            // var cz = colorvalues[4].b;
 
-            four = four + 1;
-            }
+            // four = four + 1;
+            // }
             // else{
             //     var cx = 0;
             //     var cy = 0;
