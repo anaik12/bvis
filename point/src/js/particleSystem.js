@@ -264,7 +264,7 @@ var ParticleSystem = function() {
             var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
             var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
             var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-            positions.push( x, z, y );
+            // positions.push( x, z, y );
         //             // colors
             var colormax = 357.19;
             var colormin = 0;
@@ -277,6 +277,7 @@ var ParticleSystem = function() {
             var cx = colorvalues[0].r;
             var cy = colorvalues[0].g;
             var cz = colorvalues[0].b;
+            positions.push( x, z, y );
             zero = zero + 1;
             }
             else
@@ -284,6 +285,7 @@ var ParticleSystem = function() {
             var cx = colorvalues[1].r;
             var cy = colorvalues[1].g;
             var cz = colorvalues[1].b;
+            positions.push( x, z, y );
             one = one + 1;
             }
             else 
@@ -291,6 +293,7 @@ var ParticleSystem = function() {
             var cx = colorvalues[2].r;
             var cy = colorvalues[2].g;
             var cz = colorvalues[2].b;
+            positions.push( x, z, y );
             two = two + 1;
             }
             else 
@@ -298,6 +301,7 @@ var ParticleSystem = function() {
             var cx = colorvalues[3].r;
             var cy = colorvalues[3].g;
             var cz = colorvalues[3].b;
+            positions.push( x, z, y );
             three = three + 1;
             }
             else 
@@ -305,6 +309,7 @@ var ParticleSystem = function() {
             var cx = colorvalues[4].r;
             var cy = colorvalues[4].g;
             var cz = colorvalues[4].b;
+            positions.push( x, z, y );
 
             four = four + 1;
             }
@@ -312,6 +317,7 @@ var ParticleSystem = function() {
                 var cx = 0.5;
                 var cy = 0.5;
                 var cz = 0.5;
+                positions.push( x, z, y );
             }
             
             
