@@ -118,7 +118,7 @@ var ParticleSystem = function() {
 
 
 
-            // positions.push( x, z, y );
+            positions.push( x, z, y );
         //             // colors
             var colormax = 357.19;
             var colormin = 0;
