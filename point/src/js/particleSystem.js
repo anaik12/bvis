@@ -277,7 +277,7 @@ var ParticleSystem = function() {
             var cx = colorvalues[0].r;
             var cy = colorvalues[0].g;
             var cz = colorvalues[0].b;
-            positions.push( x, z, y );
+            // positions.push( x, z, y );
             zero = zero + 1;
             }
             else
@@ -285,7 +285,7 @@ var ParticleSystem = function() {
             var cx = colorvalues[1].r;
             var cy = colorvalues[1].g;
             var cz = colorvalues[1].b;
-            positions.push( x, z, y );
+            // positions.push( x, z, y );
             one = one + 1;
             }
             else 
@@ -309,7 +309,7 @@ var ParticleSystem = function() {
             var cx = colorvalues[4].r;
             var cy = colorvalues[4].g;
             var cz = colorvalues[4].b;
-            positions.push( x, z, y );
+            // positions.push( x, z, y );
 
             four = four + 1;
             }
@@ -317,7 +317,7 @@ var ParticleSystem = function() {
                 var cx = 0.5;
                 var cy = 0.5;
                 var cz = 0.5;
-                positions.push( x, z, y );
+                // positions.push( x, z, y );
             }
             
             
