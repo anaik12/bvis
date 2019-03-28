@@ -293,7 +293,7 @@ var ParticleSystem = function() {
             var cx = colorvalues[2].r;
             var cy = colorvalues[2].g;
             var cz = colorvalues[2].b;
-            positions.push( x, z, y );
+            // positions.push( x, z, y );
             two = two + 1;
             }
             else 
