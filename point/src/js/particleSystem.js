@@ -548,6 +548,7 @@ var ParticleSystem = function() {
 
                 // add the element to the data collection
                 console.log(typeof(val));
+                console.log(typeof(d.comm0));
                 data.push({
                     // concentration density
 
