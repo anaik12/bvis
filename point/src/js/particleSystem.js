@@ -588,9 +588,9 @@ var ParticleSystem = function() {
     var publiclyAvailable = {
 
         // load the data and setup the system
-        initialize: function(file){
+        initialize: function(file,val){
             // var comm = "comm0";
-            self.loadData(file, "comm0");
+            self.loadData(file, val);
         },
 
         // accessor for the particle system
