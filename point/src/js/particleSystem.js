@@ -532,7 +532,7 @@ var ParticleSystem = function() {
         
 
         // read the csv file
-        d3.csv(file)
+        d3.csv(file, val)
         // iterate over the rows of the csv file
             .row(function(d) {
                 // console.log(typeof(d.comm0));
@@ -550,7 +550,7 @@ var ParticleSystem = function() {
                 data.push({
                     // concentration density
 
-                     concentration: Number(d.comm0),
+                     concentration: Number(val),
                     //concentration: Number(d.comm1),
                     // concentration: Number(d.comm2),
                     // concentration: Number(d.comm3),
