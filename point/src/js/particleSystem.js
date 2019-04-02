@@ -534,7 +534,7 @@ var ParticleSystem = function() {
         // read the csv file
         d3.csv(file)
         // iterate over the rows of the csv file
-            .row(function(d,val) {
+            .row(function(d) {
                 // console.log(typeof(d.comm0));
                 // get the min bounds
                 bounds.minX = Math.min(bounds.minX || Infinity, d.Points0);
