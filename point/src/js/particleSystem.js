@@ -553,7 +553,7 @@ var ParticleSystem = function() {
                 data.push({
                     // concentration density
 
-                     concentration: Number(val),
+                     concentration: Number(d[val]),
                     //concentration: Number(d.comm1),
                     // concentration: Number(d.comm2),
                     // concentration: Number(d.comm3),
@@ -589,8 +589,8 @@ var ParticleSystem = function() {
 
         // load the data and setup the system
         initialize: function(file){
-            var comm = d.comm0;
-            self.loadData(file, comm);
+            // var comm = "comm0";
+            self.loadData(file, "comm0");
         },
 
         // accessor for the particle system
