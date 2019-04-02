@@ -547,12 +547,13 @@ var ParticleSystem = function() {
                 bounds.maxZ = Math.max(bounds.maxY || -Infinity, d.Points2);
 
                 // add the element to the data collection
-                console.log(typeof(val));
-                console.log(typeof(d.comm0));
+                // console.log(typeof(val));
+                // console.log(typeof(d.comm0));
+                var concval="d.comm0";
                 data.push({
                     // concentration density
 
-                     concentration: Number(val),
+                     concentration: Number(concval),
                     //concentration: Number(d.comm1),
                     // concentration: Number(d.comm2),
                     // concentration: Number(d.comm3),
