@@ -53,6 +53,31 @@ var ParticleSystem = function() {
             var three = 0;
             var four = 0;
 
+         var buttoncomm0 = document.getElementById("comm0");
+         var buttoncomm1 = document.getElementById("comm1");
+         var buttoncomm2 = document.getElementById("comm2");
+         var buttoncomm3 = document.getElementById("comm3");
+
+         buttoncomm0.onclick = function(){
+         	var particleSystem = new ParticleSystem();
+       		particleSystem.initialize('data/014_new.csv', "comm0");
+         }
+
+         buttoncomm1.onclick = function(){
+         	var particleSystem = new ParticleSystem();
+       		particleSystem.initialize('data/014_new.csv', "comm1");
+         }
+
+         buttoncomm2.onclick = function(){
+         	var particleSystem = new ParticleSystem();
+       		particleSystem.initialize('data/014_new.csv', "comm2");
+         }
+
+         buttoncomm3.onclick = function(){
+         	var particleSystem = new ParticleSystem();
+       		particleSystem.initialize('data/014_new.csv', "comm3");
+         }
+
             
 
         var buttonred = document.getElementById("red");
