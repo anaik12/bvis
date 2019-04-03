@@ -59,21 +59,29 @@ var ParticleSystem = function() {
          var buttoncomm3 = document.getElementById("comm3");
 
          buttoncomm0.onclick = function(){
+         	sceneObject.remove(cylinder); 
+        	sceneObject.remove(plane);
          	var particleSystem = new ParticleSystem();
        		particleSystem.initialize('data/014_new.csv', "comm0");
          }
 
          buttoncomm1.onclick = function(){
+         	sceneObject.remove(cylinder); 
+        	sceneObject.remove(plane);
          	var particleSystem = new ParticleSystem();
        		particleSystem.initialize('data/014_new.csv', "comm1");
          }
 
          buttoncomm2.onclick = function(){
+         	sceneObject.remove(cylinder); 
+        	sceneObject.remove(plane);
          	var particleSystem = new ParticleSystem();
        		particleSystem.initialize('data/014_new.csv', "comm2");
          }
 
          buttoncomm3.onclick = function(){
+         	sceneObject.remove(cylinder); 
+        	sceneObject.remove(plane);
          	var particleSystem = new ParticleSystem();
        		particleSystem.initialize('data/014_new.csv', "comm3");
          }

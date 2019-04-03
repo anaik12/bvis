@@ -22,7 +22,7 @@ var App = App || {};
 
         // initialize the particle system
         var particleSystem = new ParticleSystem();
-       particleSystem.initialize('data/014_new.csv', "comm0");
+       particleSystem.initialize('data/014_new.csv', "comm1");
 
         //add the particle system to the scene
        App.scene.addObject( particleSystem.getParticleSystems());
