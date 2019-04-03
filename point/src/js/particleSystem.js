@@ -381,7 +381,7 @@ var ParticleSystem = function() {
     // var sprite = textureLoader.load( 'data/snowflake1.png' );
 
         
-   material = new THREE.PointsMaterial({ size:0.35, map:sprite, vertexColors: THREE.VertexColors, transparent:true, opacity:0.7});//, opacity:0.3});
+   material = new THREE.PointsMaterial({ size:0.35, map:sprite, vertexColors: THREE.VertexColors, transparent:true, opacity:0.5});//, opacity:0.3});
     
     // var sprite = new THREE.TextureLoader().load( 'data/disc.png' );
     cylinder = new THREE.Points(geometry, material);
