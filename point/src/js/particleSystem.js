@@ -62,14 +62,16 @@ var ParticleSystem = function() {
          	sceneObject.remove(cylinder); 
         	sceneObject.remove(plane);
          	// var particleSystem = new ParticleSystem();
-       		this.initialize('data/014_new.csv', "comm0");
+       		// this.initialize('data/014_new.csv', "comm0");
+       		self.loadData('data/014_new.csv', "comm0");
          }
 
          buttoncomm1.onclick = function(){
          	sceneObject.remove(cylinder); 
         	sceneObject.remove(plane);
          	// var particleSystem = new ParticleSystem();
-       		this.initialize('data/014_new.csv', "comm1");
+       		// this.initialize('data/014_new.csv', "comm1");
+       		self.loadData('data/014_new.csv', "comm1");
          }
 
          buttoncomm2.onclick = function(){
