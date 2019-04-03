@@ -4,13 +4,13 @@
 var App = App || {};
 
 /* IIFE to initialize the main entry of the application*/
-(function(val) {
+(function() {
 
     // setup the pointer to the scope 'this' variable
     var self = this;
 
     /* Entry point of the application */
-    App.start = function(val)
+    App.start = function()
     {
 		
 		 var linechart1 = new lineChart1();
@@ -22,7 +22,7 @@ var App = App || {};
 
         // initialize the particle system
         var particleSystem = new ParticleSystem();
-       particleSystem.initialize('data/014_new.csv', val);
+       particleSystem.initialize('data/014_new.csv', "comm0");
 
         //add the particle system to the scene
        App.scene.addObject( particleSystem.getParticleSystems());
