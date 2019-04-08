@@ -24,12 +24,6 @@ var lineChart1 = function() {
           var width = 600; //document.getElementsByClassName("lineDiv").clientWidth;
           var height = 150;
 
-      // parse the date / time
-      // var parseTime = d3.timeParse("%d-%b-%y");
-
-      // set the ranges
-      // var x = d3.scaleTime().range([0, width]);
-      // var y = d3.scaleLinear().range([height, 0]);
 
       var x = d3.scaleLinear()
               // .domain([1,6004])

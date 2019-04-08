@@ -12,6 +12,9 @@ var Scene = function(options) {
     // scale the width and height to the screen size
     var width = d3.select('.particleDiv').node().clientWidth;
     var height = width * 0.85;
+    var rotateX = new THREE.Matrix4().makeRotationY( 0.005 );
+    var rotateY = new THREE.Matrix4().makeRotationY( 0.005 );
+    // var height = width;
 
     // create the scene
     self.scene = new THREE.Scene();
@@ -19,8 +22,9 @@ var Scene = function(options) {
     //adding orbit controls
     
     // setup the camera
-    // self.camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
-    self.camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 2.5);
+    self.camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 1000 );
+    // self.camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 20);
+    console.log("20");
     self.camera.position.set(0,2,20);
     self.camera.lookAt(0,0,0);
 
@@ -42,6 +46,7 @@ var Scene = function(options) {
     // set the size and append it to the document
     self.renderer.setSize( width, height );
     document.getElementById(options.container).appendChild( self.renderer.domElement );
+//          };
 
     var controls = new THREE.OrbitControls(self.camera, self.renderer.domElement );
     /* add the checkboard floor to the scene */
@@ -63,6 +68,10 @@ var Scene = function(options) {
         render: function() {
             requestAnimationFrame( self.public.render );
             controls.update();
+            // self.camera.applyMatrix( rotateX );
+            // self.camera.applyMatrix( rotateY );
+            // self.camera.updateMatrixWorld();
+
             self.renderer.render( self.scene, self.camera );
 
             // var raycaster = new THREE.Raycaster();

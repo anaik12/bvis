@@ -9,6 +9,12 @@ body {
   /*border:none;*/
 }
 
+.label{
+  width: 150px;
+  height: 20px;
+  color:white;
+}
+
 .button{
   /*border-radius: 3px;*/
   background-color: lightgrey;
@@ -208,7 +214,8 @@ a:hover {
 
 .line {
   fill: none;
-  stroke: steelblue;
+  /*stroke: steelblue;*/
+  stroke: #00FFFF;
   stroke-width: 1px;
 }
 
