@@ -102,11 +102,15 @@ var ParticleSystem = function() {
         var buttonred = document.getElementById("red");
             var buttongreen = document.getElementById("green");
             var buttonblue = document.getElementById("blue");
+            var buttonwhite = document.getElementById("white");
+            var buttoncyan = document.getElementById("cyan");
             var buttonall = document.getElementById("all");
 
             var rednumber = document.getElementById("rednumber");
             var greennumber = document.getElementById("greennumber");
             var bluenumber = document.getElementById("bluenumber");
+            var whitenumber = document.getElementById("whitenumber");
+            var cyannumber = document.getElementById("cyannumber");
             var allnumber = document.getElementById("allnumber");
             // console.log(rednumber.text);
             // rednumber.text = "12345";
@@ -192,35 +196,40 @@ var ParticleSystem = function() {
             
             var colorvalues = [{r:1.0, g:0.0, b:0.0},{r:0.0, g:1.0, b:0.0},{r:0.0, g:0.0, b:1.0}, {r:1.0, g:1.0, b:1.0}, {r:0.0, g:1.0, b:1.0}];
        
-            if(data[i].concentration == 0 && (red == true|| all==true)){
+            // if(data[i].concentration == 0 && (red == true|| all==true)){
+            if(data[i].concentration <= 7000 && (red == true|| all==true)){
             var cx = colorvalues[0].r;
             var cy = colorvalues[0].g;
             var cz = colorvalues[0].b;
             zero = zero + 1;
             }
             else
-             if(data[i].concentration == 1 && (green == true|| all==true)){
+             // if(data[i].concentration == 1 && (green == true|| all==true)){
+             if(data[i].concentration > 7000 && data[i].concentration <= 9000 && (green == true|| all==true)){
             var cx = colorvalues[1].r;
             var cy = colorvalues[1].g;
             var cz = colorvalues[1].b;
             one = one + 1;
             }
             else 
-            if(data[i].concentration == 2 && (blue == true|| all==true)){
+            // if(data[i].concentration == 2 && (blue == true|| all==true)){
+            if(data[i].concentration > 9000 && data[i].concentration <= 11000 && (blue == true|| all==true)){
             var cx = colorvalues[2].r;
             var cy = colorvalues[2].g;
             var cz = colorvalues[2].b;
             two = two + 1;
             }
             else 
-            if(data[i].concentration == 3){
+            // if(data[i].concentration == 3){
+            if(data[i].concentration > 11000 && data[i].concentration <= 13000){
             var cx = colorvalues[3].r;
             var cy = colorvalues[3].g;
             var cz = colorvalues[3].b;
             three = three + 1;
             }
             else 
-            if(data[i].concentration == 4){
+            // if(data[i].concentration == 4)if(data[i].concentration == 4){{
+            if(data[i].concentration > 13000){
             var cx = colorvalues[4].r;
             var cy = colorvalues[4].g;
             var cz = colorvalues[4].b;
@@ -228,8 +237,8 @@ var ParticleSystem = function() {
             four = four + 1;
             }
             else{
-                var cx = 0;
-                var cy = 0;
+                var cx = 0.3;
+                var cy = 0.3;
                 var cz = 0;
             }
             
@@ -325,82 +334,69 @@ var ParticleSystem = function() {
             var colormax = 357.19;
             var colormin = 0;
     
-            var colorvalues = [{r:1.0, g:0.0, b:0.0},{r:0.0, g:1.0, b:0.0},{r:0.0, g:0.0, b:1.0}, {r:1.0, g:1.0, b:1.0}, {r:0.0, g:1.0, b:1.0}];
+            // var colorvalues = [{r:1.0, g:0.0, b:0.0},{r:0.0, g:1.0, b:0.0},{r:0.0, g:0.0, b:1.0}, {r:1.0, g:1.0, b:1.0}, {r:0.0, g:1.0, b:1.0}];
+            var colorvalues = [{r:0.7, g:0.0, b:0.0},{r:0.0, g:0.7, b:0.0},{r:0.0, g:0.0, b:0.7}, {r:0.8, g:0.8, b:0.8}, {r:0.0, g:0.8, b:0.8}];
             // {r:1.0, g:0.5, b:0.5}, {r:0.5, g:1.0, b:0.5}];
             // var colorindex= Math.floor(Math.random() * 3);
             // console.log(data[i].concentration);
-            if(data[i].concentration == 0 && red == true){
+            if(data[i].concentration > 8000 && data[i].concentration <= 9000 && (red == true|| all==true)){
+            // console.log(typeof(data[i].concentration));
+            // console.log(typeof(7000));
             var cx = colorvalues[0].r;
             var cy = colorvalues[0].g;
             var cz = colorvalues[0].b;
-            // positions.push( x, z, y );
-            var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
-            var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
-            var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-            positions.push( x, z, y );
             zero = zero + 1;
             }
             else
-             if(data[i].concentration == 1 && green == true){
+             // if(data[i].concentration == 1 && (green == true|| all==true)){
+             if(data[i].concentration > 9000 && data[i].concentration <= 10000 && (green == true|| all==true)){
             var cx = colorvalues[1].r;
             var cy = colorvalues[1].g;
             var cz = colorvalues[1].b;
-            // positions.push( x, z, y );
-            var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
-            var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
-            var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-            positions.push( x, z, y );
             one = one + 1;
             }
             else 
-            if(data[i].concentration == 2 && blue == true){
+            // if(data[i].concentration == 2 && (blue == true|| all==true)){
+            if(data[i].concentration > 10000 && data[i].concentration <= 11000 && (blue == true|| all==true)){
             var cx = colorvalues[2].r;
             var cy = colorvalues[2].g;
             var cz = colorvalues[2].b;
-            var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
-            var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
-            var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-            positions.push( x, z, y );
-            // positions.push( x, z, y );
             two = two + 1;
             }
             else 
-            if(data[i].concentration == 3){
+            // if(data[i].concentration == 3){
+            if(data[i].concentration > 11000 && data[i].concentration <= 12000){
             var cx = colorvalues[3].r;
             var cy = colorvalues[3].g;
             var cz = colorvalues[3].b;
-            var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
-            var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
-            var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-            positions.push( x, z, y );
-            // positions.push( x, z, y );
             three = three + 1;
             }
             else 
-            if(data[i].concentration == 4){
+            // if(data[i].concentration == 4)if(data[i].concentration == 4){{
+            if(data[i].concentration > 12000 && data[i].concentration <= 15000){
             var cx = colorvalues[4].r;
             var cy = colorvalues[4].g;
             var cz = colorvalues[4].b;
             // positions.push( x, z, y );
-            var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
-            var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
-            var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-            positions.push( x, z, y );
+            // var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
+            // var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
+            // var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
+            // positions.push( x, z, y );
 
             four = four + 1;
             }
             else{
-                var cx = 0;
-                var cy = 0;
+                var cx = 0.3;
+                var cy = 0.3;
                 var cz = 0;
 
-                 var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
+                
+                // positions.push( x, z, y );
+            }
+             var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
             var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
             var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
             positions.push( x, z, y );
-                // positions.push( x, z, y );
-            }
-            
              // positions.push( x, z, y );
             
             color.setRGB( cx, cy, cz );
@@ -419,6 +415,8 @@ var ParticleSystem = function() {
         rednumber.innerHTML = zero;
         greennumber.innerHTML = one;
         bluenumber.innerHTML = two;
+        whitenumber.innerHTML = three;
+        cyannumber.innerHTML = four;
         allnumber.innerHTML = totalcount;
 
         // console.log(document.getElementById("allnumber").innerHTML);
@@ -505,56 +503,61 @@ var ParticleSystem = function() {
             var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
             var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
             var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-            positions.push( x, z, y );
+            // positions.push( x, z, y );
         //             // colors
             var colormax = 357.19;
             var colormin = 0;
-            if(data[i].Y > zvalueleft  && data[i].Y < zvalueright){
-            var colorvalues = [{r:1.0, g:0.0, b:0.0},{r:0.0, g:1.0, b:0.0},{r:0.0, g:0.0, b:1.0}, {r:1.0, g:1.0, b:1.0}, {r:0.0, g:1.0, b:1.0}];
+            // if(data[i].Y > zvalueleft  && data[i].Y < zvalueright){
+            // var colorvalues = [{r:1.0, g:0.0, b:0.0},{r:0.0, g:1.0, b:0.0},{r:0.0, g:0.0, b:1.0}, {r:1.0, g:1.0, b:1.0}, {r:0.0, g:1.0, b:1.0}];
+            var colorvalues = [{r:0.8, g:0.0, b:0.0},{r:0.0, g:0.8, b:0.0},{r:0.0, g:0.0, b:0.8}, {r:0.8, g:0.8, b:0.8}, {r:0.0, g:0.8, b:0.8}];
             // {r:1.0, g:0.5, b:0.5}, {r:0.5, g:1.0, b:0.5}];
             // var colorindex= Math.floor(Math.random() * 3);
                 // console.log(data[i].concentration);
-                if(data[i].concentration == 0){
-                var cx = colorvalues[0].r;
-                var cy = colorvalues[0].g;
-                var cz = colorvalues[0].b;
-                zero = zero + 1;
-                }
-                else
-                 if(data[i].concentration == 1){
-                var cx = colorvalues[1].r;
-                var cy = colorvalues[1].g;
-                var cz = colorvalues[1].b;
-                one = one + 1;
-                }
-                else 
-                if(data[i].concentration == 2){
-                var cx = colorvalues[2].r;
-                var cy = colorvalues[2].g;
-                var cz = colorvalues[2].b;
-                two = two + 1;
-                }
-                else 
-                if(data[i].concentration == 3){
-                var cx = colorvalues[3].r;
-                var cy = colorvalues[3].g;
-                var cz = colorvalues[3].b;
-                three = three + 1;
-                }
-                else 
-                if(data[i].concentration == 4){
+            if(data[i].concentration > 8000 && data[i].concentration <= 9000 && (red == true|| all==true)){
+            var cx = colorvalues[0].r;
+            var cy = colorvalues[0].g;
+            var cz = colorvalues[0].b;
+            zero = zero + 1;
+            }
+            else
+             // if(data[i].concentration == 1 && (green == true|| all==true)){
+            if(data[i].concentration > 9000 && data[i].concentration <= 10000 && (green == true|| all==true)){
+            var cx = colorvalues[1].r;
+            var cy = colorvalues[1].g;
+            var cz = colorvalues[1].b;
+            one = one + 1;
+            }
+            else 
+            // if(data[i].concentration == 2 && (blue == true|| all==true)){
+            if(data[i].concentration > 10000 && data[i].concentration <= 11000 && (blue == true|| all==true)){
+            var cx = colorvalues[2].r;
+            var cy = colorvalues[2].g;
+            var cz = colorvalues[2].b;
+            two = two + 1;
+            }
+            else 
+            // if(data[i].concentration == 3){
+            if(data[i].concentration > 11000 && data[i].concentration <= 12000){
+            var cx = colorvalues[3].r;
+            var cy = colorvalues[3].g;
+            var cz = colorvalues[3].b;
+            three = three + 1;
+            }
+            else 
+            // if(data[i].concentration == 4)if(data[i].concentration == 4){{
+            if(data[i].concentration > 12000 && data[i].concentration <= 15000){
                 var cx = colorvalues[4].r;
                 var cy = colorvalues[4].g;
                 var cz = colorvalues[4].b;
 
                 four = four + 1;
-                }
+               }
                 else{
-                    var cx = 0.2;
-                    var cy = 0.2;
-                    var cz = 0.2;
+                    var cx = 0.3;
+                    var cy = 0.3;
+                    var cz = 0;
                 }
-                
+             positions.push( x, z, y );  
             
             color.setRGB( cx, cy, cz );
             colors.push( color.r, color.g, color.b );
@@ -564,19 +567,19 @@ var ParticleSystem = function() {
         // geometry.vertices.push(new THREE.Vector3(x, z, y));
         // geometry.colors.push(new THREE.Vector3(cx, cy, cz))
 
-            }
+            // }
 
         // console.log("0=" +zero + " 1=" + one + " 2= " + two + " 3= "  + three + " 4=" + four);
-            else {
+            // else {
 
-                var cx = 0.2;
-                var cy = 0.2;
-                var cz = 0.2;
+            //     var cx = 0.4;
+            //     var cy = 0.2;
+            //     var cz = 0.2;
 
-                color.setRGB( cx, cy, cz );
-                colors.push( color.r, color.g, color.b );
+            //     color.setRGB( cx, cy, cz );
+            //     colors.push( color.r, color.g, color.b );
 
-            }
+            // }
         // geometry.vertices.push(new THREE.Vector3(x, z, y));
         // geometry.colors.push(new THREE.Vector3(cx, cy, cz))
 
@@ -593,7 +596,7 @@ var ParticleSystem = function() {
     // var sprite = textureLoader.load( 'data/snowflake1.png' );
 
         
-    material = new THREE.PointsMaterial({ size:0.35, map:sprite, vertexColors: THREE.VertexColors, transparent:true, opacity:0.7});//, opacity:0.3});
+    material = new THREE.PointsMaterial({ size:0.35, map:sprite, vertexColors: THREE.VertexColors, transparent:true, opacity:0.5});//, opacity:0.3});
     
     cylinder = new THREE.Points(geometry, material);
     sceneObject.add(cylinder);
