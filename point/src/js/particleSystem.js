@@ -349,9 +349,9 @@ var ParticleSystem = function() {
             // console.log("cz_raw = " + cz);
             // console.log("cz_filtered = " + typeof(data[i].concentration));
 
-            // var cz_val = color_cz(data[i].concentration) * 10;
+            var cz_val = color_cz(data[i].concentration) * 10;
 
-            var cz_val = color_cz(data[i].concentration);
+            // var cz_val = color_cz(data[i].concentration);
 
             var cx = 0.0;
             var cy = 0.5;
