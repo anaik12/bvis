@@ -353,8 +353,8 @@ var ParticleSystem = function() {
 
             // var cz_val = color_cz(data[i].concentration);
 
-            // var cx = 0.0;
-            // var cy = 0.5;
+            var cx = 0.0;
+            var cy = 0.5;
             // var cz = cz_val;
             if(cz_val < 0){
             	// cx = cz_val * -1;
