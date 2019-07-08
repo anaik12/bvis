@@ -337,14 +337,14 @@ var ParticleSystem = function() {
 
             //for raw intensities
 
-      		var color_cz = d3.scaleLinear()
-              .domain([4715, 14015])
-              .range([0.0, 1.0]);
+      		// var color_cz = d3.scaleLinear()
+        //       .domain([4715, 14015])
+        //       .range([0.0, 1.0]);
 
-        	//for filtered intensities
-        	// var color_cz = d3.scaleLinear()
-         //      .domain([-4, 68])
-         //      .range([0.0, 1.0]);
+        	for filtered intensities
+        	var color_cz = d3.scaleLinear()
+              .domain([-4, 68])
+              .range([0.0, 1.0]);
 
             // console.log("cz_raw = " + cz);
             // console.log("cz_filtered = " + typeof(data[i].concentration));
