@@ -341,7 +341,7 @@ var ParticleSystem = function() {
         //       .domain([4715, 14015])
         //       .range([0.0, 1.0]);
 
-        	for filtered intensities
+        	//for filtered intensities
         	var color_cz = d3.scaleLinear()
               .domain([-4, 68])
               .range([0.0, 1.0]);
