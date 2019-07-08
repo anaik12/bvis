@@ -193,6 +193,7 @@ var ParticleSystem = function() {
             // var cx = Math.random();
             // var cy = Math.random();
             // var cz = Math.random();
+
             
             var colorvalues = [{r:1.0, g:0.0, b:0.0},{r:0.0, g:1.0, b:0.0},{r:0.0, g:0.0, b:1.0}, {r:1.0, g:1.0, b:1.0}, {r:0.0, g:1.0, b:1.0}];
        
@@ -331,75 +332,112 @@ var ParticleSystem = function() {
             // var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
             // positions.push( x, z, y );
         //             // colors
-            var colormax = 357.19;
-            var colormin = 0;
+            var colormax = 0.98;
+            var colormin = 0.18;
+
+            //for raw intensities
+
+      		var color_cz = d3.scaleLinear()
+              .domain([4715, 14015])
+              .range([0.0, 1.0]);
+
+        	//for filtered intensities
+        	// var color_cz = d3.scaleLinear()
+         //      .domain([-4, 68])
+         //      .range([0.0, 1.0]);
+
+            // console.log("cz_raw = " + cz);
+            // console.log("cz_filtered = " + typeof(data[i].concentration));
+
+            // var cz_val = color_cz(data[i].concentration) * 10;
+
+            var cz_val = color_cz(data[i].concentration);
+
+            var cx = 0.0;
+            var cy = 0.5;
+            var cz = cz_val;
+            // if(cz_val < 0){
+            // 	// cx = cz_val * -1;
+            // 	console.log("cx = " + cx);
+            // 	cz = 0.0;
+            // }
+            // else{
+            // 	// var cx = 0.0;
+            // 	var cz = cz_val;
+            // }
+            
+            // console.log("cz_filtered_val = " + cz);
+
+
+
     
             // var colorvalues = [{r:1.0, g:0.0, b:0.0},{r:0.0, g:1.0, b:0.0},{r:0.0, g:0.0, b:1.0}, {r:1.0, g:1.0, b:1.0}, {r:0.0, g:1.0, b:1.0}];
-            var colorvalues = [{r:0.7, g:0.0, b:0.0},{r:0.0, g:0.7, b:0.0},{r:0.0, g:0.0, b:0.7}, {r:0.8, g:0.8, b:0.8}, {r:0.0, g:0.8, b:0.8}];
-            // {r:1.0, g:0.5, b:0.5}, {r:0.5, g:1.0, b:0.5}];
-            // var colorindex= Math.floor(Math.random() * 3);
-            // console.log(data[i].concentration);
-            if(data[i].concentration > 8000 && data[i].concentration <= 9000 && (red == true|| all==true)){
-            // console.log(typeof(data[i].concentration));
-            // console.log(typeof(7000));
-            var cx = colorvalues[0].r;
-            var cy = colorvalues[0].g;
-            var cz = colorvalues[0].b;
-            zero = zero + 1;
-            }
-            else
-             // if(data[i].concentration == 1 && (green == true|| all==true)){
-             if(data[i].concentration > 9000 && data[i].concentration <= 10000 && (green == true|| all==true)){
-            var cx = colorvalues[1].r;
-            var cy = colorvalues[1].g;
-            var cz = colorvalues[1].b;
-            one = one + 1;
-            }
-            else 
-            // if(data[i].concentration == 2 && (blue == true|| all==true)){
-            if(data[i].concentration > 10000 && data[i].concentration <= 11000 && (blue == true|| all==true)){
-            var cx = colorvalues[2].r;
-            var cy = colorvalues[2].g;
-            var cz = colorvalues[2].b;
-            two = two + 1;
-            }
-            else 
-            // if(data[i].concentration == 3){
-            if(data[i].concentration > 11000 && data[i].concentration <= 12000){
-            var cx = colorvalues[3].r;
-            var cy = colorvalues[3].g;
-            var cz = colorvalues[3].b;
-            three = three + 1;
-            }
-            else 
-            // if(data[i].concentration == 4)if(data[i].concentration == 4){{
-            if(data[i].concentration > 12000 && data[i].concentration <= 15000){
-            var cx = colorvalues[4].r;
-            var cy = colorvalues[4].g;
-            var cz = colorvalues[4].b;
-            // positions.push( x, z, y );
-            // var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
-            // var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
-            // var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-            // positions.push( x, z, y );
+            // var colorvalues = [{r:0.7, g:0.0, b:0.0},{r:0.0, g:0.7, b:0.0},{r:0.0, g:0.0, b:0.7}, {r:0.8, g:0.8, b:0.8}, {r:0.0, g:0.8, b:0.8}];
+            // // {r:1.0, g:0.5, b:0.5}, {r:0.5, g:1.0, b:0.5}];
+            // // var colorindex= Math.floor(Math.random() * 3);
+            // // console.log(data[i].concentration);
+            // if(data[i].concentration > 8000 && data[i].concentration <= 9000 && (red == true|| all==true)){
+            // // console.log(typeof(data[i].concentration));
+            // // console.log(typeof(7000));
+            // var cx = colorvalues[0].r;
+            // var cy = colorvalues[0].g;
+            // var cz = colorvalues[0].b;
+            // zero = zero + 1;
+            // }
+            // else
+            //  // if(data[i].concentration == 1 && (green == true|| all==true)){
+            //  if(data[i].concentration > 9000 && data[i].concentration <= 10000 && (green == true|| all==true)){
+            // var cx = colorvalues[1].r;
+            // var cy = colorvalues[1].g;
+            // var cz = colorvalues[1].b;
+            // one = one + 1;
+            // }
+            // else 
+            // // if(data[i].concentration == 2 && (blue == true|| all==true)){
+            // if(data[i].concentration > 10000 && data[i].concentration <= 11000 && (blue == true|| all==true)){
+            // var cx = colorvalues[2].r;
+            // var cy = colorvalues[2].g;
+            // var cz = colorvalues[2].b;
+            // two = two + 1;
+            // }
+            // else 
+            // // if(data[i].concentration == 3){
+            // if(data[i].concentration > 11000 && data[i].concentration <= 12000){
+            // var cx = colorvalues[3].r;
+            // var cy = colorvalues[3].g;
+            // var cz = colorvalues[3].b;
+            // three = three + 1;
+            // }
+            // else 
+            // // if(data[i].concentration == 4)if(data[i].concentration == 4){{
+            // if(data[i].concentration > 12000 && data[i].concentration <= 15000){
+            // var cx = colorvalues[4].r;
+            // var cy = colorvalues[4].g;
+            // var cz = colorvalues[4].b;
+            // // positions.push( x, z, y );
+            // // var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
+            // // var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
+            // // var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
+            // // positions.push( x, z, y );
 
-            four = four + 1;
-            }
-            else{
-                var cx = 0.3;
-                var cy = 0.3;
-                var cz = 0;
+            // four = four + 1;
+            // }
+            // else{
+            //     var cx = 0.3;
+            //     var cy = 0.3;
+            //     var cz = 0;
 
                 
-                // positions.push( x, z, y );
-            }
+            //     // positions.push( x, z, y );
+            // }
              var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
             var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
             var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
             positions.push( x, z, y );
              // positions.push( x, z, y );
             
-            color.setRGB( cx, cy, cz );
+            // color.setRGB( cx, cy, cz );
+            color.setHSL( cx, cy, cz );
             colors.push( color.r, color.g, color.b );
 
             
@@ -645,7 +683,7 @@ var ParticleSystem = function() {
 
                 // add the element to the data collection
                 // console.log(typeof(val));
-                // console.log(typeof(d.comm0));
+                // console.log(typeof(d.filtered));
                 // var concval=d.comm0;
                 data.push({
                     // concentration density
