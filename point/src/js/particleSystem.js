@@ -23,17 +23,18 @@ var ParticleSystem = function() {
     // create the containment box.
     // This cylinder is only to guide development.
     // TODO: Remove after the data has been rendered
-    self.drawContainment = function() {
+    self.drawContainment = function(selected) {
 
         // get the radius and height based on the data bounds
         // var radius = (bounds.maxX - bounds.minX)/2.0 + 2;
-        var radius = (bounds.maxX - bounds.minX)/2.0;
-        var height = (bounds.maxY - bounds.minY) + 1;
+        var radius = (bounds.maxX - bounds.minX)/2; // /2.0;
+        var height = (bounds.maxY - bounds.minY)/5;
+        // console.log("in containment" + selected);
 
         // create a cylinder to contain the particle system
         //var geometry = new THREE.CylinderBufferGeometry( radius, radius, height, 32 );
         // var geometry = new THREE.CylinderGeometry( radius, radius, height, 32 );
-        var geometry = new THREE.BufferGeometry( radius, radius, height, 32 );
+        var geometry = new THREE.BufferGeometry( radius, radius, height);
         // var material = new THREE.MeshNormalMaterial( {color: 0xffff00, wireframe: true} );
         // var cylinder = new THREE.Mesh( geometry, new THREE.MeshNormalMaterial() );
 
@@ -41,6 +42,7 @@ var ParticleSystem = function() {
 
         var positions = [];
         var colors = [];
+        console.log("in containment "+ radius + "" + height);
 
         // var boundingBox = new THREE.Box3();
 
@@ -55,49 +57,79 @@ var ParticleSystem = function() {
             var three = 0;
             var four = 0;
 
-         var buttoncomm0 = document.getElementById("comm0");
-         var buttoncomm1 = document.getElementById("comm1");
-         var buttoncomm2 = document.getElementById("comm2");
-         var buttoncomm3 = document.getElementById("comm3");
+  //       d3.select("#selected-dropdown").text("Comm1");
 
-         buttoncomm0.onclick = function(){
-         	sceneObject.remove(cylinder); 
-        	sceneObject.remove(plane);
-        	totalcount = zero = one = two = three = four = 0;
-         	// var particleSystem = new ParticleSystem();
-       		// this.initialize('data/014_new.csv', "comm0");
-       		self.loadData('data/014_new.csv', "comm0");
-         }
+		// d3.select("select")
+  // 		.on("change",function(d){
+  //   	var selected = d3.select("#d3-dropdown").node().value;
+  //   	console.log( selected );
+  //   	d3.select("#selected-dropdown").text(selected);
+  //   	if(selected == "Comm0"){
+  //        	sceneObject.remove(cylinder); 
+  //       	sceneObject.remove(plane);
+  //       	//totalcount = zero = one = two = three = four = 0;
+  //        	// var particleSystem = new ParticleSystem();
+  //      		// this.initialize('data/014_new.csv', "comm0");
+  //      		var particleSystem = new ParticleSystem();
+  //       particleSystem.initialize('data/014_new.csv', "comm0");
+  //        }
 
-         buttoncomm1.onclick = function(){
-         	sceneObject.remove(cylinder); 
-        	sceneObject.remove(plane);
-        	totalcount = zero = one = two = three = four = 0;
-         	// var particleSystem = new ParticleSystem();
-       		// this.initialize('data/014_new.csv', "comm1");
-       		self.loadData('data/014_new.csv', "comm1");
-         }
+  //        if(selected == "Comm1"){
+  //        	sceneObject.remove(cylinder); 
+  //       	sceneObject.remove(plane);
+  //       	totalcount = zero = one = two = three = four = 0;
+  //        	// var particleSystem = new ParticleSystem();
+  //      		// this.initialize('data/014_new.csv', "comm0");
+  //      		// self.loadData('data/014_new.csv', "comm1");
+  //      		var particleSystem = new ParticleSystem();
+  //       particleSystem.initialize('data/014_new.csv', "comm1");
 
-         buttoncomm2.onclick = function(){
-         	sceneObject.remove(cylinder); 
-        	sceneObject.remove(plane);
-        	totalcount = zero = one = two = three = four = 0;
-         	// var particleSystem = new ParticleSystem();
-       		// this.initialize('data/014_new.csv', "comm2");
-       		self.loadData('data/014_new.csv', "comm2");
-         }
+  //        }
 
-         buttoncomm3.onclick = function(){
-         	sceneObject.remove(cylinder); 
-        	sceneObject.remove(plane);
+  //        if(selected == "Comm2"){
+  //        	sceneObject.remove(cylinder); 
+  //       	sceneObject.remove(plane);
+  //       	totalcount = zero = one = two = three = four = 0;
+  //        	// var particleSystem = new ParticleSystem();
+  //      		// this.initialize('data/014_new.csv', "comm0");
+  //      		// self.loadData('data/014_new.csv', "comm2");
+  //      		this.initialize('data/014_new.csv', "comm2");
+  //        }
 
-        	totalcount = zero = one = two = three = four = 0;
-         	// var particleSystem = new ParticleSystem();
-       		// this.initialize('data/014_new.csv', "comm3");
-       		self.loadData('data/014_new.csv', "comm3");
-         }
+  //        if(selected == "Comm3"){
+  //        	sceneObject.remove(cylinder); 
+  //       	sceneObject.remove(plane);
+  //       	totalcount = zero = one = two = three = four = 0;
+  //        	// var particleSystem = new ParticleSystem();
+  //      		// this.initialize('data/014_new.csv', "comm0");
+  //      		self.loadData('data/014_new.csv', "comm3");
+  //        }
 
-            
+  //        if(selected == "Raw Intensities"){
+  //        	sceneObject.remove(cylinder); 
+  //       	sceneObject.remove(plane);
+  //       	totalcount = zero = one = two = three = four = 0;
+  //        	// var particleSystem = new ParticleSystem();
+  //      		// this.initialize('data/014_new.csv', "comm0");
+  //      		self.loadData('data/014_new.csv', "intensity");
+  //        }
+
+  //        if(selected == "Processed Intensities"){
+  //        	sceneObject.remove(cylinder); 
+  //       	sceneObject.remove(plane);
+  //       	totalcount = zero = one = two = three = four = 0;
+  //        	// var particleSystem = new ParticleSystem();
+  //      		// this.initialize('data/014_new.csv', "comm0");
+  //      		self.loadData('data/014_new.csv', "filtered");
+  //        }
+  //   	reset(radius,height,red,green,blue,all,selected);
+		// })
+
+         // var buttoncomm0 = document.getElementById("comm0");
+         // var buttoncomm1 = document.getElementById("comm1");
+         // var buttoncomm2 = document.getElementById("comm2");
+         // var buttoncomm3 = document.getElementById("comm3");
+
 
         var buttonred = document.getElementById("red");
             var buttongreen = document.getElementById("green");
@@ -105,6 +137,7 @@ var ParticleSystem = function() {
             var buttonwhite = document.getElementById("white");
             var buttoncyan = document.getElementById("cyan");
             var buttonall = document.getElementById("all");
+            var buttondeleteall = document.getElementById("deleteall");
 
             var rednumber = document.getElementById("rednumber");
             var greennumber = document.getElementById("greennumber");
@@ -112,6 +145,7 @@ var ParticleSystem = function() {
             var whitenumber = document.getElementById("whitenumber");
             var cyannumber = document.getElementById("cyannumber");
             var allnumber = document.getElementById("allnumber");
+            var deleteallnumber = document.getElementById("deleteallnumber");
             // console.log(rednumber.text);
             // rednumber.text = "12345";
             // console.log(rednumber.text);
@@ -119,192 +153,214 @@ var ParticleSystem = function() {
             var red = true;
             var green = true;
             var blue = true;
+            var white = true;
+            var cyan = true;
             var all = true;
 
             // reset(radius,height,red,green,blue,all);
 
             buttonred.onclick= function (){
-                sceneObject.remove(cylinder); 
-                sceneObject.remove(plane);
-                red =! red;
-                // green =false;
-                // blue = false;
-                // all = false;
-                reset(radius,height,red,green,blue,all);
+                // sceneObject.remove(cylinder); 
+                // sceneObject.remove(plane);
+                deleteall();
+                red = true;
+                green =false;
+                blue = false;
+                white = false;
+                cyan = false;
+                all = false;
+                // reset(radius,height,red,green,blue,all,selected);
+                reset(radius,height,red,green,blue,white,cyan,all,selected);
 
             }
 
             buttongreen.onclick= function (){
-                sceneObject.remove(cylinder); 
-                sceneObject.remove(plane);
-                // red = false;
-                green =! green;
-                // blue = false;
-                // all = false;
-                reset(radius,height,red,green,blue,all);
+                // sceneObject.remove(cylinder); 
+                // sceneObject.remove(plane);
+                deleteall();
+                red = false;
+                green = true;
+                blue = false;
+                white = false;
+                cyan = false;
+                all = false;
+                reset(radius,height,red,green,blue,white,cyan,all,selected);
             }
 
             buttonblue.onclick= function (){
-                sceneObject.remove(cylinder); 
-                sceneObject.remove(plane);
-                // red = false;
-                // green = false;
-                blue =! blue;
-                // all = false;
-                reset(radius,height,red,green,blue,all);
+                // sceneObject.remove(cylinder); 
+                // sceneObject.remove(plane);
+                totalcount = zero = one = two = three = four = 0;
+                deleteall();
+                red = false;
+                green = false;
+                blue = true;
+                white = false;
+                cyan = false;
+                all = false;
+                reset(radius,height,red,green,blue,white,cyan,all,selected);
+            }
+
+            buttonwhite.onclick= function (){
+                // sceneObject.remove(cylinder); 
+                // sceneObject.remove(plane);
+                deleteall();
+                red = false;
+                green = false;
+                blue = false;
+                white = true;
+                cyan = false;
+                all = false;
+                reset(radius,height,red,green,blue,white,cyan,all,selected);
+            }
+
+            buttoncyan.onclick= function (){
+                // sceneObject.remove(cylinder); 
+                // sceneObject.remove(plane);
+                deleteall();
+                red = false;
+                green = false;
+                blue = false;
+                white = false;
+                cyan = true;
+                all = false;
+                reset(radius,height,red,green,blue,white,cyan,all,selected);
             }
 
              buttonall.onclick= function (){
-                sceneObject.remove(cylinder); 
-                sceneObject.remove(plane);
+                // sceneObject.remove(cylinder); 
+                // sceneObject.remove(plane);
+                deleteall();
                 red = true;
                 green = true;
                 blue = true;
+                white = true;
+                cyan = true;
                 all = true;
                 totalcount = zero = one = two = three = four = 0;
-                reset(radius,height,red,green,blue,all);
+                reset(radius,height,red,green,blue,white,cyan,all,selected);
 
+            }
+
+            buttondeleteall.onclick =function(){
+              totalcount = zero = one = two = three = four = 0;
+              deleteall();
             }
 
 
 
 
-        for(var i = 0; i< data.length; i++) {
-            var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
-            var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
-            var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
+        // for(var i = 0; i< data.length; i++) {
+        //     var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
+        //     var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
+        //     var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
 
 
 
-            positions.push( x, z, y );
-        //             // colors
-            var colormax = 357.19;
-            var colormin = 0;
+        //     positions.push( x, z, y );
+        // //             // colors
+        //     var colormax = 357.19;
+        //     var colormin = 0;
 
-            // var cx = data[i].concentration / colormax;
-            // var cy = 1.0;
-            // var cz = 1.0;
+        //     // var cx = data[i].concentration / colormax;
+        //     // var cy = 1.0;
+        //     // var cz = 1.0;
 
 
-            // var cx = 0.9;
-            // var cy = 1 -  ( data[i].concentration / colormax ) *4;
-            // var cz = 0.9;
+        //     // var cx = 0.9;
+        //     // var cy = 1 -  ( data[i].concentration / colormax ) *4;
+        //     // var cz = 0.9;
 
-            // var cx = Math.random();
-            // var cy = Math.random();
-            // var cz = Math.random();
+        //     // var cx = Math.random();
+        //     // var cy = Math.random();
+        //     // var cz = Math.random();
 
             
-            var colorvalues = [{r:1.0, g:0.0, b:0.0},{r:0.0, g:1.0, b:0.0},{r:0.0, g:0.0, b:1.0}, {r:1.0, g:1.0, b:1.0}, {r:0.0, g:1.0, b:1.0}];
+        //     var colorvalues = [{r:1.0, g:0.0, b:0.0},{r:0.0, g:1.0, b:0.0},{r:0.0, g:0.0, b:1.0}, {r:1.0, g:1.0, b:1.0}, {r:0.0, g:1.0, b:1.0}];
        
-            // if(data[i].concentration == 0 && (red == true|| all==true)){
-            if(data[i].concentration <= 7000 && (red == true|| all==true)){
-            var cx = colorvalues[0].r;
-            var cy = colorvalues[0].g;
-            var cz = colorvalues[0].b;
-            zero = zero + 1;
-            }
-            else
-             // if(data[i].concentration == 1 && (green == true|| all==true)){
-             if(data[i].concentration > 7000 && data[i].concentration <= 9000 && (green == true|| all==true)){
-            var cx = colorvalues[1].r;
-            var cy = colorvalues[1].g;
-            var cz = colorvalues[1].b;
-            one = one + 1;
-            }
-            else 
-            // if(data[i].concentration == 2 && (blue == true|| all==true)){
-            if(data[i].concentration > 9000 && data[i].concentration <= 11000 && (blue == true|| all==true)){
-            var cx = colorvalues[2].r;
-            var cy = colorvalues[2].g;
-            var cz = colorvalues[2].b;
-            two = two + 1;
-            }
-            else 
-            // if(data[i].concentration == 3){
-            if(data[i].concentration > 11000 && data[i].concentration <= 13000){
-            var cx = colorvalues[3].r;
-            var cy = colorvalues[3].g;
-            var cz = colorvalues[3].b;
-            three = three + 1;
-            }
-            else 
-            // if(data[i].concentration == 4)if(data[i].concentration == 4){{
-            if(data[i].concentration > 13000){
-            var cx = colorvalues[4].r;
-            var cy = colorvalues[4].g;
-            var cz = colorvalues[4].b;
+        //     if(data[i].concentration == 0 && (red == true|| all==true)){
+        //     // if(data[i].concentration <= 7000 && (red == true|| all==true)){
+        //     var cx = colorvalues[0].r;
+        //     var cy = colorvalues[0].g;
+        //     var cz = colorvalues[0].b;
+        //     zero = zero + 1;
+        //     }
+        //     else
+        //      if(data[i].concentration == 1 && (green == true|| all==true)){
+        //      // if(data[i].concentration > 7000 && data[i].concentration <= 9000 && (green == true|| all==true)){
+        //     var cx = colorvalues[1].r;
+        //     var cy = colorvalues[1].g;
+        //     var cz = colorvalues[1].b;
+        //     one = one + 1;
+        //     }
+        //     else 
+        //     if(data[i].concentration == 2 && (blue == true|| all==true)){
+        //     // if(data[i].concentration > 9000 && data[i].concentration <= 11000 && (blue == true|| all==true)){
+        //     var cx = colorvalues[2].r;
+        //     var cy = colorvalues[2].g;
+        //     var cz = colorvalues[2].b;
+        //     two = two + 1;
+        //     }
+        //     else 
+        //     if(data[i].concentration == 3){
+        //     // if(data[i].concentration > 11000 && data[i].concentration <= 13000){
+        //     var cx = colorvalues[3].r;
+        //     var cy = colorvalues[3].g;
+        //     var cz = colorvalues[3].b;
+        //     three = three + 1;
+        //     }
+        //     else 
+        //     if(data[i].concentration == 4)if(data[i].concentration == 4){
+        //     // if(data[i].concentration > 13000){
+        //     var cx = colorvalues[4].r;
+        //     var cy = colorvalues[4].g;
+        //     var cz = colorvalues[4].b;
 
-            four = four + 1;
-            }
-            else{
-                var cx = 0.3;
-                var cy = 0.3;
-                var cz = 0;
-            }
+        //     four = four + 1;
+        //     }
+        //     else{
+        //         var cx = 0.3;
+        //         var cy = 0.3;
+        //         var cz = 0;
+        //     }
             
             
-            color.setRGB(cx, cy, cz);
-            colors.push( color.r, color.g, color.b );
+        //     color.setRGB(cx, cy, cz);
+        //     colors.push( color.r, color.g, color.b );
 
             
 
-        // geometry.vertices.push(new THREE.Vector3(x, z, y));
-        // geometry.colors.push(new THREE.Vector3(cx, cy, cz))
+        // // geometry.vertices.push(new THREE.Vector3(x, z, y));
+        // // geometry.colors.push(new THREE.Vector3(cx, cy, cz))
 
-        }
+        // }
 
         console.log("0=" +zero + " 1=" + one + " 2= " + two + " 3= "  + three + " 4=" + four);
 
+        var textureLoader = new THREE.TextureLoader();
 
-
-    // geometry.colorsNeedUpdate(true);
-    geometry.addAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
-    geometry.addAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
-    geometry.computeBoundingSphere();
-
-        // material= new THREE.PointsMaterial({size:0.0005, color:"red", opacity:0.3});
-      
-    // var sprite = new THREE.TextureLoader().load( 'data/disc.png' );
-
-     var fill = ["red", "blue", "green", "white"];
-
-    // var material = new THREE.PointsMaterial( { color: 0x8800ff, map:sprite, size: 10, sizeAttenuation: false, alphaTest: 0.2, transparent: true  } );
-    // var material = new THREE.PointsMaterial( { color: fill[Math.floor(Math.random() * 4)], map:sprite, size: 10, sizeAttenuation: false, alphaTest: 0.2, transparent: true  } );
-    // var material = new THREE.PointsMaterial( { color: 0x8800ff, map:sprite, size: 10, sizeAttenuation: false, alphaTest: 0.2, transparent: true  } );
-    var textureLoader = new THREE.TextureLoader();
-
-    var sprite = textureLoader.load( 'data/disc.png');
+        var sprite = textureLoader.load( 'data/disc.png');
     // var sprite = textureLoader.load( 'data/snowflake1.png' );
 
         
 
-    cylinder = new THREE.Points(geometry, material);
+        cylinder = new THREE.Points(geometry, material);
 
-        // var pointCloud = new THREE.Points(geometry, material);
-    // var filterbox = new THREE.PlaneGeometry( radius *2 + 2, height, 32 );
-    var filterbox = new THREE.BoxGeometry( radius *1.8, height+8, 12 );
+        var geometry2 = new THREE.BoxGeometry( radius * 1.9, radius * 1.5, radius * 4);
 
-    // var material = new THREE.MeshBasicMaterial( { side: THREE.DoubleSide, transparent: true, opacity:0.2} );
-    var materialbox = new THREE.LineBasicMaterial({vertexColors: THREE.VertexColors, transparent: true, opacity:0.1 });
-    var boundbox = new THREE.Mesh( filterbox, materialbox );
-    
-    // sceneObject.add( boundbox );   
+      	var color = new THREE.Color("rgb(100,100,0)");
+      	var material = new THREE.MeshPhongMaterial( {color: 0x0000ff, transparent:true, opacity: 0.2});
 
-    var geometry2 = new THREE.BoxGeometry( radius * 1.9, height + 8, 12);
+      	var cube = new THREE.Mesh( geometry2, material );
+      	var edges = new THREE.EdgesGeometry( geometry2 );
+      	// var line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x4F34B8, opacity: 1.0} ) );
+      	var line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x00FFFF, opacity: 1.0} ) );
+      	sceneObject.add( line );
+          // sceneObject.add(cube);
+         
+        var slider = document.getElementById("slider");
+        slider.addEventListener("input", movePlane);
 
-	var color = new THREE.Color("rgb(100,100,0)");
-	var material = new THREE.MeshPhongMaterial( {color: 0x0000ff, transparent:true, opacity: 0.8});
-
-	var cube = new THREE.Mesh( geometry2, material );
-	var edges = new THREE.EdgesGeometry( geometry2 );
-	// var line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x4F34B8, opacity: 1.0} ) );
-	var line = new THREE.LineSegments( edges, new THREE.LineBasicMaterial( { color: 0x00FFFF, opacity: 1.0} ) );
-	sceneObject.add( line );
-    // sceneObject.add(cylinder);
-   
-    var slider = document.getElementById("slider");
-    slider.addEventListener("input", movePlane);
 
     // var button = document.getElementById("Reset");
 
@@ -314,9 +370,16 @@ var ParticleSystem = function() {
     //     reset(radius, height);
     // }  
 
-    function reset(radius,height,red,green,blue,all){
+    function deleteall(){
         sceneObject.remove(cylinder); 
-        sceneObject.remove(plane)
+        sceneObject.remove(plane);
+    }
+
+    function reset(radius,height,red,green,blue,white,cyan,all,selected){
+        console.log("white " + white);
+        console.log("cyan " + cyan);
+        sceneObject.remove(cylinder); 
+        sceneObject.remove(plane);
         positions = [];
         colors = [];
         var color = new THREE.Color();
@@ -324,163 +387,161 @@ var ParticleSystem = function() {
         var n = 1000, n2 = n / 2;
         // cylinder = new THREE.Points(geometry, material);
         var material = [];    
-        var geometry = new THREE.BufferGeometry( radius, radius, height, 32 );
+        var geometry = new THREE.BufferGeometry( radius, radius, radius);
+        // geometry.position.set(0, 0, 0);
+        // console.log("inreset selected is ");
+        var count = 0;
+        // var textureLoader = new THREE.TextureLoader();
+        // var sprite = textureLoader.load( 'data/disc.png');
         for(var i = 0; i< data.length; i++) {
-  
-            // var x = (data[i].X - 9) ;//* height + 2 * pi * radius * radius  ;
-            // var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
-            // var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-            // positions.push( x, z, y );
-        //             // colors
-            var colormax = 0.98;
-            var colormin = 0.18;
-
+            
+            if(selected == 'intensity'){
             //for raw intensities
 
-      		// var color_cz = d3.scaleLinear()
-        //       .domain([4715, 14015])
-        //       .range([0.0, 1.0]);
+  	      		   var color_cz = d3.scaleLinear()
+  	              .domain([4715, 14015])
+  	              .range([0.0, 1.0]);
 
-        	//for filtered intensities
-        	var color_cz = d3.scaleLinear()
-              .domain([-4, 68])
-              .range([0.0, 1.0]);
-
-            // console.log("cz_raw = " + cz);
-            // console.log("cz_filtered = " + typeof(data[i].concentration));
-
-            var cz_val = color_cz(data[i].concentration) * 10;
-
-            // var cz_val = color_cz(data[i].concentration);
-
-            var cx = 0.0;
-            var cy = 0.5;
-            // var cz = cz_val;
-            if(cz_val < 0){
-            	// cx = cz_val * -1;
-            	console.log("cx = " + cx);
-            	cz = 0.0;
+  	             var cz = color_cz(data[i].concentration);
+  	             // color.setHSL( cz, cz, cz );
+                 color.setRGB( cz, cz, cz );
+  	             colors.push( cz, cz, cz);
+                 var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
+                 var y = (data[i].Y - 1.5);
+                 var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
+                 positions.push( x, z, y );
             }
-            else{
-            	// var cx = 0.0;
-            	var cz = cz_val;
-            }
-            
-            // console.log("cz_filtered_val = " + cz);
+            else if(selected == 'filtered' ){
+                // console.log("infiltered");  
+        	   //for filtered intensities
+  	        	  var color_cz = d3.scaleLinear()
+  	              .domain([-5, 68])
+  	              .range([0.0, 1.0]);
 
+  	            var cz_val = color_cz(data[i].concentration) * 10;
 
+  	            if(data[i].concentration < 0){
+  	            	cz = null;
+                  // cz = 0.0;
+  	            }
+  	            else{
 
+  	            	cz = cz_val;
+  	            }
+                color.setRGB( cz, cz, cz );
+  	            colors.push( cz, cz, cz);
+                var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
+                var y = (data[i].Y - 1.5);
+                var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
+                if(cz != null){
+                  positions.push( x, z, y );
+                }
+                // positions.push( x, z, y );
+        	 }
+        	 else {
+
+        		// console.log("comm0");
     
-            // var colorvalues = [{r:1.0, g:0.0, b:0.0},{r:0.0, g:1.0, b:0.0},{r:0.0, g:0.0, b:1.0}, {r:1.0, g:1.0, b:1.0}, {r:0.0, g:1.0, b:1.0}];
-            // var colorvalues = [{r:0.7, g:0.0, b:0.0},{r:0.0, g:0.7, b:0.0},{r:0.0, g:0.0, b:0.7}, {r:0.8, g:0.8, b:0.8}, {r:0.0, g:0.8, b:0.8}];
-            // // {r:1.0, g:0.5, b:0.5}, {r:0.5, g:1.0, b:0.5}];
-            // // var colorindex= Math.floor(Math.random() * 3);
-            // // console.log(data[i].concentration);
-            // if(data[i].concentration > 8000 && data[i].concentration <= 9000 && (red == true|| all==true)){
-            // // console.log(typeof(data[i].concentration));
-            // // console.log(typeof(7000));
-            // var cx = colorvalues[0].r;
-            // var cy = colorvalues[0].g;
-            // var cz = colorvalues[0].b;
-            // zero = zero + 1;
-            // }
-            // else
-            //  // if(data[i].concentration == 1 && (green == true|| all==true)){
-            //  if(data[i].concentration > 9000 && data[i].concentration <= 10000 && (green == true|| all==true)){
-            // var cx = colorvalues[1].r;
-            // var cy = colorvalues[1].g;
-            // var cz = colorvalues[1].b;
-            // one = one + 1;
-            // }
-            // else 
-            // // if(data[i].concentration == 2 && (blue == true|| all==true)){
-            // if(data[i].concentration > 10000 && data[i].concentration <= 11000 && (blue == true|| all==true)){
-            // var cx = colorvalues[2].r;
-            // var cy = colorvalues[2].g;
-            // var cz = colorvalues[2].b;
-            // two = two + 1;
-            // }
-            // else 
-            // // if(data[i].concentration == 3){
-            // if(data[i].concentration > 11000 && data[i].concentration <= 12000){
-            // var cx = colorvalues[3].r;
-            // var cy = colorvalues[3].g;
-            // var cz = colorvalues[3].b;
-            // three = three + 1;
-            // }
-            // else 
-            // // if(data[i].concentration == 4)if(data[i].concentration == 4){{
-            // if(data[i].concentration > 12000 && data[i].concentration <= 15000){
-            // var cx = colorvalues[4].r;
-            // var cy = colorvalues[4].g;
-            // var cz = colorvalues[4].b;
-            // // positions.push( x, z, y );
-            // // var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
-            // // var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
-            // // var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-            // // positions.push( x, z, y );
+	            // var colorvalues = [{r:1.0, g:0.0, b:0.0},{r:0.0, g:1.0, b:0.0},{r:0.0, g:0.0, b:1.0}, {r:1.0, g:1.0, b:1.0}, {r:0.0, g:1.0, b:1.0}];
+	            var colorvalues = [{r:0.7, g:0.0, b:0.0},{r:0.0, g:0.7, b:0.0},{r:0.0, g:0.0, b:0.7}, {r:0.8, g:0.8, b:0.8}, {r:0.0, g:0.8, b:0.8}];
 
-            // four = four + 1;
-            // }
-            // else{
-            //     var cx = 0.3;
-            //     var cy = 0.3;
-            //     var cz = 0;
+	             if(data[i].concentration == 0 && (red == true || all==true)){
+	            // if(data[i].concentration > 8000 && data[i].concentration <= 9000 && (red == true|| all==true)){
+	            // console.log(typeof(data[i].concentration));
+	            // console.log(typeof(7000));
+	            var cx = colorvalues[0].r;
+	            var cy = colorvalues[0].g;
+	            var cz = colorvalues[0].b;
+	            zero = zero + 1;
 
-                
-            //     // positions.push( x, z, y );
-            // }
-             var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
-            var y = (data[i].Y - 1.5);///radius ;//* height + 2 * pi * radius * radius  ;
-            var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-            positions.push( x, z, y );
-             // positions.push( x, z, y );
-            
-            // color.setRGB( cx, cy, cz );
-            color.setHSL( cx, cy, cz );
-            colors.push( color.r, color.g, color.b );
+	            }
+	            else if(data[i].concentration == 1 && (green == true || all==true)){
+	             // if(data[i].concentration > 9000 && data[i].concentration <= 10000 && (green == true|| all==true)){
+	            var cx = colorvalues[1].r;
+	            var cy = colorvalues[1].g;
+	            var cz = colorvalues[1].b;
+	            one = one + 1;
 
-            
-
-        // geometry.vertices.push(new THREE.Vector3(x, z, y));
-        // geometry.colors.push(new THREE.Vector3(cx, cy, cz))
+              // sprite = textureLoader.load( 'data/disc.png');
+	            }
+	            else if(data[i].concentration == 2 && (blue == true || all==true)){
+	            // if(data[i].concentration > 10000 && data[i].concentration <= 11000 && (blue == true|| all==true)){
+	            var cx = colorvalues[2].r;
+	            var cy = colorvalues[2].g;
+	            var cz = colorvalues[2].b;
+	            two = two + 1;
+              // sprite = textureLoader.load( 'data/disc.png');
+	            }
+	            else if(data[i].concentration == 3 && (white == true || all==true)){
+	            // if(data[i].concentration > 11000 && data[i].concentration <= 12000){
+	            var cx = colorvalues[3].r;
+	            var cy = colorvalues[3].g;
+	            var cz = colorvalues[3].b;
+	            three = three + 1;
+              // sprite = textureLoader.load( 'data/disc.png');
+	            }
+	            else if(data[i].concentration == 4 &&(cyan == true || all==true)){
+	            // if(data[i].concentration > 12000 && data[i].concentration <= 15000){
+	            var cx = colorvalues[4].r;
+	            var cy = colorvalues[4].g;
+	            var cz = colorvalues[4].b;
+	            four = four + 1;
+              // var sprite = textureLoader.load( 'data/disc.png');
+	            }
+	            else{
+	                var cx = null;
+	                var cy = null;
+	                var cz = null;
+                  // sprite = null;
+	            }
+	            
+	            color.setRGB( cx, cy, cz );
+	            // color.setHSL( cx, cy, cz );
+	            colors.push( color.r, color.g, color.b );
+              var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
+              var y = (data[i].Y - 1.5);
+              var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
+              if(cz != null){
+                positions.push( x, z, y );
+              }
+           }
+      		// var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
+        //   var y = (data[i].Y - 1.5);
+        //   var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
+        //   positions.push( x, z, y );
 
         }
 
-        console.log("0=" +zero + " 1=" + one + " 2= " + two + " 3= "  + three + " 4=" + four);
+        console.log("TOtal points " + count);
+
         totalcount = zero + one + two + three + four; 
-        // console.log("TC = " + totalcount);
-        rednumber.innerHTML = zero;
-        greennumber.innerHTML = one;
-        bluenumber.innerHTML = two;
-        whitenumber.innerHTML = three;
-        cyannumber.innerHTML = four;
-        allnumber.innerHTML = totalcount;
+	        // console.log("TC = " + totalcount);
+	      rednumber.innerHTML = zero;
+	      greennumber.innerHTML = one;
+	      bluenumber.innerHTML = two;
+	      whitenumber.innerHTML = three;
+	      cyannumber.innerHTML = four;
+	      allnumber.innerHTML = totalcount;
 
         // console.log(document.getElementById("allnumber").innerHTML);
-    geometry.addAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
-    geometry.addAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
-    geometry.computeBoundingSphere();
+	       geometry.addAttribute( 'position', new THREE.Float32BufferAttribute( positions, 3 ) );
+	       geometry.addAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
+	    // geometry.computeBoundingSphere();
 
-        // material= new THREE.PointsMaterial({size:0.0005, color:"red", opacity:0.3});
-   var textureLoader = new THREE.TextureLoader();
+	        // material= new THREE.PointsMaterial({size:0.0005, color:"red", opacity:0.3});
+  	     var textureLoader = new THREE.TextureLoader();
 
-    var sprite = textureLoader.load( 'data/disc.png');
+  	     var sprite = textureLoader.load( 'data/disc.png');
     // var sprite = textureLoader.load( 'data/snowflake1.png' );
 
         
-   material = new THREE.PointsMaterial({ size:0.35, map:sprite, vertexColors: THREE.VertexColors, transparent:true, opacity:0.5});//, opacity:0.3});
+   		   material = new THREE.PointsMaterial({ size:0.35, map:sprite, vertexColors: THREE.VertexColors, transparent:true, opacity:0.5});//, opacity:0.3});
     
     // var sprite = new THREE.TextureLoader().load( 'data/disc.png' );
-    cylinder = new THREE.Points(geometry, material);
-    // var material = new THREE.PointsMaterial( { color: 0x8800ff, map:sprite, size: 10, sizeAttenuation: false, alphaTest: 0.2, transparent: true  } );
-     var fill = ["red", "blue", "green", "white"];
+          cylinder = new THREE.Points(geometry, material);
 
-
-
-    // cylinder = new THREE.Points(geometry, material);
-    sceneObject.add(cylinder);
-    sceneObject.add(plane);
+          sceneObject.add(cylinder);
+          sceneObject.add(plane);
     // cylinder.rotation
 
     // cylinder.rotation.x += 0.01;
@@ -495,22 +556,22 @@ var ParticleSystem = function() {
 	var imgMaterial = new THREE.MeshBasicMaterial({ //CHANGED to MeshBasicMaterial
 	map: new THREE.TextureLoader().load('https://anaik12.github.io/bvis/point/brainImg.png'), side: THREE.DoubleSide});
 	var plane = new THREE.Mesh(planeG, imgMaterial);
-	plane.overdraw = true;
-	sceneObject.add(plane);
+	// plane.overdraw = true;
+	// sceneObject.add(plane);
 
 
     function movePlane(e){
-        sceneObject.remove(cylinder);
-        sceneObject.remove(plane);
+        // sceneObject.remove(cylinder);
+        // sceneObject.remove(plane);
     var target = (e.target) ? e.target : e.srcElement;
         plane.position.z = target.value;
         // helper.update();
         // boundbox.setFromObject(plane);
 
         //console.log(boundbox.min.z, boundbox.max.z );
-        updatecylinder(radius, height, (parseFloat(plane.position.z)).toFixed(2));
+        // updatecylinder(radius, height, (parseFloat(plane.position.z)).toFixed(2));
         // helper.position.z = target.value;
-        // console.log("Z value: ", plane.position.z );
+        console.log("Z value: ", plane.position.z );
         var d3canvas = new d3Canvas();
         d3canvas.clearCanvas((parseFloat(plane.position.z)).toFixed(2));
         // d3canvas.zvalueslider = plane.position.z;
@@ -530,7 +591,7 @@ var ParticleSystem = function() {
         console.log(parseFloat(zvalue));
         var zvalueleft = parseFloat(zvalue) + 1.3;
         var zvalueright = parseFloat(zvalue) + 1.7;
-        console.log(zvalue, zvalueleft, zvalueright);
+        // console.log(zvalue, zvalueleft, zvalueright);
         // console.log(data);
         for(var i = 0; i< data.length; i++) {
             // console.log(data);
@@ -633,12 +694,13 @@ var ParticleSystem = function() {
     var sprite = textureLoader.load( 'data/disc.png');
     // var sprite = textureLoader.load( 'data/snowflake1.png' );
 
-        
+       
     material = new THREE.PointsMaterial({ size:0.35, map:sprite, vertexColors: THREE.VertexColors, transparent:true, opacity:0.5});//, opacity:0.3});
     
     cylinder = new THREE.Points(geometry, material);
-    sceneObject.add(cylinder);
-    sceneObject.add(plane);
+
+    // sceneObject.add(cylinder);
+    // sceneObject.add(plane);
 
     }
 
@@ -646,7 +708,8 @@ var ParticleSystem = function() {
     };
 
     // creates the particle system
-    self.createParticleSystem = function() {
+    // self.createParticleSystem = function() {
+    self.removeParticleSystem = function() {
         // console.log(data);
         // use self.data to create the particle systemss
 
@@ -658,11 +721,17 @@ var ParticleSystem = function() {
 
         // var tgeometry = new THREE.Geometry();
     // var pointCloud = new THREE.Points(tgeometry, tmaterial);
+    	if(sceneObject.children.length > 0){
+	    	for( var i = scene.children.length - 1; i >= 0; i--) { 
+	    		var obj = scene.children[i];
+	     		sceneObject.remove(obj);
+	    	}	
+	    }
     
     };
 
     // data loading function
-    self.loadData = function(file,val){
+    self.loadData = function(file,selected){
 
         
 
@@ -688,7 +757,7 @@ var ParticleSystem = function() {
                 data.push({
                     // concentration density
 
-                     concentration: Number(d[val]),
+                     concentration: Number(d[selected]),
                     //concentration: Number(d.comm1),
                     // concentration: Number(d.comm2),
                     // concentration: Number(d.comm3),
@@ -710,10 +779,10 @@ var ParticleSystem = function() {
                 // draw the containment cylinder
                 // TODO: Remove after the data has been rendered
                 // console.log(data);
-                self.drawContainment();
+                self.drawContainment(selected);
 
                 // create the particle system
-                self.createParticleSystem();
+                // self.createParticleSystem();
             });
             // console.log(data);
     };
@@ -722,14 +791,21 @@ var ParticleSystem = function() {
     var publiclyAvailable = {
 
         // load the data and setup the system
-        initialize: function(file,val){
+        initialize: function(file,selected){
             // var comm = "comm0";
-            self.loadData(file, val);
+            self.removeParticleSystem();
+            self.loadData(file, selected);
         },
 
         // accessor for the particle system
         getParticleSystems : function() {
             return sceneObject;
+        },
+
+        removeParticleSystems : function() {
+            if(sceneObject){
+              return sceneObject;
+            }
         }
     };
 	

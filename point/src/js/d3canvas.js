@@ -77,24 +77,25 @@ var d3Canvas = function() {
      			return "none";
      		
      		}
-     		// if (cell == 0){
-     		if (cell > 8000 && cell <= 9000){
+     		if (cell == 0){
+     		// if (cell > 8000 && cell <= 9000){
 
      				return "red";
 	     	}
-	     	// else if (cell == 1){
-	     	else if (cell > 9000 && cell <= 10000){
+	     	else if (cell == 1){
+	     	// else if (cell > 9000 && cell <= 10000){
 	     			return "green";
 	     	}
-	     	// else if (cell == 2){
-	     	else if (cell > 10000 && cell <= 11000){
+	     	else if (cell == 2){
+	     	// else if (cell > 10000 && cell <= 11000){
 	     			return "blue";
 	     	}
-	     	else if (cell > 11000 && cell <= 12000){
+	     	else if (cell == 3){
+	     	// else if (cell > 11000 && cell <= 12000){
 	     			return "white";
 	     	}
-	     	// else if (cell == 2){
-	     	else if (cell > 12000 && cell <= 15000){
+	     	else if (cell == 4){
+	     	// else if (cell > 12000 && cell <= 15000){
 	     			return "cyan";
 	     	}
 	     	else {
@@ -119,7 +120,8 @@ var d3Canvas = function() {
 							.attr("stroke-width", "2px")
 							.attr("opacity", 1)
 							// .attr("stroke", function(d){ return getcolor_comm(d.comm1);})
-							.attr("stroke", function(d){ return getcolor_comm(d.intensity);})
+							.attr("stroke", function(d){ return getcolor_comm(d.comm0);})
+							// .attr("stroke", function(d){ return getcolor_comm(d.intensity);})
 							.attr("fill", "none")
 							.on("click", function(d){
 								// svgContainer.selectAll("circle").data(keyvalues)
@@ -129,6 +131,9 @@ var d3Canvas = function() {
 								      if (d.pulse) {
 								        var selected_circles = d3.select(this);
 								        pulsate(selected_circles);
+
+								      }
+								      else{
 
 								      }
 
@@ -180,8 +185,8 @@ var d3Canvas = function() {
 				        selection.transition()
 				            .duration(200)
 				            .attr("r", "none")
-				            // .attr("stroke", function(d){ return getcolor_comm(d.comm1);})
-				            .attr("stroke", function(d){ return getcolor_comm(d.intensity);})
+				            .attr("stroke", function(d){ return getcolor_comm(d.comm0);})
+				            // .attr("stroke", function(d){ return getcolor_comm(d.intensity);})
 				            .attr("r", 9 )
 				            .attr("stroke-width", "1px")
 				            .attr("opacity", 1)
@@ -293,24 +298,25 @@ var d3Canvas = function() {
      			return "none";
      		
      		}
-     		// if (cell == 0){
-     		if (cell > 8000 && cell <= 9000){
+     		if (cell == 0){
+     		// if (cell > 8000 && cell <= 9000){
 
      				return "red";
 	     	}
-	     	// else if (cell == 1){
-	     	else if (cell > 9000 && cell <= 10000){
+	     	else if (cell == 1){
+	     	// else if (cell > 9000 && cell <= 10000){
 	     			return "green";
 	     	}
-	     	// else if (cell == 2){
-	     	else if (cell > 10000 && cell <= 11000){
+	     	else if (cell == 2){
+	     	// else if (cell > 10000 && cell <= 11000){
 	     			return "blue";
 	     	}
-	     	else if (cell > 11000 && cell <= 12000){
+	     	else if (cell == 3){
+	     	// else if (cell > 11000 && cell <= 12000){
 	     			return "white";
 	     	}
-	     	// else if (cell == 2){
-	     	else if (cell > 12000 && cell <= 15000){
+	     	else if (cell == 4){
+	     	// else if (cell > 12000 && cell <= 15000){
 	     			return "cyan";
 	     	}
 	     	else {
@@ -337,8 +343,8 @@ var d3Canvas = function() {
 							.attr("stroke-width", "1px")
 							.attr("opacity", 1)
 							// .attr("stroke", function(d){ return fill[Math.floor(Math.random() * 4)];})
-							// .attr("stroke", function(d){ return getcolor_comm(d.comm1);})
-							.attr("stroke", function(d){ return getcolor_comm(d.intensity);})
+							.attr("stroke", function(d){ return getcolor_comm(d.comm0);})
+							// .attr("stroke", function(d){ return getcolor_comm(d.intensity);})
 							.attr("fill", "none")
 							.on("click", function(d){
 								// .append("circle").style("fill", "red"); 
@@ -413,8 +419,9 @@ var d3Canvas = function() {
 				        selection.transition()
 				            .duration(200)
 				            .attr("r", "none")
-				            // .attr("stroke", function(d){ return getcolor_comm(d.comm1);})
-				            .attr("stroke", function(d){ return getcolor_comm(d.intensity);})
+				            // attr("stroke", function(d){ return getcolor_comm(d.comm1);})
+				            .attr("stroke", function(d){ return getcolor_comm(d.comm0);})
+				            // .attr("stroke", function(d){ return getcolor_comm(d.intensity);})
 				            .attr("r", 9 )
 				            .attr("stroke-width", "1px")
 				            .attr("opacity", 1)
