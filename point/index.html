@@ -52,23 +52,38 @@
             <div class="particleDiv col-md-6">
                 <div id="scene">
                     <!-- <center><p class="p"> 3D View </p></center> -->
-                    <button type="button" class="button" id="comm0">comm0</button> &nbsp; 
+                    <!-- <button type="button" class="button" id="comm0">comm0</button> &nbsp; 
                     <button type="button" class="button" id="comm1">comm1</button> &nbsp; 
                     <button type="button" class="button" id="comm2">comm2</button> &nbsp; 
-                    <button type="button" class="button" id="comm3">comm3</button>
+                    <button type="button" class="button" id="comm3">comm3</button> -->
+
+                    <select id="d3-dropdown">
+                    <option value="select">Select</option>
+                    <option value="comm0">Comm0</option>
+                    <option value="comm1">Comm1</option>
+                    <option value="comm2">Comm2</option>
+                    <option value="comm3">Comm3</option>
+                    <option value="intensity">Raw Intensities</option>
+                    <option value="filtered">Processed Intensities</option>
+                    </select>
                     <br>
                     <br>
-                    <button type="button" class="button2" id="red" style="background-color:red; color:white">8k - 9k</button>  <label class="label" id="rednumber">0</label> &nbsp; 
-                    <button type="button" class="button2" id="green" style="background-color:green; color:white">9k - 10k</button> <label class="label" id="greennumber">0</label> &nbsp;
-                    <button type="button" class="button2" id="blue" style="background-color:blue; color:white">10k - 11k</button>  <label class="label" id="bluenumber">0</label> &nbsp;
-                    <button type="button" class="button2" id="green" style="background-color:white; color:black">11k - 12k</button> <label class="label" id="whitenumber">0</label> &nbsp;
-                    <button type="button" class="button2" id="blue" style="background-color:cyan; color:black">12k - 15k</button>  <label class="label" id="cyannumber">0</label> &nbsp;
-                    <button type="button" class="button2" id="all" style="background-color:white; color:black">All</button> <label class="label" id="allnumber">0</label>
+                    <button type="button" class="button2" id="red" style="background-color:red; color:white">0</button>  <label class="label" id="rednumber">0</label> &nbsp; 
+                    <button type="button" class="button2" id="green" style="background-color:green; color:white">1</button> <label class="label" id="greennumber">0</label> &nbsp;
+                    <button type="button" class="button2" id="blue" style="background-color:blue; color:white">2</button>  <label class="label" id="bluenumber">0</label> &nbsp;
+                    <button type="button" class="button2" id="white" style="background-color:white; color:black">3</button> <label class="label" id="whitenumber">0</label> &nbsp;
+                    <button type="button" class="button2" id="cyan" style="background-color:cyan; color:black">4</button>  <label class="label" id="cyannumber">0</label> &nbsp;
+                    <button type="button" class="button2" id="all" style="background-color:white; color:black">All</button> <label class="label" id="allnumber">0</label> &nbsp;
+                    <button type="button" class="button2" id="deleteall" style="background-color:white; color:black">Delete</button> <label class="label" id="deleteallnumber">0</label> 
                     <br>
                     <br>
 
                     <p id="Filter" style="color:white; left-padding:20px"> Filter </p> 
-                    <input type="range" min="-4.9" max="4.9" value="0" step="0.01" id="slider"  style="position:relative;">
+                    <input type="range" min="-25" max="25" value="0" step="0.01" id="slider"  style="position:relative;">
+
+
+
+                    <!-- <p id="selected-dropdown"></p> -->
                 <!--     </div> -->
                 </div>
                 
@@ -89,20 +104,6 @@
             
          </div>
     </div>
-
-    <!-- <div class="col-md-5"><p id="Filter" style="color:white; left-padding:20px"> Filter </p> 
-            <input type="range" min="-4.9" max="4.9" value="0" step="0.01" id="slider"  style="position:relative;">
-        </div> -->
-        <!-- <div class="col-md-6"><button id="Reset" style="margin-left:16px">Color Reset</button></div> -->
-
-    <!-- <div class="row">
-    <div class="col-md-9">
-                <div class="lineDiv"></div>            
-            </div>
-    </div> -->
-	
-	
-	
         
 </body>
 </html>

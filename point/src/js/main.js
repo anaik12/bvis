@@ -21,20 +21,39 @@ var App = App || {};
         App.scene = new Scene({container:"scene"});
 
         // initialize the particle system
+        // var selected;
+        d3.select("select")
+        .on("change",function(d){
+        var selected = d3.select("#d3-dropdown").node().value;
+        console.log( selected );
+        d3.select("#selected-dropdown").text(selected);
         var particleSystem = new ParticleSystem();
-       // particleSystem.initialize('data/014_new.csv', "comm0");
-       particleSystem.initialize('data/014_new.csv', "filtered");
+        particleSystem.initialize('data/014_new.csv', selected);
+        // particleSystem.initialize('data/test3_4.csv', selected);
 
-
+        //removeParticleSystems the particle system to the scene
+        App.scene.addObject( particleSystem.removeParticleSystems());
         //add the particle system to the scene
-       App.scene.addObject( particleSystem.getParticleSystems());
+           // App.scene.removeObject( particleSystem.getParticleSystems());
 
-        // render the scene
+            // render the scene
+           
+           App.scene.render();
+        })
+        // var particleSystem = new ParticleSystem();
+        // particleSystem.initialize('data/014_new.csv', selected);
+       // particleSystem.initialize('data/014_new.csv', "filtered");
+
+
+       //  //add the particle system to the scene
+       // App.scene.addObject( particleSystem.getParticleSystems());
+
+       //  // render the scene
        
-       App.scene.render();
+       // App.scene.render();
 	   
 	   var d3canvas = new d3Canvas();
-        d3canvas.render("-3.2");
+        d3canvas.render("-24.2");
 
        
 
