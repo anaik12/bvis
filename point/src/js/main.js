@@ -22,13 +22,16 @@ var App = App || {};
 
         // initialize the particle system
         // var selected;
-        d3.select("select")
-        .on("change",function(d){
-        var selected = d3.select("#d3-dropdown").node().value;
-        console.log( selected );
-        d3.select("#selected-dropdown").text(selected);
+        // d3.select("select")
+        // .on("change",function(d){
+        // var selected = d3.select("#d3-dropdown").node().value;
+        // // console.log( selected );
+        // d3.select("#selected-dropdown").text(selected);
+
+        // var scell = d3.select("scell");
+        // console.log(scell);
         var particleSystem = new ParticleSystem();
-        particleSystem.initialize('data/014_new.csv', selected);
+        particleSystem.initialize('data/014_new.csv');
         // particleSystem.initialize('data/test3_4.csv', selected);
 
         //removeParticleSystems the particle system to the scene
@@ -37,9 +40,11 @@ var App = App || {};
            // App.scene.removeObject( particleSystem.getParticleSystems());
 
             // render the scene
+
+
            
            App.scene.render();
-        })
+        // })
         // var particleSystem = new ParticleSystem();
         // particleSystem.initialize('data/014_new.csv', selected);
        // particleSystem.initialize('data/014_new.csv', "filtered");
