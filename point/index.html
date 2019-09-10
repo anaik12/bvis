@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <!-- CSS Source -->
     <link rel="stylesheet" href="./src/css/main.css" />
+    <link href="./src/css/d3RangeSlider.css" rel="stylesheet">
+
+    
+
+    <!-- Range slider style -->
+    
 
     <!-- JS Libraries -->
     <script   src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -27,6 +33,8 @@
     <script src="./src/js/particleSystem.js"></script>
     <script src="./src/js/d3canvas.js"></script>
     <script src="./src/js/linechart1.js"></script>
+    <!-- <script src="./src/js/d3.slider.js"></script> -->
+    <script src="./src/js/d3RangeSlider.js"></script>
     
     <!-- <script src="./src/js/vertexshader.js" id="vertexshader"></script>
     <script src="./src/js/fragmentsahder.js" id="fragmentshader"></script> -->
@@ -63,23 +71,52 @@
                     <option value="comm1">Comm1</option>
                     <option value="comm2">Comm2</option>
                     <option value="comm3">Comm3</option>
+                    <option value="proc_300_cor5">proc_300_cor5</option>
+                    <option value="proc_300_cor7">proc_300_cor7</option>
+                    <option value="proc_300_cor7">proc_300_cor9</option>
+                    <option value="proc_100_cor5">proc_100_cor5</option>
+                    <option value="proc_100_cor7">proc_100_cor7</option>
+                    <option value="proc_100_cor9">proc_100_cor9</option>
                     <option value="intensity">Raw Intensities</option>
                     <option value="filtered">Processed Intensities</option>
                     </select>
+
+                    Start #: <input type="number" name="scell" value="0" id="scell">
+                    End #: <input type="number" name="ecell" value="6000" id="ecell">
+                    <input type="submit" value="Update" id="show">
+                    <input type="button" value="RotateY" id="rotateY">
+                    <input type="button" value="RotateXYZ" id="rotate">
                     <br>
                     <br>
-                    <button type="button" class="button2" id="red" style="background-color:red; color:white">0</button>  <label class="label" id="rednumber">0</label> &nbsp; 
-                    <button type="button" class="button2" id="green" style="background-color:green; color:white">1</button> <label class="label" id="greennumber">0</label> &nbsp;
-                    <button type="button" class="button2" id="blue" style="background-color:blue; color:white">2</button>  <label class="label" id="bluenumber">0</label> &nbsp;
-                    <button type="button" class="button2" id="white" style="background-color:white; color:black">3</button> <label class="label" id="whitenumber">0</label> &nbsp;
-                    <button type="button" class="button2" id="cyan" style="background-color:cyan; color:black">4</button>  <label class="label" id="cyannumber">0</label> &nbsp;
+                    <button type="button" class="button2" id="red" style="background-color:#1b9e77; color:white">0</button>  <label class="label" id="rednumber">0</label> &nbsp; 
+                    <button type="button" class="button2" id="green" style="background-color:#d95f02; color:white">1</button> <label class="label" id="greennumber">0</label> &nbsp;
+                    <button type="button" class="button2" id="blue" style="background-color:#7570b3; color:white">2</button>  <label class="label" id="bluenumber">0</label> &nbsp;
+                    <button type="button" class="button2" id="white" style="background-color:#e26eaa; color:black">3</button> <label class="label" id="whitenumber">0</label> &nbsp;
+                    <button type="button" class="button2" id="cyan" style="background-color:#66a61e; color:black">4</button>  <label class="label" id="cyannumber">0</label> &nbsp;
                     <button type="button" class="button2" id="all" style="background-color:white; color:black">All</button> <label class="label" id="allnumber">0</label> &nbsp;
                     <button type="button" class="button2" id="deleteall" style="background-color:white; color:black">Delete</button> <label class="label" id="deleteallnumber">0</label> 
                     <br>
                     <br>
 
-                    <p id="Filter" style="color:white; left-padding:20px"> Filter </p> 
+                    <p id="Filter" style="color:white; left-padding:20px"> Intensity Range </p> 
+                    <div id="slider3"></div>
+                    <!-- <div id="container"></div> -->
+                    <div id="range-label">0-10</div>
+
+                    <style type="text/css">
+                    #slider-container {
+                        position: relative;
+                        height:10px;
+                        background-color: #eeeef5;
+                    }
+                    </style>
+                    <div id="slider-container"></div>
+
+
+
+                    <p id="Filter" style="color:white; left-padding:20px"> Timestep </p> 
                     <input type="range" min="-25" max="25" value="0" step="0.01" id="slider"  style="position:relative;">
+
 
 
 

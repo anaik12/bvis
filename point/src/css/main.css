@@ -1,6 +1,7 @@
 body { 
 	margin: 0; 
-    background: #1c1717;
+    background: #B8B8B8;
+    /*#1c1717;*/
     /*background: #eeeeee;*/
     width: 100%;
 	height: 150%;
@@ -228,7 +229,8 @@ a:hover {
 .line {
   fill: none;
   /*stroke: steelblue;*/
-  stroke: #00FFFF;
+  /*stroke: #00FFFF;*/
+  stroke:#339BFF;
   stroke-width: 1px;
 }
 

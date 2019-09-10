@@ -9,11 +9,26 @@ var Scene = function(options) {
     // setup the pointer to the scope 'this' variable
     var self = this;
 
+    var rotateYtrue = false;
+    var buttonRotateY = document.getElementById("rotateY");
+
+    var rotate = false;
+    var buttonRotate = document.getElementById("rotate");
+
+    buttonRotateY.onclick= function (){
+        rotateYtrue = !rotateYtrue;
+    }
+
+    buttonRotate.onclick= function (){
+        rotate = !rotate;
+    }
+
     // scale the width and height to the screen size
     var width = d3.select('.particleDiv').node().clientWidth;
     var height = width * 0.85;
-    var rotateX = new THREE.Matrix4().makeRotationY( 0.005 );
-    var rotateY = new THREE.Matrix4().makeRotationY( 0.005 );
+    var rotateX = new THREE.Matrix4().makeRotationX( 0.002 );
+    var rotateY = new THREE.Matrix4().makeRotationY( 0.002 );
+    var rotateZ = new THREE.Matrix4().makeRotationZ( 0.002 );
     // var height = width;
 
     // create the scene
@@ -41,7 +56,9 @@ var Scene = function(options) {
     // create the renderer
     self.renderer = new THREE.WebGLRenderer();
 
-    self.renderer.setClearColor( 0x1c1717, 1 );
+    // self.renderer.setClearColor( 0x1c1717, 1 );
+    
+    self.renderer.setClearColor( 0xB8B8B8, 1 );
 
     // set the size and append it to the document
     self.renderer.setSize( width, height );
@@ -50,6 +67,7 @@ var Scene = function(options) {
 
     var controls = new THREE.OrbitControls(self.camera, self.renderer.domElement );
     /* add the checkboard floor to the scene */
+
 
     self.public =  {
 
@@ -66,12 +84,21 @@ var Scene = function(options) {
         },
 
         render: function() {
+
             requestAnimationFrame( self.public.render );
             controls.update();
-            // self.camera.applyMatrix( rotateX );
-            // self.camera.applyMatrix( rotateY );
-            // self.camera.updateMatrixWorld();
+            if(rotate){
+            self.camera.applyMatrix( rotateX );
+            self.camera.applyMatrix( rotateY );
+            self.camera.applyMatrix( rotateZ );
+            self.camera.updateMatrixWorld();
+            }
 
+            if(rotateYtrue){
+            // self.camera.applyMatrix( rotateX );
+            self.camera.applyMatrix( rotateY );
+            self.camera.updateMatrixWorld();
+            }
             self.renderer.render( self.scene, self.camera );
 
             // var raycaster = new THREE.Raycaster();

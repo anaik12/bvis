@@ -123,50 +123,49 @@ var d3Canvas = function() {
 							.attr("stroke", function(d){ return getcolor_comm(d.comm0);})
 							// .attr("stroke", function(d){ return getcolor_comm(d.intensity);})
 							.attr("fill", "none")
-							.on("click", function(d){
-								// svgContainer.selectAll("circle").data(keyvalues)
-	       //                   .enter().append("circle").style("fill", "red");
-								// .style("fill", "red"); 
-								d.pulse = !d.pulse;
-								      if (d.pulse) {
-								        var selected_circles = d3.select(this);
-								        pulsate(selected_circles);
+							// .on("click", function(d){
+								
+							// })
+							.on("mouseover", function(d){   
+			                      d3.select(this).classed('active', true)
+			                      hoverdiv.transition()      
+			                .duration(200)      
+			                .style("opacity", .9);      
+			                hoverdiv .html(d.cell)  
+			                // div .html(htmlinfo(d))
+			                .style("left", (d3.event.pageX + 10) + "px")     
+			                .style("top", (d3.event.pageY) + "px");
+			           //      d.pulse = !d.pulse;
+								      // if (d.pulse) {
+								        let selected_circles = d3.select(this);
+								        pulsate(selected_circles, "on");
 
-								      }
-								      else{
+								      // }
+								      // else{
 
-								      }
+								      // }
 
 								var linechart1 = new lineChart1();
 								var cellname = "cell" + d.cell;
 								document.getElementById('cellname').textContent = "Cell " + d.cell;
         						linechart1.render(cellname);
-							})
-							.on("mouseover", function(d){   
-                      d3.select(this).classed('active', true)
-                      hoverdiv.transition()      
-                .duration(200)      
-                .style("opacity", .9);      
-                hoverdiv .html(d.cell)  
-                // div .html(htmlinfo(d))
-                .style("left", (d3.event.pageX + 10) + "px")     
-                .style("top", (d3.event.pageY) + "px");
                 })
 					.on("mouseout", function(d){
                       d3.select(this).classed('active', false)
                       hoverdiv.transition()      
-                .duration(500)      
-                .style("opacity", 0);   
+	                .duration(500)      
+	                .style("opacity", 0);   
+	                let selected_circles = d3.select(this);
+					pulsate(selected_circles, "off");
                   })
 							.style("pointer-events", "all");
-							// .attr("fill", "none");
-							// .attr("fill", "#990099");//#FF69B4");
-							// .attr("fill", function (d) {  return getcolor(d.concentration);});
-					function pulsate(selection) {
-				    recursive_transitions();
+						
+					function pulsate(selection, state) {
+					if(state == "on") recursive_transitions_on();
+				    else recursive_transitions_off();
 
-				    function recursive_transitions() {
-				      if (selection.data()[0].pulse) {
+				    function recursive_transitions_on() {
+				      // if (selection.data()[0].pulse) {
 				        selection.transition()
 				            .duration(400)
 				            .attr("stroke-width", 2)
@@ -179,12 +178,15 @@ var d3Canvas = function() {
 				            .attr('stroke-width', 3)
 				            .attr("r", 12)
 				            .ease(d3.easeBounce)
-				            .on("end", recursive_transitions);
-				      } else {
+				            .on("end", recursive_transitions_on);
+				      	// }
+				      } 
+				      function recursive_transitions_off(){
 				        // transition back to normal
 				        selection.transition()
 				            .duration(200)
 				            .attr("r", "none")
+				            // attr("stroke", function(d){ return getcolor_comm(d.comm1);})
 				            .attr("stroke", function(d){ return getcolor_comm(d.comm0);})
 				            // .attr("stroke", function(d){ return getcolor_comm(d.intensity);})
 				            .attr("r", 9 )
@@ -193,7 +195,7 @@ var d3Canvas = function() {
 				            .attr("fill", "none");
 				            // .attr("stroke-dasharray", "1, 0");
 				      }
-				    }
+				    // }
 				}
 		}
 	}
@@ -214,9 +216,9 @@ var d3Canvas = function() {
 	function drawcanvas(error, data, commdata, cordata){
 
 		// console.log(commdata[2]);
-		
+	
 
-		d3.select(".canvasDiv").selectAll("svg").remove(); 
+	d3.select(".canvasDiv").selectAll("svg").remove(); 
 	var svgContainer = d3.select('.canvasDiv').append("svg")
 	                                  .attr("width", 696)
 	                                   .attr("height", 520)
@@ -333,11 +335,12 @@ var d3Canvas = function() {
         var selected_circles;
        	var color_switch = false;
 
+
 	svgContainer.selectAll("circle")
 	                         .data(keyvalues)
 	                         .enter()
 	                         .append("circle")
-	                         .attr("cx", function (d) {  return parseFloat(d.Points0)*30 + 0;})// + 300; })
+	                         .attr("cx", function (d) {  return parseFloat(d.Points0)*30 + 0; console.log("timestep is" + d.timeframe);})// + 300; })
 							.attr("cy",  function (d) {  return parseFloat(d.Points2)*30 + 0;})// + 150; })
 							.attr("r", 9)
 							.attr("stroke-width", "1px")
@@ -347,60 +350,62 @@ var d3Canvas = function() {
 							// .attr("stroke", function(d){ return getcolor_comm(d.intensity);})
 							.attr("fill", "none")
 							.on("click", function(d){
-								// .append("circle").style("fill", "red"); 
-								// color_switch =! color_switch;
-								// if(color_switch){
-									// selected_circles = d3.select(this);
-									// selected_circles.transition()
-									// // .duration(10)
-									// .attr("fill", "#00FF00")
-									// .attr("opacity", "0.5");
-									// var cellname = document.getElementById("cellname");
-									// cellname.text = "Cell " + d.cell;
-									d.pulse = !d.pulse;
-								      if (d.pulse) {
-								        var selected_circles = d3.select(this);
-								        pulsate(selected_circles);
+								// 	d.pulse = !d.pulse;
+								//       if (d.pulse) {
+								//         var selected_circles = d3.select(this);
+								//         pulsate(selected_circles);
 
-								      }
+								//       }
+								// // }	
+								// var linechart1 = new lineChart1();
+								// var cellname = "cell" + d.cell;
+								// // console.log(document.getElementById('cellname').textContent);
+								// document.getElementById('cellname').textContent = "Cell " + d.cell;
+        // 						linechart1.render(cellname);
+							})
+									.on("mouseover", function(d){   
+		                      d3.select(this).classed('active', true)
+		                      hoverdiv.transition()      
+		                .duration(200)      
+		                .style("opacity", .9);      
+		                hoverdiv .html(d.cell)  
+		                // div .html(htmlinfo(d))
+		                .style("left", (d3.event.pageX + 10) + "px")     
+		                .style("top", (d3.event.pageY) + "px");
+
+		                // d.pulse = !d.pulse;
+
+								      // if (d.pulse) {
+								        let selected_circles = d3.select(this);
+								        pulsate(selected_circles, "on");
+
+								      // }
 								// }	
 								var linechart1 = new lineChart1();
 								var cellname = "cell" + d.cell;
 								// console.log(document.getElementById('cellname').textContent);
 								document.getElementById('cellname').textContent = "Cell " + d.cell;
         						linechart1.render(cellname);
-							})
-							.on("mouseover", function(d){   
-                      d3.select(this).classed('active', true)
-                      hoverdiv.transition()      
-                .duration(200)      
-                .style("opacity", .9);      
-                hoverdiv .html(d.cell)  
-                // div .html(htmlinfo(d))
-                .style("left", (d3.event.pageX + 10) + "px")     
-                .style("top", (d3.event.pageY) + "px");
     
 
-                  })
+                  			})
 							 .on("mouseout", function(d){
-                      d3.select(this).classed('active', false)
-                      hoverdiv.transition()      
-                .duration(500)      
-                .style("opacity", 0);   
+                      		d3.select(this).classed('active', false)
+			                      hoverdiv.transition()      
+			                .duration(500)      
+			                .style("opacity", 0);   
+
+                	let selected_circles = d3.select(this);
+								        pulsate(selected_circles, "off");
                   })
 
 							.style("pointer-events", "all");
-							// .attr("stroke", "white")
-							// .attr("fill", function(d){ return fill[Math.floor(Math.random() * 4)];});
-							// .attr("fill", "none");
-							// .attr("fill", "#990099");//#FF69B4");
-							// .attr("fill", function (d) {  return getcolor(d.concentration);});
+					function pulsate(selection, state) {
+					if(state == "on") recursive_transitions_on();
+				    else recursive_transitions_off();
 
-					function pulsate(selection) {
-				    recursive_transitions();
-
-				    function recursive_transitions() {
-				      if (selection.data()[0].pulse) {
+				    function recursive_transitions_on() {
+				      // if (selection.data()[0].pulse) {
 				        selection.transition()
 				            .duration(400)
 				            .attr("stroke-width", 2)
@@ -413,8 +418,10 @@ var d3Canvas = function() {
 				            .attr('stroke-width', 3)
 				            .attr("r", 12)
 				            .ease(d3.easeBounce)
-				            .on("end", recursive_transitions);
-				      } else {
+				            .on("end", recursive_transitions_on);
+				      	// }
+				      } 
+				      function recursive_transitions_off(){
 				        // transition back to normal
 				        selection.transition()
 				            .duration(200)
@@ -428,7 +435,7 @@ var d3Canvas = function() {
 				            .attr("fill", "none");
 				            // .attr("stroke-dasharray", "1, 0");
 				      }
-				    }
+				    // }
 				}
 		}
 
