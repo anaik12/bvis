@@ -94,42 +94,40 @@
                     <button type="button" class="button2" id="white" style="background-color:#e26eaa; color:black">3</button> <label class="label" id="whitenumber">0</label> &nbsp;
                     <button type="button" class="button2" id="cyan" style="background-color:#66a61e; color:black">4</button>  <label class="label" id="cyannumber">0</label> &nbsp;
                     <button type="button" class="button2" id="all" style="background-color:white; color:black">All</button> <label class="label" id="allnumber">0</label> &nbsp;
-                    <button type="button" class="button2" id="deleteall" style="background-color:white; color:black">Delete</button> <label class="label" id="deleteallnumber">0</label> 
+                    <button type="button" class="button2" id="deleteall" style="background-color:white; color:black">Delete</button> <label class="label" id="deleteallnumber"></label> &nbsp;
+
+                    <input type="button" value="Top 5" id="top5">
                     <br>
                     <br>
 
-                    <p id="Filter" style="color:white; left-padding:20px"> Intensity Range </p> 
-                    <div id="slider3"></div>
-                    <!-- <div id="container"></div> -->
+                    <p id="Filter" style="color:white"> Intensity Range </p> 
+                    <!-- <div id="slider3"></div> -->
                     <div id="range-label">0-10</div>
 
                     <style type="text/css">
                     #slider-container {
+                        left-margin: 10px;
                         position: relative;
                         height:10px;
                         background-color: #eeeef5;
+
                     }
                     </style>
                     <div id="slider-container"></div>
 
 
+                    <br>
+                    <!-- <p id="TS" style="color:white; left-padding:20px"> Timestep = 97 </p>  -->
+                    <label id="TS" class="label2">Timestep = </label> &nbsp; <input type="button" value="Play" id="play">
+                    <input type="range" min="-25" max="25" value="0" step="0.01" id="slider"  style="position:absolute;">
+                    
 
-                    <p id="Filter" style="color:white; left-padding:20px"> Timestep </p> 
-                    <input type="range" min="-25" max="25" value="0" step="0.01" id="slider"  style="position:relative;">
-
-
-
-
-                    <!-- <p id="selected-dropdown"></p> -->
-                <!--     </div> -->
                 </div>
                 
             </div>
             
             <div class="col-md-6">
-                <!-- <center><p class="p"> 2D View </p>   -->
-                    <!-- <br> -->
-                    <!-- <br> -->
+                    
                     <br>
                     <div class="lineDiv"><p class="p4" id="cellname" style="width:12%; float:right; font-weight:normal; margin-right:15%"> Cell 1 </p></div> 
 

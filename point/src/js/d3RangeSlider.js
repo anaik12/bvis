@@ -32,7 +32,7 @@ function createD3RangeSlider (rangeMin, rangeMax, containerSelector, playButton)
     var resumePlaying = false; // Used by drag-events to resume playing on release
     var playingRate = 100;
     var containerHeight = container.node().offsetHeight;
-    // var containerHeight = 10;
+    // var containerHeight = 25;
 
     // Set up play button if requested
     if (playButton) {
@@ -47,8 +47,8 @@ function createD3RangeSlider (rangeMin, rangeMax, containerSelector, playButton)
             .style("-webkit-box-orient", "horizontal");
 
         var playBox = box.append("div")
-            .style("width", containerHeight + "px")
-            .style("height", containerHeight + "px")
+            .style("width", (containerHeight*2) + "px")
+            .style("height", (containerHeight*2) + "px")
             .style("margin-right", "10px")
             .style("box-flex", "0")
             .style("-moz-box-flex", "0")
@@ -65,14 +65,14 @@ function createD3RangeSlider (rangeMin, rangeMax, containerSelector, playButton)
             .classed("slider-container", true);
 
         var playSVG = playBox.append("svg")
-            .attr("width", containerHeight + "px")
-            .attr("height", containerHeight + "px")
+            .attr("width", (containerHeight*2) + "px")
+            .attr("height", (containerHeight*2) + "px")
             .style("overflow", "visible");
 
         var circleSymbol = playSVG.append("circle")
             .attr("cx", containerHeight / 2)
             .attr("cy", containerHeight / 2)
-            .attr("r", containerHeight / 2)
+            .attr("r", containerHeight)
             .classed("button", true);
 
         var h = containerHeight;
@@ -92,7 +92,8 @@ function createD3RangeSlider (rangeMin, rangeMax, containerSelector, playButton)
         playSVG.append("circle")
             .attr("cx", containerHeight / 2)
             .attr("cy", containerHeight / 2)
-            .attr("r", containerHeight / 2)
+            // .attr("r", containerHeight / 2)
+            .attr("r", containerHeight)
             .style("fill-opacity", "0.0")
             .style("cursor", "pointer")
             .on("click", togglePlayButton)

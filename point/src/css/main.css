@@ -75,6 +75,21 @@ body {
   /*padding-top: 10px;*/
 }
 
+.label2{
+  width: 25%;
+  color:white; 
+  /*float:center; */
+  font-size:12px;
+  background-color: #8B008B;
+  border: none;
+  border-radius: 5px;
+  float:center;
+  padding-left: 15px;
+  margin-left: 20px;
+  margin-top: 10px;
+  opacity:0.7;
+}
+
 
 
 .p6{
@@ -166,7 +181,8 @@ body {
  #slider{
   -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    width: 25%; /* Full-width */
+    overflow: hidden;
+    width: 800px; /* Full-width */
     height: 8px; /* Specified height */
     background: #8B008B; /*#d3d3d3; /* Grey background */
     outline: #8B008B; /* Remove outline */
