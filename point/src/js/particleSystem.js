@@ -271,7 +271,7 @@ var ParticleSystem = function() {
                     if(plane.position.z >= 25) plane.position.z = -31.5;
                     playbutton.value = "Pause";
                     // playincrement += 0.01;
-                    plane.position.z += 1.00;
+                    plane.position.z += 0.50;
                     var d3canvas = new d3Canvas();
                     d3canvas.clearCanvas(data, selected, (parseFloat(plane.position.z)).toFixed(2), top5);  
                   }
