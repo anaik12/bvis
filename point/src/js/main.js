@@ -34,6 +34,9 @@ var App = App || {};
         particleSystem.initialize('data/014_new.csv');
         // particleSystem.initialize('data/test3_4.csv', selected);
 
+        // var d3canvas = new d3Canvas();
+        // d3canvas.initialize('data/014_new.csv','-24.20', "proc_100_cor7");
+
         //removeParticleSystems the particle system to the scene
         App.scene.addObject( particleSystem.removeParticleSystems());
         //add the particle system to the scene
@@ -44,10 +47,7 @@ var App = App || {};
 
            
            App.scene.render();
-        // })
-        // var particleSystem = new ParticleSystem();
-        // particleSystem.initialize('data/014_new.csv', selected);
-       // particleSystem.initialize('data/014_new.csv', "filtered");
+        
 
 
        //  //add the particle system to the scene
@@ -57,8 +57,7 @@ var App = App || {};
        
        // App.scene.render();
 	   
-	   var d3canvas = new d3Canvas();
-        d3canvas.render("-24.2");
+	   
 
        
 
