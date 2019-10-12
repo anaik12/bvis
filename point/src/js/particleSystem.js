@@ -268,7 +268,7 @@ var ParticleSystem = function() {
                 var refreshId = setInterval(function(){
 
                   if(play){
-                    if(plane.position.z <= -25) plane.position.z = 25;
+                    if(plane.position.z <= -30) plane.position.z = 30.01;
                     playbutton.value = "Pause";
                     // playincrement += 0.01;
                     plane.position.z -= 0.01;
@@ -280,7 +280,7 @@ var ParticleSystem = function() {
                     playbutton.value = "Play";
                     // console.log("hello");
                   } 
-                }, 3000);
+                }, 1000);
               // }
               
         }
@@ -578,7 +578,7 @@ var ParticleSystem = function() {
 
           sceneObject.add(cylinder);
           //starting plane position at 0 depth (not z=0) for autoplay
-          plane.position.z = 25;
+          plane.position.z = 30;
           sceneObject.add(plane);
           console.log("plane pos :", plane.position);
 
