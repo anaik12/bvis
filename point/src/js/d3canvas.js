@@ -8,7 +8,7 @@ var d3Canvas = function() {
 
 	self.data = [];
 
-	self.zvalueslider = 25;
+	self.zvalueslider = 30;
 
 	var selected = "comm0";
 
