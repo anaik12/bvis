@@ -289,7 +289,7 @@ var ParticleSystem = function() {
         function movePlane(e){
           var target = (e.target) ? e.target : e.srcElement;
           // console.log("target value ", target.value);
-          plane.position.z = target.value;
+          plane.position.z = -(target.value - 30);
           var d3canvas = new d3Canvas();
           d3canvas.clearCanvas(data, selected, (parseFloat(plane.position.z)).toFixed(2), top5);    
         } 
