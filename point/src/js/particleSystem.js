@@ -263,15 +263,15 @@ var ParticleSystem = function() {
         playbutton.onclick =function(){
               play = !play;
              
-                var playincrement = 0;
-                // plane.position.z = 0;
+                // var playincrement = 0;
+                // plane.position.z = 25;
                 var refreshId = setInterval(function(){
 
                   if(play){
-                    if(plane.position.z >= 25) plane.position.z = -31.5;
+                    if(plane.position.z <= -25) plane.position.z = 25;
                     playbutton.value = "Pause";
                     // playincrement += 0.01;
-                    plane.position.z += 0.50;
+                    plane.position.z -= 0.01;
                     var d3canvas = new d3Canvas();
                     d3canvas.clearCanvas(data, selected, (parseFloat(plane.position.z)).toFixed(2), top5);  
                   }
@@ -280,7 +280,7 @@ var ParticleSystem = function() {
                     playbutton.value = "Play";
                     // console.log("hello");
                   } 
-                }, 1000);
+                }, 3000);
               // }
               
         }
@@ -418,7 +418,7 @@ var ParticleSystem = function() {
         var cellendnumber = ecell*139;
         var xadjust = 12;
         var yadjust = 5;
-        var zadjust = 1.5;
+        var zadjust = 0;
         // var textureLoader = new THREE.TextureLoader();
         // var sprite = textureLoader.load( 'data/disc.png');
         // for(var i = 0; i< data.length; i++) {
@@ -440,7 +440,7 @@ var ParticleSystem = function() {
                  var x = (data[i].X - xadjust) ;//* height + 2 * pi * radius * radius  ;
                  var y = (data[i].Y - zadjust);
                  var z = (data[i].Z - height/2 - yadjust);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-                 positions.push( x, -z, y );
+                 positions.push( x, z, -y );
             }
             else if(selected == 'filtered' ){
                 // console.log("infiltered");  
@@ -465,7 +465,7 @@ var ParticleSystem = function() {
                 var y = (data[i].Y - zadjust);
                 var z = (data[i].Z - height/2 - yadjust);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
                 if(cz != null){
-                  positions.push( x, -z, y );
+                  positions.push( x, z, -y );
                 }
                 // positions.push( x, z, y );
         	 }
@@ -538,7 +538,7 @@ var ParticleSystem = function() {
                 color.setRGB( cx, cy, cz );
               // color.setHSL( cx, cy, cz );
               colors.push( color.r, color.g, color.b );
-                positions.push( x, -z, y );
+                positions.push( x, z, -y );
               }
            }
       		// var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
@@ -578,7 +578,7 @@ var ParticleSystem = function() {
 
           sceneObject.add(cylinder);
           //starting plane position at 0 depth (not z=0) for autoplay
-          plane.position.z = -26.5;
+          plane.position.z = 25;
           sceneObject.add(plane);
           console.log("plane pos :", plane.position);
 
