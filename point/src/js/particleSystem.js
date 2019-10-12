@@ -400,6 +400,8 @@ var ParticleSystem = function() {
   
         }
 
+        
+
         console.log(first, second, third, fourth, fifth);
         sceneObject.remove(cylinder); 
         sceneObject.remove(plane);
@@ -549,7 +551,12 @@ var ParticleSystem = function() {
         }
 
         // console.log("Total points " + count);
-
+        document.getElementById('red').innerHTML = first;
+        document.getElementById('green').innerHTML = second;
+        document.getElementById('blue').innerHTML = third;
+        document.getElementById('white').innerHTML = fourth;
+        document.getElementById('cyan').innerHTML = fifth;
+        
         totalcount = zero + one + two + three + four; 
 	        // console.log("TC = " + totalcount);
 	      rednumber.innerHTML = zero;
