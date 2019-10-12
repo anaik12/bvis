@@ -8,7 +8,7 @@ var d3Canvas = function() {
 
 	self.data = [];
 
-	self.zvalueslider = -24.20;
+	self.zvalueslider = 25;
 
 	var selected = "comm0";
 
@@ -79,7 +79,12 @@ var d3Canvas = function() {
      var keyvalues = findPointZvalueY(zvalueslider);
      // console.log("timeframe is ", keyvalues[0].timeframe);
 
-     document.getElementById('TS').innerHTML = 'Timestep = ' + keyvalues[0].timeframe;
+     // var ts = 0;
+
+     var ts = Math.abs(keyvalues[0].timeframe);
+     // console.log(	)
+
+     document.getElementById('TS').innerHTML = 'Timestep = ' + ts;
 
      function getcolor(concentration){
      	var colormax = 357.19;   
