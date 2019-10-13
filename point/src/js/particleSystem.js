@@ -240,7 +240,7 @@ var ParticleSystem = function() {
 
         cylinder = new THREE.Points(geometry, material);
 
-        var geometry2 = new THREE.BoxGeometry( radius * 1.9, radius * 1.5, radius * 5);
+        var geometry2 = new THREE.BoxGeometry( radius * 1.9, radius * 1.5, radius * 5.5);
 
       	var color = new THREE.Color("rgb(100,100,0)");
       	var material = new THREE.MeshPhongMaterial( {color: 0x0000ff, transparent:true, opacity: 0.2});
@@ -418,8 +418,8 @@ var ParticleSystem = function() {
         var count = 0;
         var cellstartnumber = scell*139;
         var cellendnumber = ecell*139;
-        var xadjust = 12;
-        var yadjust = 5;
+        var xadjust = 11.5;
+        var yadjust = 2.5;
         var zadjust = 0;
         // var textureLoader = new THREE.TextureLoader();
         // var sprite = textureLoader.load( 'data/disc.png');
@@ -442,7 +442,7 @@ var ParticleSystem = function() {
                  var x = (data[i].X - xadjust) ;//* height + 2 * pi * radius * radius  ;
                  var y = (data[i].Y - zadjust);
                  var z = (data[i].Z - height/2 - yadjust);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-                 positions.push( x, z, -y );
+                 positions.push( x, -z, y );
             }
             else if(selected == 'filtered' ){
                 // console.log("infiltered");  
@@ -467,7 +467,7 @@ var ParticleSystem = function() {
                 var y = (data[i].Y - zadjust);
                 var z = (data[i].Z - height/2 - yadjust);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
                 if(cz != null){
-                  positions.push( x, z, -y );
+                  positions.push( x, -z, y );
                 }
                 // positions.push( x, z, y );
         	 }
@@ -540,7 +540,7 @@ var ParticleSystem = function() {
                 color.setRGB( cx, cy, cz );
               // color.setHSL( cx, cy, cz );
               colors.push( color.r, color.g, color.b );
-                positions.push( x, z, -y );
+                positions.push( x, -z, y );
               }
            }
       		// var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
@@ -556,7 +556,7 @@ var ParticleSystem = function() {
         document.getElementById('blue').innerHTML = third;
         document.getElementById('white').innerHTML = fourth;
         document.getElementById('cyan').innerHTML = fifth;
-        
+
         totalcount = zero + one + two + three + four; 
 	        // console.log("TC = " + totalcount);
 	      rednumber.innerHTML = zero;
@@ -591,7 +591,7 @@ var ParticleSystem = function() {
 
     }
 
-    var planeG = new THREE.PlaneGeometry(24, 20);
+    var planeG = new THREE.PlaneGeometry(23, 17);
 	  var imgMaterial = new THREE.MeshBasicMaterial({ //CHANGED to MeshBasicMaterial
 	  map: new THREE.TextureLoader().load('https://anaik12.github.io/bvis/point/brainImg.png'), side: THREE.DoubleSide});
 	  var plane = new THREE.Mesh(planeG, imgMaterial);
