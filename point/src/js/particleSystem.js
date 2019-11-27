@@ -285,6 +285,22 @@ var ParticleSystem = function() {
               
         }
 
+        // var plus = false;
+        var plusbutton = document.getElementById("plus");
+        plusbutton.onclick =function(){
+            plane.position.z -= 0.01;
+            var d3canvas = new d3Canvas();
+            d3canvas.clearCanvas(data, selected, (parseFloat(plane.position.z)).toFixed(2), top5);
+        }
+
+        // var plus = false;
+        var minusbutton = document.getElementById("minus");
+        minusbutton.onclick =function(){
+            plane.position.z += 0.01;
+            var d3canvas = new d3Canvas();
+            d3canvas.clearCanvas(data, selected, (parseFloat(plane.position.z)).toFixed(2), top5);
+        }
+
 
         function movePlane(e){
           var target = (e.target) ? e.target : e.srcElement;
@@ -585,7 +601,7 @@ var ParticleSystem = function() {
 
           sceneObject.add(cylinder);
           //starting plane position at 0 depth (not z=0) for autoplay
-          plane.position.z = 30;
+          plane.position.z = 0;
           sceneObject.add(plane);
           console.log("plane pos :", plane.position);
 

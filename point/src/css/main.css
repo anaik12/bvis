@@ -1,6 +1,6 @@
 body { 
 	margin: 0; 
-    background: #B8B8B8;
+    background: #ABB2B9;
     /*#1c1717;*/
     /*background: #eeeeee;*/
     width: 100%;
@@ -27,11 +27,33 @@ body {
 
 }
 
+.button3{
+  padding: 3px 24px;
+  /*border-radius: 3px;*/
+  /*stroke:white;*/
+  opacity: 0.7;
+  /*border:none;*/
+  border-color: none;
+  border-radius: 3px;
+  /*bor*/
+  /*border-color: steelblue;*/
+  background-color: white;
+}
+
 .button2{
   padding: 3px 24px;
   /*border-radius: 3px;*/
   /*stroke:white;*/
   opacity: 0.7;
+  border:none;
+}
+
+.button4{
+  padding: 2px 2px;
+  background-color: none;
+  border-radius: 5px;
+  border-color: blue;
+  /*opacity: 0.0;*/
   border:none;
 }
 
@@ -54,11 +76,6 @@ body {
   /*border-radius: 25px;*/
 }
 
-/*.particleDiv {
-  border-right:1px solid white;
-  /*border-radius: 25px;*/
-/*}*/
-
 .h2{
   color:white;
 
@@ -76,11 +93,11 @@ body {
 }
 
 .label2{
-  width: 25%;
+  width: 15%;
   color:white; 
   /*float:center; */
   font-size:12px;
-  background-color: #8B008B;
+  background-color: #2874A6 ;
   border: none;
   border-radius: 5px;
   float:center;
@@ -144,7 +161,7 @@ body {
   border: none;
   border-radius: 5px;
   float:center;
-  padding-left: 1.5%;
+  padding-left: 2.6%;
   margin-left: 60%;
   margin-top: 10px;
 }
@@ -182,16 +199,17 @@ body {
   -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     overflow: hidden;
-    width: 800px; /* Full-width */
-    height: 8px; /* Specified height */
-    background: #8B008B; /*#d3d3d3; /* Grey background */
-    outline: #8B008B; /* Remove outline */
+    width: 850px; /* Full-width */
+    height: 9.5px; /* Specified height */
+    background: white; /*#d3d3d3; /* Grey background */
+    /*outline: #8B008B;*/ /* Remove outline */
+    outline: white;
     opacity: 0.8; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
     margin-bottom: 20px;
     /*padding-left: 20px;*/
-    margin-left: 20px
+    margin-left: 2px
     /*float:right;*/
    }
 
@@ -226,15 +244,27 @@ a:hover {
 }
 
 .axisRed text{
+  fill: steelblue;
+}
+
+.axisWhite line{
+  stroke: white;
+}
+
+.axisWhite path{
+  stroke: white;
+}
+
+.axisWhite text{
   fill: white;
-}  
+}   
 
 .axisgrey line{
-  stroke: red;
+  stroke: white;
 }
 
 .axisgrey path{
-  stroke: red;
+  stroke: white;
 }
 
 .axisgrey text{

@@ -17,10 +17,15 @@ var Scene = function(options) {
 
     buttonRotateY.onclick= function (){
         rotateYtrue = !rotateYtrue;
+        // if(rotateYtrue) buttonRotateY.style.backgroundColor = "#B7B1B0";
+        // else buttonRotateY.style.backgroundColor = "#FCFCFC";
+
     }
 
     buttonRotate.onclick= function (){
         rotate = !rotate;
+        // if(rotate) buttonRotate.style.backgroundColor = "#B7B1B0";
+        // else buttonRotate.style.backgroundColor = "#FCFCFC";
     }
 
     // scale the width and height to the screen size
@@ -40,7 +45,7 @@ var Scene = function(options) {
     self.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000 );
     // self.camera = new THREE.PerspectiveCamera( 75, width / height, 0.1, 20);
     // console.log("20");
-    self.camera.position.set(0,0,40);
+    self.camera.position.set(0,0,80);
     self.camera.lookAt(0,0,0);
 
     // Add a directional light to show off the objects
@@ -58,7 +63,9 @@ var Scene = function(options) {
 
     // self.renderer.setClearColor( 0x1c1717, 1 );
     
-    self.renderer.setClearColor( 0xB8B8B8, 1 );
+    // self.renderer.setClearColor( 0xB8B8B8, 1 );
+    
+    self.renderer.setClearColor( 0xABB2B9  , 1 )
 
     // set the size and append it to the document
     self.renderer.setSize( width, height );
