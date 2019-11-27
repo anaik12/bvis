@@ -10,6 +10,8 @@ var d3Canvas = function() {
 
 	self.zvalueslider = 30;
 
+	var showSimilar = false;
+
 	var selected = "comm0";
 
 	d3.select(".canvasDiv").selectAll("svg").remove();
@@ -26,32 +28,14 @@ var d3Canvas = function() {
 				.append('svg:image')
 				// .attr("width", 512)
 				// .attr("height", 512)
-				.attr("x", 0)
-				.attr("y", 0)
+				.attr("x", 20)
+				.attr("y", 20)
 				.attr("xlink:href", "https://anaik3.people.uic.edu/bvis/brainImg.png")
 				.attr("border", "10px solid white");
 
 
 
-	// var function renderDraw();
-	// var slider = document.getElementById("slider");
- //        // console.log(slider);
- //        slider.addEventListener("input", movePlane);
-
-
- // 	 function movePlane(e){
- //          var target = (e.target) ? e.target : e.srcElement;
- //          // console.log("target value ", target.value);
- //          var newz = target.value;
- //          // zvalueslider = (parseFloat(newz)).toFixed(2);
- //          self.zvalueslider = target.value;
-
- //          // console.log("zvalueslider", zvalueslider);
-
- //          drawCanvas(selected, top5);   
- //        } 
-
-	// function drawcanvas(error, data){
+		// function drawcanvas(error, data){
 	self.drawCanvas = function(selected, top5){
         
 	// console.log("zvalueslider", zvalueslider);
@@ -82,6 +66,9 @@ var d3Canvas = function() {
      // var ts = 0;
 
      var ts = Math.abs(keyvalues[0].timeframe);
+     // var linechart1 = new lineChart1();
+     // linechart1.line(ts);
+
      // console.log(	)
 
      document.getElementById('TS').innerHTML = 'Timestep = ' + ts;
@@ -177,7 +164,7 @@ var d3Canvas = function() {
               fifth = top5array[8][4];
           }
           else if(selected == "proc_100_cor9"){
-                 first = top5array[9][0];
+              first = top5array[9][0];
               second = top5array[9][1];
               third = top5array[9][2];
               fourth = top5array[9][3];
@@ -185,6 +172,16 @@ var d3Canvas = function() {
           }
           
         }
+
+    var showSbutton = document.getElementById("showS");
+    showSbutton.onclick =function(){
+    	  // console.log("buttoncolor ", showSbutton.style.backgroundColor); 	
+          showSimilar = !showSimilar; 
+          // if(showSimilar) showSbutton.style.backgroundColor = "#B7B1B0";
+          // else showSbutton.style.backgroundColor = "#FCFCFC";
+          // console.log("showSimilar is ", showSimilar); 
+    }
+
 
     function getcolor_comm(cell){
      		// if(commdata[cell] == undefined){
@@ -231,49 +228,79 @@ var d3Canvas = function() {
         .attr("class", "tooltip")               
         .style("opacity", 0);
 
+    var linegraphall = function(keyvalues, cellvalue, cell){
+    	var similarCellArray = [];
+    	var cellname = "cell" + cell;
+    	if(!showSimilar) similarCellArray.push(cellname);
+    	else{
+    		// var linechart1 = new lineChart1();
+	    	var count = 0;
+	    	
+	    	for(var i in keyvalues){
+	    		if(keyvalues[i][selected] == cellvalue){
+	    			cellname = "cell" + keyvalues[i].cell;
+	    			// // linechart1.render(cellname);
+	    			// console.log("cellname is ", cellname);
+	    			count++;
+	    			similarCellArray.push(cellname);
+	    		}
+	    	}
+	    	// console.log("Total similar cells are ", count);
+	    	// console.log("Similar cell array ", similarCellArray);
+	    	
+    	}
+    	// console.log("Similar cell array ", similarCellArray);
+    	return(similarCellArray);
+
+    }
+
 	var circles = svgContainer.selectAll("circle")
 	                         .data(keyvalues)
 	                         .enter()
 	                         .append("circle")
-	                         .attr("cx", function (d) {  return parseFloat(d.X)*30 + 0; })
-							.attr("cy",  function (d) {  return parseFloat(d.Z)*30 + 0; })
-							.attr("r", 9)
+	                         .attr("cx", function (d) {  return parseFloat(d.X)*30 + 22; })
+							.attr("cy",  function (d) {  return parseFloat(d.Z)*30 + 22; })
+							.attr("r", 8)
 							.attr("stroke-width", "2px")
 							.attr("opacity", 1)
 							// .attr("stroke", function(d){ return getcolor_comm(d.comm1);})
 							.attr("stroke", function(d){ return getcolor_comm(d[selected]);})
 							// .attr("stroke", function(d){ return getcolor_comm(d.intensity);})
 							.attr("fill", "none")
-							// .on("click", function(d){
-								
-							// })
+							.on("click", function(d){
+								linegraphall(keyvalues, d[selected]);
+							})
 							.on("mouseover", function(d){   
 			                      d3.select(this).classed('active', true)
 			                      hoverdiv.transition()      
-			                .duration(200)      
-			                .style("opacity", .9);      
-			                hoverdiv .html(d.cell)  
-			                // div .html(htmlinfo(d))
-			                .style("left", (d3.event.pageX + 10) + "px")     
-			                .style("top", (d3.event.pageY) + "px");
+				                .duration(200)      
+				                .style("opacity", .9);      
+				                hoverdiv .html(d.cell)  
+				                // div .html(htmlinfo(d))
+				                .style("left", (d3.event.pageX + 10) + "px")     
+				                .style("top", (d3.event.pageY) + "px");
 			           
-								        let selected_circles = d3.select(this);
-								        pulsate(selected_circles, "on");
+								let selected_circles = d3.select(this);
+								pulsate(selected_circles, "on");
 
 
 								var linechart1 = new lineChart1();
-								var cellname = "cell" + d.cell;
+								// var cellname = "cell" + d.cell;
 								document.getElementById('cellname').textContent = "Cell " + d.cell;
-        						linechart1.render(cellname);
-                })
-					.on("mouseout", function(d){
-                      d3.select(this).classed('active', false)
-                      hoverdiv.transition()      
-	                .duration(500)      
-	                .style("opacity", 0);   
-	                let selected_circles = d3.select(this);
-					pulsate(selected_circles, "off");
-                  })
+								// document.getElementById('cellname').textContent = "cell2";
+        						// linechart1.render(cellname);
+        						linechart1.renderlinechart(linegraphall(keyvalues, d[selected], d.cell), ts);
+        						// linegraphall(keyvalues, cellname);
+        						
+                			})
+							.on("mouseout", function(d){
+		                      d3.select(this).classed('active', false)
+		                      hoverdiv.transition()      
+			                .duration(500)      
+			                .style("opacity", 1);   
+			                let selected_circles = d3.select(this);
+							pulsate(selected_circles, "off");
+		                  	})
 							.style("pointer-events", "all");
 
 						

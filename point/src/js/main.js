@@ -13,8 +13,11 @@ var App = App || {};
     App.start = function()
     {
 		
-		 var linechart1 = new lineChart1();
-        linechart1.render("cell1");
+		 
+         var cellarray=[];
+         cellarray.push("none");
+         var linechart1 = new lineChart1();
+        linechart1.renderlinechart(cellarray, 0);
          
         
         // create a new scene
