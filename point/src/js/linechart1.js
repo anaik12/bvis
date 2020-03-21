@@ -253,10 +253,12 @@ var lineChart1 = function() {
             d3.select(this)
               .style('opacity', lineOpacityHover)
               .style("stroke-width", lineStrokeHover)
+              .style("stroke", "lightgreen")
               .style("cursor", "pointer");
             })
             .on("mouseout", function(d) {
             d3.selectAll(".line")
+                .style("stroke", "steelblue")
                 .style('opacity', lineOpacity);
             d3.selectAll('.circle')
                 .style('opacity', circleOpacity);
