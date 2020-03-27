@@ -80,18 +80,6 @@ var lineChart1 = function() {
         
         // Add the valueline path.
 
-        var hoverdiv = d3.select("body").append("div")   
-      .attr("class", "tooltip")               
-      .style("opacity", .8)
-      .style('visibility', 'hidden');
-
-      // function tooltip(d){
-      //   var stringvalue;
-      //   stringvalue = d.cell1;
-      //   return stringvalue;
-      // }
-
-      
 
       var lineOpacity = "0.25";
       var lineOpacityHover = "0.85";
@@ -105,198 +93,69 @@ var lineChart1 = function() {
       var circleRadiusHover = 6;
 
       if(cellarray.length!=0){
-      for(var i=0; i<cellarray.length; i++){
-      var cellname = cellarray[i];
-      // console.log(cellname);
-      // var cellname = cell;
-      // define the line
-      var valueline1 = d3.line()
-          .x(function(d,i) { return x(i); })
-          .y(function(d) { 
-            // console.log("value is" + (d[cellname])); 
-            return y0(d[cellname]); });
+        for(var i=0; i<cellarray.length; i++){
 
-      var valueline2 = d3.line()
-          .x(function(d,i) { return x(i); })
-          .y(function(d) { 
-            // console.log("value is" + (d[cellname])); 
-            return y1(d[cellname]); });
+          var cellname = cellarray[i];
+          
+          // define the line
+          var valueline1 = d3.line()
+              .x(function(d,i) { return x(i); })
+              .y(function(d) { 
+                // console.log("value is" + (d[cellname])); 
+                return y0(d[cellname]); });
 
-      // var lines = svg.append('g')
-      // .attr('class', 'line-group') 
-      // // .on("mouseover", function(d, i) {
-      // svg.append("text")
-      //   .attr("class", "title-text")
-      //   .style("fill", "black")        
-      //   .text(cellname)
-      //   .attr("text-anchor", "middle")
-      //   .attr("x", (width)/2)
-      //   .attr("y", 5)
-      //   .attr("opacity",0)
-      // // })
-      // // .on("mouseout", function(d) {
-      // //   svg.select(".title-text").remove();
-      // // })
-      // // .data(data1)
-      // svg.append('path')
-      // .attr('class', 'line')
-      // .attr("opacity", 0.7)
-      // .attr("d", valueline1(data1))
-      // // .append("text")
-      // // .text(cellname)
-      // // .attr("class", "title-text")
-      // // .attr("text-anchor", "middle")
-      // //   .attr("x", (width)/2)
-      // //   .attr("y", 5)
-      // //   .style("fill", "black")  
-      // // .attr("visibility", "hidden");
-      // // .style("cursor", all)
-      // .on("mouseover", function(d) {
-      //         d3.selectAll('.line')
-      //           .style('opacity', otherLinesOpacityHover);
-      //         d3.selectAll('.circle')
-      //           .style('opacity', circleOpacityOnLineHover);
-      //         d3.select(this)
-      //           .style('opacity', lineOpacityHover)
-      //           .style("stroke-width", lineStrokeHover)
-      //           .style("cursor", "pointer");
-      //         // d3.selectAll('.title-text')
-      //         //   .style('opacity', 0)
-      //         // d3.select('.title-text')
-      //         //   .style("opacity", "0.5")
-      // })
-      // .on("mouseout", function(d) {
-      //       d3.selectAll(".line")
-      //           .style('opacity', lineOpacity);
-      //       d3.selectAll('.circle')
-      //           .style('opacity', circleOpacity);
-      //       d3.select(this)
-      //         .style("stroke-width", lineStroke)
-      //         .style("cursor", "none")
-      //       // d3.select('.title-text')
-      //       //     .style('opacity', 0);
-            
-      // });
+          var valueline2 = d3.line()
+              .x(function(d,i) { return x(i); })
+              .y(function(d) { 
+                // console.log("value is" + (d[cellname])); 
+                return y1(d[cellname]); });
 
 
+            var line1 = svg.append("path")
+                // .data(data1)
+                .attr("class", "line1")
+                // .attr("fill", "none")
+                .attr("stroke", "steelblue")
+                .attr("opacity", 0.7)
+                .attr("d", valueline1(data1))
+                .on("mouseover", handlemouseover) 
+                .on("mouseout", handlemouseout)
+                .append("svg:title")
+                .text(cellname);   
+                
 
-        // var line = 
-        //     svg.append("text")
-        //     .attr("class", "title-text")
-        //     .style("stroke", "black")        
-        //     .text(cellname)
-        //     .attr("text-anchor", "middle")
-        //     .attr("x", width/2)
-        //     .attr("y", 5)
-        //     .attr("opacity",0)
-        //     svg.append("path")
-        //     .data(data1)
-        //     .attr("class", "line")
-        //     .attr("opacity", 0.5)
-        //     .attr("d", valueline1(data1))
-        //     .on("mouseover", function(d) {
-        //       d3.selectAll('.line')
-        //         .style('opacity', otherLinesOpacityHover);
-        //       d3.selectAll('.circle')
-        //         .style('opacity', circleOpacityOnLineHover);
-        //       d3.select(this)
-        //         .style('opacity', lineOpacityHover)
-        //         .style("stroke-width", lineStrokeHover)
-        //         .style("cursor", "all");
-        //         d3.selectAll(".title-text")
-        //         .style("opacity", 0.9);
-        //         // d3.select(this)
-        //         // .style("opacity", 0.9);
-        //     })
-        //     .on("mouseout", function(d) {
-        //     d3.selectAll(".line")
-        //         .style('opacity', lineOpacity);
-        //     d3.selectAll('.circle')
-        //         .style('opacity', circleOpacity);
-        //     d3.select(this)
-        //       .style("stroke-width", lineStroke)
-        //       .style("cursor", "all");
-        //     d3.select("title-text")
-        //     .style("opacity", 0);
-        //     });
-        //     svg.append("text")
-        // .attr("class", "title-text")
-        // .style("stroke", "black")        
-        // .text(cellname)
-        // .attr("text-anchor", "middle")
-        // .attr("x", width/2)
-        // .attr("y", 5)
-        // .attr("opacity",0.1);
-        // .on("mouseover", function(d) {
-        //   d3.selectAll("title-text")
-        //   .style("opacity", 0);
-        //   d3.select(this)
-        //   .style("opacity", 0.9);
-        // })
-        // .on("mouseout", function(d) {
-        //     d3.selectAll("title-text")
-        //     .style("opacity", 0);
-        // });
-
-        var line1 = svg.append("path")
-            // .data(data1)
-            .attr("class", "line")
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("opacity", 0.7)
-            .attr("d", valueline1(data1))
-            .on("mouseover", function(d) {
-            d3.selectAll('.line2')
-              .style('opacity', otherLinesOpacityHover);
-            d3.selectAll('.circle')
-              .style('opacity', circleOpacityOnLineHover);
-            d3.select(this)
-              .style('opacity', lineOpacityHover)
-              .style("stroke-width", lineStrokeHover)
-              .style("stroke", "lightgreen")
-              .style("cursor", "pointer");
-            })
-            .on("mouseout", function(d) {
-            d3.selectAll(".line")
-                .style("stroke", "steelblue")
-                .style('opacity', lineOpacity);
-            d3.selectAll('.circle')
-                .style('opacity', circleOpacity);
-            d3.select(this)
-              .style("stroke-width", lineStroke)
-              .style("cursor", "none");
-            });
-        
-            
-
-        var line2 = svg.append("path")
-            // .data(data2)
-            .attr("class", "line2")
-            .attr("fill", "none")
-            .attr("stroke", "red")
-            .attr("opacity", 0.7)
-            .attr("d", valueline2(data2))
-            .on("mouseover", function(d) {
-            d3.selectAll('.line2')
-              .style('opacity', otherLinesOpacityHover);
-            d3.selectAll('.circle')
-              .style('opacity', circleOpacityOnLineHover);
-            d3.select(this)
-              .style('opacity', lineOpacityHover)
-              .style("stroke-width", lineStrokeHover)
-              .style("cursor", "pointer");
-            })
-            .on("mouseout", function(d) {
-            d3.selectAll(".line2")
-                .style('opacity', lineOpacity);
-            d3.selectAll('.circle')
-                .style('opacity', circleOpacity);
-            d3.select(this)
-              .style("stroke-width", lineStroke)
-              .style("cursor", "none");
-            });
+            var line2 = svg.append("path")
+                // .data(data2)
+                .attr("class", "line2")
+                // .attr("fill", "none")
+                .attr("stroke", "red")
+                .attr("opacity", 0.7)
+                .attr("d", valueline2(data2))
+                .on("mouseover", handlemouseover)
+                .on("mouseout", handlemouseout)
+                .append("svg:title")
+                .text(cellname);
 
         }
+      }
+
+        function handlemouseover(d,i){
+        d3.selectAll(".line1")
+                .style('opacity', otherLinesOpacityHover)
+        d3.selectAll(".line2")
+                .style('opacity', otherLinesOpacityHover)
+            d3.select(this)
+              .style('opacity', lineOpacityHover)
+              .style("stroke-width", lineStrokeHover)
+              .style("cursor", "pointer");
+      }
+
+      function handlemouseout(d,i){
+          d3.selectAll(".line2")
+                .style('opacity', lineOpacity)
+            d3.select(this)
+              .style("stroke-width", lineStroke)
+              .style("cursor", "none");
       }
 
         //axis labels
@@ -364,17 +223,6 @@ var lineChart1 = function() {
 
       
       }
-
-    //   line: function(ts) {
-    //     // var verticalLine = d3.select(".lineDiv").append("line")
-    // // .attr('transform', 'translate(100, 50)')
-    //     .attr('x1', ts/10)
-    //     .attr('y1', 0)
-    //     .attr('x2', ts/10)
-    //     .attr('y2', height)
-    //     .attr("stroke", "black")
-    //     .attr('class', 'verticalLine');
-    //   }
 
 
   };
