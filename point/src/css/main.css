@@ -272,11 +272,11 @@ a:hover {
 }  
 
 
-.line {
+.line1 {
   fill: none;
-  /*stroke: steelblue;*/
+  stroke: steelblue;
   /*stroke: #00FFFF;*/
-  stroke:#339BFF;
+  /*stroke:#339BFF;*/
   stroke-width: 1px;
 }
 
