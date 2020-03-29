@@ -559,10 +559,7 @@ var ParticleSystem = function() {
                 positions.push( x, -z, y );
               }
            }
-      		// var x = (data[i].X - 11) ;//* height + 2 * pi * radius * radius  ;
-        //   var y = (data[i].Y - 1.5);
-        //   var z = (data[i].Z - height/2 - 3);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
-        //   positions.push( x, z, y );
+      	
 
         }
 
