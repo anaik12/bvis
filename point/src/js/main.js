@@ -24,15 +24,7 @@ var App = App || {};
         App.scene = new Scene({container:"scene"});
 
         // initialize the particle system
-        // var selected;
-        // d3.select("select")
-        // .on("change",function(d){
-        // var selected = d3.select("#d3-dropdown").node().value;
-        // // console.log( selected );
-        // d3.select("#selected-dropdown").text(selected);
 
-        // var scell = d3.select("scell");
-        // console.log(scell);
         var particleSystem = new ParticleSystem();
         particleSystem.initialize('data/014_new.csv');
         // particleSystem.initialize('data/test3_4.csv', selected);

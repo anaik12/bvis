@@ -22,10 +22,13 @@ var lineChart1 = function() {
 
   var publiclyAvailable = {
 
+
+
   // cellarray = [];
 
 
-  renderlinechart: function(cellarray, ts) {
+  renderlinechart: function(cellarray, ts, selected, zvalueslider, top5, newdata) {
+
     
       d3.select(".lineDiv").selectAll("svg").remove(); 
       /* var w = 960;
@@ -81,7 +84,7 @@ var lineChart1 = function() {
         // Add the valueline path.
 
 
-      var lineOpacity = "0.25";
+      var lineOpacity = "0.7";
       var lineOpacityHover = "0.85";
       var otherLinesOpacityHover = "0.2";
       var lineStroke = "1px";
@@ -117,6 +120,7 @@ var lineChart1 = function() {
                 // .attr("fill", "none")
                 .attr("stroke", "steelblue")
                 .attr("opacity", 0.7)
+                .attr("name", cellname)
                 .attr("d", valueline1(data1))
                 .on("mouseover", handlemouseover) 
                 .on("mouseout", handlemouseout)
@@ -130,6 +134,7 @@ var lineChart1 = function() {
                 // .attr("fill", "none")
                 .attr("stroke", "red")
                 .attr("opacity", 0.7)
+                .attr("name", cellname)
                 .attr("d", valueline2(data2))
                 .on("mouseover", handlemouseover)
                 .on("mouseout", handlemouseout)
@@ -139,53 +144,88 @@ var lineChart1 = function() {
         }
       }
 
+        var highlightedcell = "";
+
         function handlemouseover(d,i){
-        d3.selectAll(".line1")
-                .style('opacity', otherLinesOpacityHover)
-        d3.selectAll(".line2")
-                .style('opacity', otherLinesOpacityHover)
-            d3.select(this)
-              .style('opacity', lineOpacityHover)
-              .style("stroke-width", lineStrokeHover)
+        // d3.selectAll(".line1")
+        //         .style('opacity', otherLinesOpacityHover)
+        // d3.selectAll(".line2")
+        //         .style('opacity', otherLinesOpacityHover);
+        d3.select(this)
+              // .style("stroke-width", lineStroke)
               .style("cursor", "pointer");
+
+        // var nodelist = document.getElementsByName(this.textContent);
+
+        // document.getElementById(this.textContent).innerHTML()
+        // for (item in document.getElementsByName(this.textContent)){
+        //   item.setAttribute("stroke", "green");
+        // }
+        // document.getElementsByName(this.textContent.length).setAttribute("stroke", "green");
+        // document.getElementByTagName("path")[0].setAttribute("stroke", "red");
+        for(let i=0; i<document.getElementsByName(this.textContent).length; i++){
+          document.getElementsByName(this.textContent)[i].setAttribute('stroke-width', "4px");
+          document.getElementsByName(this.textContent)[i].setAttribute('opacity', 1.0);
+          // document.getElementsByName(this.textContent)[i].setAttribute("stroke-width", lineStrokeHover);
+        }
+            // d3.select(this)
+            //   .style('opacity', lineOpacityHover)
+            //   .style("stroke-width", lineStrokeHover)
+            //   .style("cursor", "all");
+            //   console.log(highlightedcell = this.textContent);
+              var d3canvas = new d3Canvas();//
+
+
+              // (this.textContent,"on");
+              d3canvas.pulsatecall(this.textContent,"on", selected, zvalueslider, top5, newdata);
+
       }
+      // console.log(highlightedcell);
 
       function handlemouseout(d,i){
-          d3.selectAll(".line2")
+          d3.selectAll(".line1")
                 .style('opacity', lineOpacity)
-            d3.select(this)
-              .style("stroke-width", lineStroke)
-              .style("cursor", "none");
+          d3.selectAll(".line2")
+                .style('opacity', lineOpacity);
+          // d3.selectAll(".line2")
+          //       .style('opacity', lineOpacity)
+          //   d3.select(this)
+          //     .style("stroke-width", lineStroke)
+          //     .style("cursor", "pointer");
+              for(let i=0; i<document.getElementsByName(this.textContent).length; i++){
+                document.getElementsByName(this.textContent)[i].setAttribute('stroke-width', lineStroke);
+                // document.getElementsByName(this.textContent)[i].setAttribute("stroke-width", lineStrokeHover);
+              }
       }
 
         //axis labels
+        svg.append("text")
+        .attr("class", "axisRed")
+        // .attr("text-anchor", "end")
+        .attr("x", width - 320)
+        .attr("y", height +28)
+        .attr("stroke", "grey")
+        .text("Timeframe");
+
+        svg.append("text")
+      .attr("class", "axisRed")
+      .attr("text-anchor", "end")
+      .attr("x", 2)
+      .attr("y0", 30)
+      .attr("dy", ".75em")
+      .attr("stroke", "grey")
+      .attr("transform", "rotate(-90)")
+      .text("Original signal amplitude");
+
       svg.append("text")
       .attr("class", "axisRed")
-      // .attr("text-anchor", "end")
-      .attr("x", width - 320)
-      .attr("y", height +28)
+      .attr("text-anchor", "end")
+      .attr("x", -10)
+      .attr("y", 585)
+      .attr("dy", "0.70em")
       .attr("stroke", "grey")
-      .text("Timeframe");
-
-      svg.append("text")
-    .attr("class", "axisRed")
-    .attr("text-anchor", "end")
-    .attr("x", 2)
-    .attr("y0", 30)
-    .attr("dy", ".75em")
-    .attr("stroke", "grey")
-    .attr("transform", "rotate(-90)")
-    .text("Original signal amplitude");
-
-    svg.append("text")
-    .attr("class", "axisRed")
-    .attr("text-anchor", "end")
-    .attr("x", -10)
-    .attr("y", 585)
-    .attr("dy", "0.70em")
-    .attr("stroke", "grey")
-    .attr("transform", "rotate(-90)")
-    .text("dy/dx of original signal");
+      .attr("transform", "rotate(-90)")
+      .text("dy/dx of original signal");
 
 
         // Add the X Axis
