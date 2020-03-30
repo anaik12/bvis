@@ -147,12 +147,12 @@ var lineChart1 = function() {
         var highlightedcell = "";
 
         function handlemouseover(d,i){
-        // d3.selectAll(".line1")
-        //         .style('opacity', otherLinesOpacityHover)
-        // d3.selectAll(".line2")
-        //         .style('opacity', otherLinesOpacityHover);
+        d3.selectAll(".line1")
+                .style('opacity', otherLinesOpacityHover)
+        d3.selectAll(".line2")
+                .style('opacity', otherLinesOpacityHover);
         d3.select(this)
-              // .style("stroke-width", lineStroke)
+              .style("opacity", lineOpacityHover)
               .style("cursor", "pointer");
 
         // var nodelist = document.getElementsByName(this.textContent);
