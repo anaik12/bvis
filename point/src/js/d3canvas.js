@@ -196,6 +196,7 @@
 	          // if(showSimilar) showSbutton.style.backgroundColor = "#B7B1B0";
 	          // else showSbutton.style.backgroundColor = "#FCFCFC";
 	          // console.log("showSimilar is ", showSimilar); 
+	          linegraphall(keyvalues, d_selected, cell_);
 	    }
 
 
@@ -244,9 +245,15 @@
 	        .attr("class", "tooltip")               
 	        .style("opacity", 0);
 
+	    var cell_ = "";
+	    var d_selected = "";
+
 	    var linegraphall = function(keyvalues, cellvalue, cell){
+	    	cell_ = cell;
+	    	d_selected = cellvalue;
 	    	var similarCellArray = [];
-	    	var cellname = "cell" + cell;
+	    	var cellname = "cell" + cell_;
+
 	    	if(!showSimilar) similarCellArray.push(cellname);
 	    	else{
 	    		// var linechart1 = new lineChart1();
@@ -264,7 +271,10 @@
 		    	
 	    	}
 	    	// console.log("Similar cell array ", similarCellArray);
-	    	return(similarCellArray);
+	    	// return(similarCellArray);
+	    	var linechart1 = new lineChart1();
+	        linechart1.renderlinechart(similarCellArray, ts, selected, zvalueslider, top5, data);
+								// })
 
 	    }
 
@@ -291,32 +301,53 @@
 									var linechart1 = new lineChart1();
 									// var cellname = "cell" + d.cell;
 									document.getElementById('cellname').textContent = "Cell " + d.cell;
-	        						linechart1.renderlinechart(linegraphall(keyvalues, d[selected], d.cell), ts, selected, zvalueslider, top5, data);
+									linegraphall(keyvalues, d[selected], d.cell);
+	        						// linechart1.renderlinechart(linegraphall(keyvalues, d[selected], d.cell), ts, selected, zvalueslider, top5, data);
 								})
-								.on("mouseover", function(d){ handlemouseover(d,this);})
-									// function(d){   
-				     //                  d3.select(this).classed('active', true)
-				     //                  hoverdiv.transition()      
-					    //             .duration(200)      
-					    //             .style("opacity", .9);      
-					    //             hoverdiv .html(d.cell)  
-					    //             // div .html(htmlinfo(d))
-					    //             .style("left", (d3.event.pageX + 10) + "px")     
-					    //             .style("top", (d3.event.pageY) + "px");
+								.on("mouseover", function(d){
+									d3.select(this).style("fill","red");
+									// .style("opacity",0.5);
 
-					    //             d3.select(this)
-									// .style('fill', "green");
+			            			d3.select(this).classed('active', true)
+				                      hoverdiv.transition()      
+					                .duration(200)      
+					                .style("opacity", .9)     
+					                hoverdiv .html(d.cell)  
+					                .style("left", (d3.event.pageX + 10) + "px")     
+					                .style("top", (d3.event.pageY) + "px");
+								})
+								.on("mouseout", function(d){
+									d3.select(this).style("fill","none");
+									// .style("opacity",1);
+									d3.select(this).classed('active', true)
+				                      hoverdiv.transition()		
+					                .duration(500)		
+					                .style("opacity", 0);	
+								})
+								 // .on("mouseover", function(d){ handlemouseover(d,this);})
+								// 	// function(d){   
+				    //  //                  d3.select(this).classed('active', true)
+				    //  //                  hoverdiv.transition()      
+					   //  //             .duration(200)      
+					   //  //             .style("opacity", .9);      
+					   //  //             hoverdiv .html(d.cell)  
+					   //  //             // div .html(htmlinfo(d))
+					   //  //             .style("left", (d3.event.pageX + 10) + "px")     
+					   //  //             .style("top", (d3.event.pageY) + "px");
+
+					   //  //             d3.select(this)
+								// 	// .style('fill', "green");
 				           
-									// // let selected_circles = d3.select(this);
-									// // pulsate(selected_circles, "on");
-									// var linechart1 = new lineChart1();
-									// // var cellname = "cell" + d.cell;
-									// document.getElementById('cellname').textContent = "Cell " + d.cell;
-	        // 						linechart1.renderlinechart(linegraphall(keyvalues, d[selected], d.cell), ts, selected, zvalueslider, top5, data);
-	        // 						// linegraphall(keyvalues, cellname);
+								// 	// // let selected_circles = d3.select(this);
+								// 	// // pulsate(selected_circles, "on");
+								// 	// var linechart1 = new lineChart1();
+								// 	// // var cellname = "cell" + d.cell;
+								// 	// document.getElementById('cellname').textContent = "Cell " + d.cell;
+	       //  // 						linechart1.renderlinechart(linegraphall(keyvalues, d[selected], d.cell), ts, selected, zvalueslider, top5, data);
+	       //  // 						// linegraphall(keyvalues, cellname);
 	        						
-	        //         			})
-								.on("mouseout", handlemouseout);
+	       //  //         			})
+								// .on("mouseout", handlemouseout);
 								// 	function(d){
 			     //                  d3.select(this).classed('active', false)
 			     //                  hoverdiv.transition()      
@@ -342,21 +373,13 @@
 					                .style("left", (d3.event.pageX + 10) + "px")     
 					                .style("top", (d3.event.pageY) + "px");
 
-					                
-
-
-				           
-									// var linechart1 = new lineChart1();
-									// // var cellname = "cell" + d.cell;
-									// document.getElementById('cellname').textContent = "Cell " + d.cell;
-	        						// linechart1.renderlinechart(linegraphall(keyvalues, d[selected], d.cell), ts, selected, zvalueslider, top5, data);
-			            }
+				           }
 			                  	
 			            function handlemouseout(){
 			            	d3.select(this).classed('active', false)
 			                      hoverdiv.transition()      
 				                .duration(500)      
-				                .style("opacity", 1)
+				                .style("opacity", 0)
 				                .style("pointer-events", "all");   
 				    				d3.select(this)
 									.style('fill', "none");

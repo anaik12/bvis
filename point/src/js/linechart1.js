@@ -164,7 +164,7 @@ var lineChart1 = function() {
         // document.getElementsByName(this.textContent.length).setAttribute("stroke", "green");
         // document.getElementByTagName("path")[0].setAttribute("stroke", "red");
         for(let i=0; i<document.getElementsByName(this.textContent).length; i++){
-          document.getElementsByName(this.textContent)[i].setAttribute('stroke-width', "4px");
+          document.getElementsByName(this.textContent)[i].setAttribute('stroke-width', "2.5px");
           document.getElementsByName(this.textContent)[i].setAttribute('opacity', 1.0);
           // document.getElementsByName(this.textContent)[i].setAttribute("stroke-width", lineStrokeHover);
         }
