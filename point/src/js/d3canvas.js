@@ -441,7 +441,8 @@
 			d3.select("#download")
 			.on('click', function(){
 				// Get the d3js SVG element and save using saveSvgAsPng.js
-				saveSvgAsPng(document.getElementsByTagName("svg")[2], "plot.png");
+				let name = selected + "-TS_" + ts + ".png"
+				saveSvgAsPng(document.getElementsByTagName("svg")[2], name);
 			})
 
 			}
