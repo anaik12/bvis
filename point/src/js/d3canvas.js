@@ -33,7 +33,7 @@
 					.attr("x", 20)
 					.attr("y", 20)
 					// .attr("xlink:href", "https://anaik3.people.uic.edu/bvis/brainImg.png")
-					.attr("xlink:href", "https://github.com/anaik12/bvis/blob/master/point/brainImg.png")
+					.attr("xlink:href", "https://anaik12.github.io/bvis/point/brainImg.png")
 					.attr("border", "10px solid white");
 
 
