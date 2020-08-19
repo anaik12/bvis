@@ -61,7 +61,7 @@ var Scene = function(options) {
     // create the renderer
     self.renderer = new THREE.WebGLRenderer();
 
-    // self.renderer.setClearColor( 0x1c1717, 1 );
+    // self.renderer.setClearColor( 0xffffff, 1 );
     
     // self.renderer.setClearColor( 0xB8B8B8, 1 );
     

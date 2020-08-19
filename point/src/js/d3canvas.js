@@ -32,7 +32,8 @@
 					// .attr("height", 512)
 					.attr("x", 20)
 					.attr("y", 20)
-					.attr("xlink:href", "https://anaik3.people.uic.edu/bvis/brainImg.png")
+					// .attr("xlink:href", "https://anaik3.people.uic.edu/bvis/brainImg.png")
+					.attr("xlink:href", "https://github.com/anaik12/bvis/blob/master/point/brainImg.png")
 					.attr("border", "10px solid white");
 
 
@@ -437,6 +438,12 @@
 
 			// $(".canvasDiv").triggerSVGEvent('mouseover');
 			}
+			d3.select("#download")
+			.on('click', function(){
+				// Get the d3js SVG element and save using saveSvgAsPng.js
+				saveSvgAsPng(document.getElementsByTagName("svg")[2], "plot.png");
+			})
+
 			}
 			renderDraw(selected, zvalueslider, cell, state);
 

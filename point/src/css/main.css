@@ -1,6 +1,7 @@
 body { 
 	margin: 0; 
     background: #ABB2B9;
+    /*background:white;*/
     /*#1c1717;*/
     /*background: #eeeeee;*/
     width: 100%;
@@ -13,6 +14,7 @@ body {
 .label{
   width: 150px;
   height: 20px;
+  /*color:white;*/
   color:white;
 }
 
@@ -236,11 +238,13 @@ a:hover {
 }
 
 .axisRed line{
-  stroke: white;
+  /*stroke: white;*/
+  stroke:grey;
 }
 
 .axisRed path{
-  stroke: white;
+  /*stroke: white;*/
+  stroke:grey;
 }
 
 .axisRed text{
@@ -248,23 +252,28 @@ a:hover {
 }
 
 .axisWhite line{
-  stroke: white;
+  /*stroke: white;*/
+  stroke:grey;
 }
 
 .axisWhite path{
-  stroke: white;
+  /*stroke: white;*/
+  stroke:grey;
 }
 
 .axisWhite text{
-  fill: white;
+  /*fill: white;*/
+  fill:grey;
 }   
 
 .axisgrey line{
-  stroke: white;
+  /*stroke: white;*/
+  stroke:grey;
 }
 
 .axisgrey path{
-  stroke: white;
+  /*stroke: white;*/
+  stroke:grey;
 }
 
 .axisgrey text{

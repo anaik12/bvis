@@ -86,7 +86,7 @@ var lineChart1 = function() {
 
       var lineOpacity = "0.7";
       var lineOpacityHover = "0.85";
-      var otherLinesOpacityHover = "0.2";
+      var otherLinesOpacityHover = "0.3";
       var lineStroke = "1px";
       var lineStrokeHover = "2.5px";
 
@@ -225,7 +225,7 @@ var lineChart1 = function() {
       .attr("dy", "0.70em")
       .attr("stroke", "grey")
       .attr("transform", "rotate(-90)")
-      .text("dy/dx of original signal");
+      .text("dy/dt of original signal");
 
 
         // Add the X Axis
