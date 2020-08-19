@@ -11,6 +11,8 @@
     <!-- CSS Source -->
     <link rel="stylesheet" href="./src/css/main.css" />
     <link href="./src/css/d3RangeSlider.css" rel="stylesheet">
+    <!-- <link href="./src/css/bootstrap.min.css" rel="stylesheet"> -->
+
 
     
 
@@ -35,6 +37,7 @@
     <script src="./src/js/linechart1.js"></script>
     <!-- <script src="./src/js/d3.slider.js"></script> -->
     <script src="./src/js/d3RangeSlider.js"></script>
+    <script src="./src/js/saveSvgAsPng.js"></script>
     
     <!-- <script src="./src/js/vertexshader.js" id="vertexshader"></script>
     <script src="./src/js/fragmentsahder.js" id="fragmentshader"></script> -->
@@ -93,7 +96,7 @@
                     <button type="button" class="btn btn-primary" id="blue" style="background-color:#7570b3; border:none; color:white; padding:3px 25px">2</button>  <label class="label" id="bluenumber">0</label> &nbsp;
                     <button type="button" class="btn btn-primary" id="white" style="background-color:#e26eaa; border:none; color:black; padding:3px 25px">3</button> <label class="label" id="whitenumber">0</label> &nbsp;
                     <button type="button" class="btn btn-primary" id="cyan" style="background-color:#66a61e; border:none; color:black; padding:3px 25px">4</button>  <label class="label" id="cyannumber">0</label> &nbsp;
-                    <button type="button" class="btn btn-primary" id="all" style="background-color:white; border:none; color:black; padding:3px 25px">All</button> <label class="label" id="allnumber">0</label> &nbsp;
+                    <button type="button" class="btn btn-primary" id="all" style="background-color:grey; border:none; color:black; padding:3px 25px">All</button> <label class="label" id="allnumber">0</label> &nbsp;
                     <button type="button" class="btn btn-primary" style="padding:2px 10px; background-color:grey;border:none;" id="deleteall">Del</button> <label class="label" id="deleteallnumber"></label> &nbsp;
 
                     <input type="button" class="btn btn-primary" style="padding:2px 10px; background-color:grey;border:none;" value="Top 5" id="top5">
@@ -133,6 +136,7 @@
                     <div class="lineDiv"><input class="btn btn-primary" style="padding:2px 10px; background-color:grey; border:none;" style="padding:4px 4px"type="button" style="margin-left: 10%" value="Show Similar" id="showS"><p class="p4" id="cellname" style="width:12%; float:right; font-weight:normal; margin-right:15%"> </p></div> 
 
                     <br>
+                    <input type="button" class="btn btn-primary" style="padding:2px 10px; background-color:grey;border:none;" value="Download" id="download">
                 <div class="canvasDiv"></div>         
                   
             </div>

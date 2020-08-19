@@ -493,7 +493,7 @@ var ParticleSystem = function() {
     
 	            // var colorvalues = [{r:1.0, g:0.0, b:0.0},{r:0.0, g:1.0, b:0.0},{r:0.0, g:0.0, b:1.0}, {r:1.0, g:1.0, b:1.0}, {r:0.0, g:1.0, b:1.0}];
 	            // var colorvalues = [{r:0.7, g:0.0, b:0.0},{r:0.0, g:0.7, b:0.0},{r:0.0, g:0.0, b:0.7}, {r:0.8, g:0.8, b:0.8}, {r:0.0, g:0.8, b:0.8}];
-              var colorvalues = [{r:0.4, g:0.760, b:0.647},{r:0.988, g:0.552, b:0.384},{r:0.552, g:0.627, b:0.796},{r:0.886, g:0.431, b:0.666},{r:0.650, g:0.847, b:0.329}];
+              var colorvalues = [{r:0.4, g:0.760, b:0.647},{r:0.988, g:0.552, b:0.384},{r:0.458, g:0.439, b:0.701},{r:0.886, g:0.431, b:0.666},{r:0.650, g:0.847, b:0.329}];
 
 	            if(data[i][selected] == first && (red == true || all==true)){
 	            // if(data[i].concentration > 8000 && data[i].concentration <= 9000 && (red == true|| all==true)){
