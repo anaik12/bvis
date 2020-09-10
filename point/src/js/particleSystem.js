@@ -280,7 +280,7 @@ var ParticleSystem = function() {
                     playbutton.value = "Play";
                     // console.log("hello");
                   } 
-                }, 100);
+                }, 1);
               // }
               
         }

@@ -16,8 +16,11 @@
 
 		var selected = "comm0";
 
-		d3.select(".canvasDiv").selectAll("svg").remove();
-		svgContainer = d3.select('.canvasDiv').append("svg")
+
+		d3.select("#canvasDiv").selectAll("svg").remove();
+		svgContainer = d3.select('#canvasDiv').append("svg")
+										.attr("id", "mainsvg")
+										// .attr("xmlns", "http://www.w3.org/2000/svg")
 		                                  .attr("width", 696)
 		                                   .attr("height", 520)
 		                                   .attr("border", "10px solid white");
@@ -36,7 +39,13 @@
 					.attr("xlink:href", "https://anaik12.github.io/bvis/point/brainImg.png")
 					.attr("border", "10px solid white");
 
+		// var canvas = d3.select("#canvasDiv").append("canvas")
+		// 			.attr("width", 696)
+		// 			.attr("height", 520);
+	
+		// var context = canvas.node().getContext("2d");
 
+			
 
 			// function drawcanvas(error, data){
 		self.drawCanvas = function(selected, top5, cell, state){
@@ -45,21 +54,7 @@
 		// console.log("selfzvalueslider", self.zvalueslider);
 
 		var renderDraw = function(selected, zvalueslider, cell, state){
-			console.log("state is: " +state);
-		// if(state=="on") {
-		// 	// pulsate(cell,"on");
-		// 	// $.fn.triggerSVGEvent = function(handlemouseover) {
-		// 	//   var event = document.createEvent('SVGEvents');
-		// 	//   event.initEvent(handlemouseover(cell,this), true, true);
-		// 	//   this[0].dispatchEvent(event);
-		// 	//   return $(this);
-		// 	var greencell = cell.substr(4);
-
-		// 	document.getElementById(greencell).setAttribute("fill","green");
-
-		// 	// $(".canvasDiv").triggerSVGEvent('mouseover');
-		// }
-		// else pulsate(cell,"off");
+	
 			var zvalues = d3.nest()
 		  .key(function(d) { return (parseFloat(d.Y)).toFixed(2); })
 		  // .key(function(d) { console.log(d); })
@@ -83,10 +78,7 @@
 	     // var ts = 0;
 
 	     var ts = Math.abs(keyvalues[0].timeframe);
-	     // var linechart1 = new lineChart1();
-	     // linechart1.line(ts);
 
-	     // console.log(	)
 
 	     document.getElementById('TS').innerHTML = 'Timestep = ' + ts;
 
@@ -277,7 +269,9 @@
 	        linechart1.renderlinechart(similarCellArray, ts, selected, zvalueslider, top5, data);
 								// })
 
-	    }
+		}
+		
+		
 
 		var circles = svgContainer.selectAll("circle")
 		                         .data(keyvalues)
@@ -324,42 +318,8 @@
 				                      hoverdiv.transition()		
 					                .duration(500)		
 					                .style("opacity", 0);	
-								})
-								 // .on("mouseover", function(d){ handlemouseover(d,this);})
-								// 	// function(d){   
-				    //  //                  d3.select(this).classed('active', true)
-				    //  //                  hoverdiv.transition()      
-					   //  //             .duration(200)      
-					   //  //             .style("opacity", .9);      
-					   //  //             hoverdiv .html(d.cell)  
-					   //  //             // div .html(htmlinfo(d))
-					   //  //             .style("left", (d3.event.pageX + 10) + "px")     
-					   //  //             .style("top", (d3.event.pageY) + "px");
-
-					   //  //             d3.select(this)
-								// 	// .style('fill', "green");
-				           
-								// 	// // let selected_circles = d3.select(this);
-								// 	// // pulsate(selected_circles, "on");
-								// 	// var linechart1 = new lineChart1();
-								// 	// // var cellname = "cell" + d.cell;
-								// 	// document.getElementById('cellname').textContent = "Cell " + d.cell;
-	       //  // 						linechart1.renderlinechart(linegraphall(keyvalues, d[selected], d.cell), ts, selected, zvalueslider, top5, data);
-	       //  // 						// linegraphall(keyvalues, cellname);
-	        						
-	       //  //         			})
-								// .on("mouseout", handlemouseout);
-								// 	function(d){
-			     //                  d3.select(this).classed('active', false)
-			     //                  hoverdiv.transition()      
-				    //             .duration(500)      
-				    //             .style("opacity", 1)
-				    //             .style("pointer-events", "all");   
-				    // 				d3.select(this)
-								// 	.style('fill', "none");
-				    // //             let selected_circles = d3.select(this);
-								// // pulsate(selected_circles, "off");
-			     //              	});
+								});
+								 
 
 			            function handlemouseover(d,co){
 			            	d3.select(co).style("fill","red");
@@ -388,64 +348,44 @@
 								
 
 							
-						function pulsate(selection, state) {
-						if(state == "on") recursive_transitions_on();
-					    else recursive_transitions_off();
-
-						    function recursive_transitions_on() {
-						      // if (selection.data()[0].pulse) {
-						        selection.transition()
-						            .duration(400)
-						            .attr("stroke-width", 2)
-						            .attr("r", 8)
-						            // .attr("fill", "lightblue")
-						            .attr("opacity","0.7")
-						            .ease(d3.easeSin)
-						            .transition()
-						            .duration(800)
-						            .attr('stroke-width', 3)
-						            .attr("r", 12)
-						            .ease(d3.easeBounce)
-						            .on("end", recursive_transitions_on);
-						      	// }
-						      } 
-						      function recursive_transitions_off(){
-						        // transition back to normal
-						        selection.transition()
-						            .duration(200)
-						            .attr("r", "none")
-						            // attr("stroke", function(d){ return getcolor_comm(d.comm1);})
-						            .attr("stroke", function(d){ return getcolor_comm(d[selected]);})
-						            // .attr("stroke", function(d){ return getcolor_comm(d.intensity);})
-						            .attr("r", 9 )
-						            .attr("stroke-width", "1px")
-						            .attr("opacity", 1)
-						            .attr("fill", "none");
-						            // .attr("stroke-dasharray", "1, 0");
-						      }
-						    
-						}
+						
 			if(state=="on") {
-			// pulsate(cell,"on");
-			// $.fn.triggerSVGEvent = function(handlemouseover) {
-			//   var event = document.createEvent('SVGEvents');
-			//   event.initEvent(handlemouseover(cell,this), true, true);
-			//   this[0].dispatchEvent(event);
-			//   return $(this);
+	
 			var greencell = cell.substr(4);
 
 			document.getElementById(greencell).setAttribute("fill","green");
 
 			// $(".canvasDiv").triggerSVGEvent('mouseover');
 			}
-			d3.select("#download")
+			d3.select("#downloadimg")
 			.on('click', function(){
 				// Get the d3js SVG element and save using saveSvgAsPng.js
 				let name = selected + "-TS_" + ts + ".png"
 				saveSvgAsPng(document.getElementsByTagName("svg")[2], name);
-			})
+			});
 
-			}
+			// var DOMURL = window.URL || window.webkitURL || window;
+
+			// var svgString = domNodeToString(svgContainer.node());
+			
+			// var image = new Image();
+			// var svgBlob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+			// var url = DOMURL.createObjectURL(svgBlob);
+
+			// // image.onload = function() {
+			// 	context.drawImage(image, 0, 0);
+			// 	DOMURL.revokeObjectURL(url);
+			// // }
+
+			// image.src = url;
+			
+			// }
+			// function domNodeToString(domNode) {
+			// 	var element = document.createElement("div");
+			// 	element.appendChild(domNode);
+			// 	return element.innerHTML;
+			}	
+			
 			renderDraw(selected, zvalueslider, cell, state);
 
 		}
@@ -490,15 +430,11 @@
 	            })
 	            // when done loading
 	            .get(function(error, rows, data) {
-					// console.log("d is in can ", rows.values);
-	                // draw the containment cylinder
-	                // TODO: Remove after the data has been rendered
-	                // console.log(data);
+					
 	                self.zvalueslider = zvalueslider;
 	                self.drawCanvas(selected);
 
-	                // create the particle system
-	                // self.createParticleSystem();
+	               
 	            });
 	            // console.log(data);
 	    };
@@ -525,8 +461,7 @@
 	    	self.data = newdata;
 	    	self.zvalueslider = zvalueslider;
 	    	self.drawCanvas(selected, top5, cell, state);
-	    	// pulsate(cell,state);
-	    	// drawCanvas.renderDraw.pulsate(cell,state);
+	    	
 	    },
 
 	    getdata: function(){
@@ -539,12 +474,10 @@
 	    	self.data = newdata;
 	    	self.zvalueslider = zvalueslider;
 	    	self.drawCanvas(selected, top5);
-	    	// drawCanvas.renderDraw.pulsate()
-	    	// var linechart = new linechart();
-	    	// linechart.linechartcall();
+	    
 	    }
 
-	    // render("-4.2");
+	 
 
 	   };
 
