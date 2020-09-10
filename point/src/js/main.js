@@ -27,32 +27,46 @@ var App = App || {};
 
         var particleSystem = new ParticleSystem();
         particleSystem.initialize('data/014_new.csv');
-        // particleSystem.initialize('data/test3_4.csv', selected);
 
-        // var d3canvas = new d3Canvas();
-        // d3canvas.initialize('data/014_new.csv','-24.20', "proc_100_cor7");
-
-        //removeParticleSystems the particle system to the scene
         App.scene.addObject( particleSystem.removeParticleSystems());
-        //add the particle system to the scene
-           // App.scene.removeObject( particleSystem.getParticleSystems());
-
-            // render the scene
-
-
            
-           App.scene.render();
+        App.scene.render();
         
+        const start = document.getElementById("start");
+        const stop = document.getElementById("stop");
+        const video = document.querySelector("video");
+        let recorder, stream;
 
+        async function startRecording() {
+        stream = await navigator.mediaDevices.getDisplayMedia({
+            video: { mediaSource: "screen" }
+        });
+        recorder = new MediaRecorder(stream);
 
-       //  //add the particle system to the scene
-       // App.scene.addObject( particleSystem.getParticleSystems());
+        const chunks = [];
+        recorder.ondataavailable = e => chunks.push(e.data);
+        recorder.onstop = e => {
+            const completeBlob = new Blob(chunks, { type: chunks[0].type });
+            video.src = URL.createObjectURL(completeBlob);
+        };
 
-       //  // render the scene
-       
-       // App.scene.render();
-	   
-	   
+        recorder.start();
+        }
+
+        start.addEventListener("click", () => {
+        start.setAttribute("disabled", true);
+        stop.removeAttribute("disabled");
+
+        startRecording();
+        });
+
+        stop.addEventListener("click", () => {
+        stop.setAttribute("disabled", true);
+        start.removeAttribute("disabled");
+
+        recorder.stop();
+        stream.getVideoTracks()[0].stop();
+        });
 
        
 

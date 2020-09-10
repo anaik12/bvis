@@ -38,6 +38,9 @@
     <!-- <script src="./src/js/d3.slider.js"></script> -->
     <script src="./src/js/d3RangeSlider.js"></script>
     <script src="./src/js/saveSvgAsPng.js"></script>
+    <!-- <script src="./src/js/video.js"></script> -->
+    <script src="./lib/js/html2canvas.min.js"></script>
+    <script src="./lib/js/html2canvas.js"></script>
     
     <!-- <script src="./src/js/vertexshader.js" id="vertexshader"></script>
     <script src="./src/js/fragmentsahder.js" id="fragmentshader"></script> -->
@@ -57,6 +60,7 @@
     
     <div class="col-md-9"><p class="p4" style="float:center"> V-NeuroStack </p></div>
     <div class="col-md-3"><a href="Credits.html" class="p3" style="float: right; visibility:hidden">Credits</a></div>
+     
     <!-- </div> -->
     <div class="container-fluid">
         <div class="row">
@@ -136,14 +140,32 @@
                     <div class="lineDiv"><input class="btn btn-primary" style="padding:2px 10px; background-color:grey; border:none;" style="padding:4px 4px"type="button" style="margin-left: 10%" value="Show Similar" id="showS"><p class="p4" id="cellname" style="width:12%; float:right; font-weight:normal; margin-right:15%"> </p></div> 
 
                     <br>
-                    <input type="button" class="btn btn-primary" style="padding:2px 10px; background-color:grey;border:none;" value="Download" id="download">
-                <div class="canvasDiv"></div>         
-                  
+                    <input type="button" class="btn btn-primary" style="padding:2px 10px; background-color:grey;border:none;" value="Download Image" id="downloadimg">
+                    <!-- <video id="recorded" playsinline loop></video> -->
+
+                    <!-- <div> -->
+                        <!-- <button id="record">Start Recording</button> -->
+                        <!-- <button id="play" disabled>Play</button> -->
+                        <!-- <button id="download" disabled>Download</button> -->
+                       
+                    <!-- </div> -->
+                    <!-- <canvas id="parentcanvas" style="border:2px solid black;" width="700" height="700"> -->
+                        <button id="start">
+                            Start Recording
+                        </button>
+                        <button id="stop" disabled>
+                            Stop Recording
+                        </button>
+                    <div id ="canvasDiv"></div> 
+                    <!-- </canvas> -->
+                   
+                    <video controls autoplay >  </video>
+                    
             </div>
-            
             
          </div>
     </div>
-        
+     
 </body>
+<!-- <script src="./src/js/video.js"></script> -->
 </html>

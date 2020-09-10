@@ -218,8 +218,8 @@ body {
   #canvas{
   	float:right;
   	background:#808080;
-  	width: 50%;
-  	height: 50%;
+  	width: 100%;
+  	height: 100%;
   }
 
 a {
@@ -339,6 +339,12 @@ div.tooltip {
 .click{
   pointer-events: all;
   
+}
+
+video {
+  border: 1px solid lightgray;
+  width: 100%;
+  background-color: #eee;
 }
 
 
