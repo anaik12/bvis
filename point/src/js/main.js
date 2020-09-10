@@ -39,7 +39,7 @@ var App = App || {};
 
         async function startRecording() {
         stream = await navigator.mediaDevices.getDisplayMedia({
-            video: { mediaSource: "screen" }
+            video: { mediaSource: "screen" , type:'video/mp4;codecs="avc1.42E01E, mp4a.40.2"'}
         });
         recorder = new MediaRecorder(stream);
 
