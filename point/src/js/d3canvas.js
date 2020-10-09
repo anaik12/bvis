@@ -319,6 +319,12 @@
 					                .duration(500)		
 					                .style("opacity", 0);	
 								});
+								
+								if (document.getElementById("downloadall").checked){
+									let name = selected + "-TS_" + ts + ".png"
+									saveSvgAsPng(document.getElementsByTagName("svg")[2], name);
+								}
+								
 								 
 
 			            function handlemouseover(d,co){

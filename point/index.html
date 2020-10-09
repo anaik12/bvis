@@ -125,7 +125,12 @@
 
                     <br>
                     <!-- <p id="TS" style="color:white; left-padding:20px"> Timestep = 97 </p>  -->
-                    <input type="button" class="btn btn-primary" style="padding:2px 10px; background-color:grey;border:none;" value="-" id="minus"> <label id="TS" class="label2">Timestep = </label> &nbsp; <input type="button" class="btn btn-primary" style="padding:2px 10px; background-color:grey; border:none;" value="+" id="plus">&nbsp; <input type="button" class="btn btn-primary" style="padding:2px 10px; background-color:grey; border:none;" value="Play" id="play">
+                    <input type="button" class="btn btn-primary" style="padding:2px 10px; background-color:grey;border:none;" value="-" id="minus"> <label id="TS" class="label2">Timestep = </label> &nbsp;
+                     <input type="button" class="btn btn-primary" style="padding:2px 10px; background-color:grey; border:none;" value="+" id="plus">&nbsp; 
+                     <input type="button" class="btn btn-primary" style="padding:2px 10px; background-color:grey; border:none;" value="Play" id="play">
+                     <label for="downloadall"  > Continous Download</label>
+                     <input type="checkbox" id="downloadall" name="downloadall" value="True">
+                     
                     <!-- Need 0-60 since html slider does not process negative values (-30-0)-->
                     <br><input type="range" min="0" max="61" value="0" step="0.01" id="slider"  style="position:absolute;">
                     
@@ -141,15 +146,7 @@
 
                     <br>
                     <input type="button" class="btn btn-primary" style="padding:2px 10px; background-color:grey;border:none;" value="Download Image" id="downloadimg">
-                    <!-- <video id="recorded" playsinline loop></video> -->
-
-                    <!-- <div> -->
-                        <!-- <button id="record">Start Recording</button> -->
-                        <!-- <button id="play" disabled>Play</button> -->
-                        <!-- <button id="download" disabled>Download</button> -->
-                       
-                    <!-- </div> -->
-                    <!-- <canvas id="parentcanvas" style="border:2px solid black;" width="700" height="700"> -->
+                    
                         <button id="start">
                             Start Recording
                         </button>
