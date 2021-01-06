@@ -464,7 +464,7 @@ var ParticleSystem = function() {
                 // console.log("infiltered");  
         	   //for filtered intensities
   	        	  var color_cz = d3.scaleLinear()
-  	              .domain([-5, 68])
+  	              .domain([0, 68])
   	              .range([0.0, 1.0]);
 
   	            var cz_val = color_cz(data[i][selected]) * 10;
