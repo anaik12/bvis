@@ -10,7 +10,7 @@
 
 		self.data = [];
 
-		self.zvalueslider = 30;
+		self.zvalueslider = 0;
 
 		var showSimilar = false;
 
@@ -75,7 +75,7 @@
 	     var keyvalues = findPointZvalueY(zvalueslider);
 	     // console.log("timeframe is ", keyvalues[0].timeframe);
 
-	     // var ts = 0;
+		 // var ts = 0;
 
 	     var ts = Math.abs(keyvalues[0].timeframe);
 
