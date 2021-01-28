@@ -280,7 +280,7 @@
 		                         .attr("cx", function (d) {  return parseFloat(d.X)*30 + 22; })
 								.attr("cy",  function (d) {  return parseFloat(d.Z)*30 + 22; })
 								.attr("r", 8)
-								.attr("stroke-width", "2px")
+								.attr("stroke-width", "1.5px")
 								.attr("opacity", 1)
 								// .attr("stroke", function(d){ return getcolor_comm(d.comm1);})
 								.attr("stroke", function(d){ return getcolor_comm(d[selected]);})
