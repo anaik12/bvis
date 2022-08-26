@@ -10,11 +10,11 @@
 
 		self.data = [];
 
-		self.zvalueslider = 0;
+		self.zvalueslider = 0.5;
 
 		var showSimilar = false;
 
-		var selected = "comm0";
+		var selected = "filtered";
 
 
 		d3.select("#canvasDiv").selectAll("svg").remove();
@@ -35,45 +35,43 @@
 					// .attr("height", 512)
 					.attr("x", 20)
 					.attr("y", 20)
-					// .attr("xlink:href", "https://anaik3.people.uic.edu/bvis/brainImg.png")
-					.attr("xlink:href", "https://anaik12.github.io/bvis/point/brainImg.png")
+					.attr("xlink:href", "https://anaik12.github.io/twintvis/results3.png")
 					.attr("border", "10px solid white");
 
-		// var canvas = d3.select("#canvasDiv").append("canvas")
-		// 			.attr("width", 696)
-		// 			.attr("height", 520);
-	
-		// var context = canvas.node().getContext("2d");
-
+		
 			
 
 			// function drawcanvas(error, data){
 		self.drawCanvas = function(selected, top5, cell, state){
 	        
-		// console.log("zvalueslider", zvalueslider);
+		
 		// console.log("selfzvalueslider", self.zvalueslider);
 
 		var renderDraw = function(selected, zvalueslider, cell, state){
+
+			// console.log("zvalueslider", zvalueslider);
 	
 			var zvalues = d3.nest()
 		  .key(function(d) { return (parseFloat(d.Y)).toFixed(2); })
 		  // .key(function(d) { console.log(d); })
 		  .entries(data);
 
+		//   console.log("zvalues: ", zvalues);
 		
 
 		    function findPointZvalueY(key){
 		  		for(var i in zvalues){
-		  			// console.log(typeof(key));
+		  			// console.log(typeof(zvalues[i].key));
 		  			if(zvalues[i].key == key){
 		  			return zvalues[i].values;
 		  			}
 		  		}
 
-		  }
+		  	}
+			  console.log("findPointZvalueY 0.99: ", findPointZvalueY("0.99"));
 
 	     var keyvalues = findPointZvalueY(zvalueslider);
-	     // console.log("timeframe is ", keyvalues[0].timeframe);
+	    //  console.log("timeframe is ", keyvalues);
 
 		 // var ts = 0;
 
@@ -179,6 +177,13 @@
 	              fourth = top5array[9][3];
 	              fifth = top5array[9][4];
 	          }
+			  else if(selected == "filtered"){
+				first = top5array[9][0];
+				second = top5array[9][1];
+				third = top5array[9][2];
+				fourth = top5array[9][3];
+				fifth = top5array[9][4];
+			}
 	          
 	        }
 
@@ -194,6 +199,7 @@
 
 
 	    function getcolor_comm(cell){
+				
 	     		// if(commdata[cell] == undefined){
 	     		if(cell == undefined){
 	     			return "none";
@@ -204,6 +210,7 @@
 
 	     				// return "red";
 	     				// console.log("cell is", cell);
+						 console.log("ingetcolor first");
 	     				return "#1b9e77";
 	     				
 		     	}
@@ -273,12 +280,12 @@
 		
 		
 
-		var circles = svgContainer.selectAll("circle")
+		var circles = svgContainer.selectAll("g")
 		                         .data(keyvalues)
 		                         .enter()
 		                         .append("circle")
-		                         .attr("cx", function (d) {  return parseFloat(d.X)*30 + 22; })
-								.attr("cy",  function (d) {  return parseFloat(d.Z)*30 + 22; })
+		                         .attr("cx", function (d) {  return parseFloat(d.X) * 2.5 + 30; })
+								.attr("cy",  function (d) {  return parseFloat(d.Z) * 2.5+ 30; })
 								.attr("r", 8)
 								.attr("stroke-width", "1.5px")
 								.attr("opacity", 1)
@@ -370,27 +377,10 @@
 				saveSvgAsPng(document.getElementsByTagName("svg")[2], name);
 			});
 
-			// var DOMURL = window.URL || window.webkitURL || window;
-
-			// var svgString = domNodeToString(svgContainer.node());
 			
-			// var image = new Image();
-			// var svgBlob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
-			// var url = DOMURL.createObjectURL(svgBlob);
-
-			// // image.onload = function() {
-			// 	context.drawImage(image, 0, 0);
-			// 	DOMURL.revokeObjectURL(url);
-			// // }
-
-			// image.src = url;
-			
-			// }
-			// function domNodeToString(domNode) {
-			// 	var element = document.createElement("div");
-			// 	element.appendChild(domNode);
-			// 	return element.innerHTML;
 			}	
+
+			// console.log("378 zvalueslider", zvalueslider);
 			
 			renderDraw(selected, zvalueslider, cell, state);
 
@@ -411,17 +401,17 @@
 
 	                     // concentration: Number(d[selected]),
 	                    comm0: Number(d.comm0),
-	                    comm1: Number(d.comm1),
-	                    comm2: Number(d.comm2),
-	                    comm3: Number(d.comm3),
+	                    // comm1: Number(d.comm1),
+	                    // comm2: Number(d.comm2),
+	                    // comm3: Number(d.comm3),
 	                    filtered: Number(d.filtered),
 	                    intensity: Number(d.intensity),
-	                    proc_300_cor5: Number(d.proc_300_cor5),
-	                    proc_300_cor7: Number(d.proc_300_cor7),
-	                    proc_300_cor9: Number(d.proc_300_cor9),
-	                    proc_100_cor5: Number(d.proc_100_cor5),
-	                    proc_100_cor7: Number(d.proc_100_cor7),
-	                    proc_100_cor9: Number(d.proc_100_cor9),
+	                    // proc_300_cor5: Number(d.proc_300_cor5),
+	                    // proc_300_cor7: Number(d.proc_300_cor7),
+	                    // proc_300_cor9: Number(d.proc_300_cor9),
+	                    // proc_100_cor5: Number(d.proc_100_cor5),
+	                    // proc_100_cor7: Number(d.proc_100_cor7),
+	                    // proc_100_cor9: Number(d.proc_100_cor9),
 	                    cell:Number(d.cell),
 
 	                    timeframe: Number(d.timeframe),

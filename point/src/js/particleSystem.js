@@ -19,6 +19,8 @@ var ParticleSystem = function() {
     // bounds of the data
     var bounds = {};
 
+    console.log("bounds.maxX :", bounds.maxX, bounds.minX);
+
     var pi = 3.147;
     var cylinder;
 
@@ -61,12 +63,12 @@ var ParticleSystem = function() {
 
         // var filtered_intensity_range =   rangeslider.range(0,10);
         var ftr_begin = 0;
-        var ftr_end = 68;
+        var ftr_end = 276;
 
         var ftr = [ftr_begin, ftr_end];
 
 
-        var rangeslider = createD3RangeSlider(0, 68, "#slider-container", true);  
+        var rangeslider = createD3RangeSlider(ftr_begin, ftr_end, "#slider-container", true);  
         rangeslider.range(0,1);
 
         rangeslider.onChange(function(newRange){
@@ -105,7 +107,7 @@ var ParticleSystem = function() {
             // reset(radius,height,red,green,blue,all);
 
             var scell = 0;
-            var ecell = 6000;
+            var ecell = 709;
 
             var buttonshow = document.getElementById("show");
 
@@ -240,7 +242,7 @@ var ParticleSystem = function() {
 
         cylinder = new THREE.Points(geometry, material);
 
-        var geometry2 = new THREE.BoxGeometry( radius * 1.9, radius * 1.5, radius * 5.5);
+        var geometry2 = new THREE.BoxGeometry( radius * 2.6, radius * 2.6, radius * 2.6);
 
       	var color = new THREE.Color("rgb(100,100,0)");
       	var material = new THREE.MeshPhongMaterial( {color: 0x0000ff, transparent:true, opacity: 0.2});
@@ -268,10 +270,10 @@ var ParticleSystem = function() {
                 var refreshId = setInterval(function(){
 
                   if(play){
-                    if(plane.position.z <= -30) plane.position.z = 30.01;
+                    if(plane.position.z <= -70.7) plane.position.z = 70.9;
                     playbutton.value = "Pause";
                     // playincrement += 0.01;
-                    plane.position.z -= 0.01;
+                    plane.position.z -= 0.2;
                     var d3canvas = new d3Canvas();
                     d3canvas.clearCanvas(data, selected, (parseFloat(plane.position.z)).toFixed(2), top5);  
                   }
@@ -288,7 +290,7 @@ var ParticleSystem = function() {
         // var plus = false;
         var plusbutton = document.getElementById("plus");
         plusbutton.onclick =function(){
-            plane.position.z -= 0.01;
+            plane.position.z -= 0.2;
             var d3canvas = new d3Canvas();
             d3canvas.clearCanvas(data, selected, (parseFloat(plane.position.z)).toFixed(2), top5);
         }
@@ -296,7 +298,7 @@ var ParticleSystem = function() {
         // var plus = false;
         var minusbutton = document.getElementById("minus");
         minusbutton.onclick =function(){
-            plane.position.z += 0.01;
+            plane.position.z += 0.2;
             var d3canvas = new d3Canvas();
             d3canvas.clearCanvas(data, selected, (parseFloat(plane.position.z)).toFixed(2), top5);
         }
@@ -305,7 +307,7 @@ var ParticleSystem = function() {
         function movePlane(e){
           var target = (e.target) ? e.target : e.srcElement;
           // console.log("target value ", target.value);
-          plane.position.z = -(target.value - 30);
+          plane.position.z = -(target.value - 70.9);
           var d3canvas = new d3Canvas();
           d3canvas.clearCanvas(data, selected, (parseFloat(plane.position.z)).toFixed(2), top5);    
         } 
@@ -428,25 +430,29 @@ var ParticleSystem = function() {
         var n = 1000, n2 = n / 2;
         // cylinder = new THREE.Points(geometry, material);
         var material = [];    
-        var geometry = new THREE.BufferGeometry( radius, radius, radius);
+        var geometry = new THREE.BufferGeometry( radius * 1.5, radius * 1.5 , radius);
         // geometry.position.set(0, 0, 0);
         // console.log("inreset selected is ");
         var count = 0;
-        var cellstartnumber = scell*139;
-        var cellendnumber = ecell*139;
+        var cellstartnumber = scell*40;
+        var cellendnumber = ecell*40;
         var xadjust = 11.5;
         var yadjust = 2.5;
         var zadjust = 0;
+        
         // var textureLoader = new THREE.TextureLoader();
         // var sprite = textureLoader.load( 'data/disc.png');
         // for(var i = 0; i< data.length; i++) {
-          for(var i = cellstartnumber; i< cellendnumber; i++) {
-            
+          for(var i = cellstartnumber; i<cellendnumber; i++) {
+            // console.log(data);
             if(selected == 'intensity'){
             //for raw intensities
-
+            try {
+           
+          
   	      		   var color_cz = d3.scaleLinear()
-  	              .domain([4715, 14015])
+  	              // .domain([4715, 14015])
+                  .domain([492, 1986])
   	              .range([0.0, 1.0]);
                   // console.log("yesso");
                   // console.log("hello" + data[i]);
@@ -455,34 +461,50 @@ var ParticleSystem = function() {
   	             // color.setHSL( cz, cz, cz );
                  color.setRGB( cz, cz, cz );
   	             colors.push( cz, cz, cz);
-                 var x = (data[i].X - xadjust) ;//* height + 2 * pi * radius * radius  ;
-                 var y = (data[i].Y - zadjust);
-                 var z = (data[i].Z - height/2 - yadjust);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
+                 var x = (data[i].X - 100) ;//* height + 2 * pi * radius * radius, 230  ;
+                //  var y = (data[i].Y - zadjust);
+                 var y = (data[i].Y );
+                 var z = (data[i].Z - 90);//*Math.PI/radius ;//* height + 2 * pi * radius * radius  ;, 260
                  positions.push( x, -z, y );
+                }
+                catch(e){
+                    console.log(e);
+                    console.log("cellnumber: ", i);
+                    console.log("data: ", data[i])
+                }
             }
             else if(selected == 'filtered' ){
-                // console.log("infiltered");  
+                //   
         	   //for filtered intensities
   	        	  var color_cz = d3.scaleLinear()
-  	              .domain([0, 68])
+  	              .domain([0, ftr_end])
   	              .range([0.0, 1.0]);
 
-  	            var cz_val = color_cz(data[i][selected]) * 10;
-
-  	            if(data[i][selected]  < ftr[0] || data[i][selected] > ftr[1]){
+                  // if (data[i][selected] == undefined){
+                  //   console.log("cellnumber: ", i);
+                  //   console.log("data: ", data[i])
+                  // }
+                  var cz_val = color_cz(data[i][selected]) * 10;
+                
+  	            // if(data[i][selected]  < 0 || data[i][selected] > ftr_end){
+                if(data[i][selected]  < 0 || data[i][selected] > ftr_end){
   	            	cz = null;
-                  // cz = 0.0;
+                  // cz = cz_val;
+                  // console.log("if:", cz_val)
   	            }
   	            else{
-
+                  // console.log("else:", cz_val)
   	            	cz = cz_val;
   	            }
                 color.setRGB( cz, cz, cz );
   	            colors.push( cz, cz, cz);
-                var x = (data[i].X - xadjust) ;//* height + 2 * pi * radius * radius  ;
-                var y = (data[i].Y - zadjust);
-                var z = (data[i].Z - height/2 - yadjust);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
+                var x = (data[i].X - 100) ;//* height + 2 * pi * radius * radius  ;
+                var y = (data[i].Y); //200 to -200
+                // var y = (data[i].Y - 340)
+                var z = (data[i].Z - 90);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
+                // var z = (data[i].Z - height/2);
                 if(cz != null){
+                  // positions.push( x, -z, y );
                   positions.push( x, -z, y );
                 }
                 // positions.push( x, z, y );
@@ -548,10 +570,10 @@ var ParticleSystem = function() {
                   // sprite = null;
 	            }
 	            
-	            
-              var x = (data[i].X - xadjust) ;//* height + 2 * pi * radius * radius  ;
-              var y = (data[i].Y - zadjust);
-              var z = (data[i].Z - height/2 - yadjust);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
+	            // console.log(data);
+              var x = (data[i].X - 100) ;//* height + 2 * pi * radius * radius  ;
+              var y = (data[i].Y);
+              var z = (data[i].Z - 90);//*Math.PI)/radius ;//* height + 2 * pi * radius * radius  ;
               if(cz != null){
                 color.setRGB( cx, cy, cz );
               // color.setHSL( cx, cy, cz );
@@ -591,22 +613,27 @@ var ParticleSystem = function() {
     // var sprite = textureLoader.load( 'data/snowflake1.png' );
 
         // map:sprite, vertexColors: THREE.VertexColors,
-   		   material = new THREE.PointsMaterial({ size:0.35, map:sprite, vertexColors: THREE.VertexColors, opacity:1.0});//, opacity:0.5});
+   		   material = new THREE.PointsMaterial({ size:4.0, map:sprite, vertexColors: THREE.VertexColors, opacity:1.0});//, opacity:0.5});
     
     // var sprite = new THREE.TextureLoader().load( 'data/disc.png' );
           cylinder = new THREE.Points(geometry, material);
 
           sceneObject.add(cylinder);
           //starting plane position at 0 depth (not z=0) for autoplay
-          plane.position.z = 0;
+          plane.position.z = 0.5;
           sceneObject.add(plane);
           console.log("plane pos :", plane.position);
 
     }
 
-    var planeG = new THREE.PlaneGeometry(23, 17);
+    // var planeG = new THREE.PlaneGeometry(23, 17);
+    // var planeG = new THREE.PlaneGeometry(420, 380);
+    var planeG = new THREE.PlaneGeometry(210, 190);
+
 	  var imgMaterial = new THREE.MeshBasicMaterial({ //CHANGED to MeshBasicMaterial
-	  map: new THREE.TextureLoader().load('https://anaik12.github.io/bvis/point/brainImg.png'), side: THREE.DoubleSide});
+	  // map: new THREE.TextureLoader().load('https://anaik12.github.io/bvis/point/brainImg.png'), side: THREE.DoubleSide});
+    
+    map: new THREE.TextureLoader().load('https://anaik12.github.io/twintvis/results3.png'), side: THREE.DoubleSide});
 	  var plane = new THREE.Mesh(planeG, imgMaterial);
 	// plane.overdraw = true;
 	// sceneObject.add(plane);
@@ -702,8 +729,8 @@ var ParticleSystem = function() {
     var sprite = textureLoader.load( 'data/disc.png');
     // var sprite = textureLoader.load( 'data/snowflake1.png' );
 
-       
-    material = new THREE.PointsMaterial({ size:0.35, map:sprite, vertexColors: THREE.VertexColors, transparent:true, opacity:0.5});//, opacity:0.3});
+       //size:0.35
+    material = new THREE.PointsMaterial({ size:1.0, map:sprite, vertexColors: THREE.VertexColors, transparent:true, opacity:0.5});//, opacity:0.3});
     
     cylinder = new THREE.Points(geometry, material);
 
@@ -745,23 +772,25 @@ var ParticleSystem = function() {
                 bounds.maxY = Math.max(bounds.maxY || -Infinity, d.Points1);
                 bounds.maxZ = Math.max(bounds.maxY || -Infinity, d.Points2 + 1);
 
+                
+
                 // add the element to the data collection
                 data.push({
                     // concentration density
 
                      // concentration: Number(d[selected]),
                     comm0: Number(d.comm0),
-                    comm1: Number(d.comm1),
-                    comm2: Number(d.comm2),
-                    comm3: Number(d.comm3),
+                    // comm1: Number(d.comm1),
+                    // comm2: Number(d.comm2),
+                    // comm3: Number(d.comm3),
                     filtered: Number(d.filtered),
                     intensity: Number(d.intensity),
-                    proc_300_cor5: Number(d.proc_300_cor5),
-                    proc_300_cor7: Number(d.proc_300_cor7),
-                    proc_300_cor9: Number(d.proc_300_cor9),
-                    proc_100_cor5: Number(d.proc_100_cor5),
-                    proc_100_cor7: Number(d.proc_100_cor7),
-                    proc_100_cor9: Number(d.proc_100_cor9),
+                    // proc_300_cor5: Number(d.proc_300_cor5),
+                    // proc_300_cor7: Number(d.proc_300_cor7),
+                    // proc_300_cor9: Number(d.proc_300_cor9),
+                    // proc_100_cor5: Number(d.proc_100_cor5),
+                    // proc_100_cor7: Number(d.proc_100_cor7),
+                    // proc_100_cor9: Number(d.proc_100_cor9),
 
                     cell:Number(d.cell),
 
@@ -773,11 +802,11 @@ var ParticleSystem = function() {
                     //timeframe
                     timeframe: Number(d.timeframe),
                     // Velocity
-                    U: Number(d.velocity0),
-                    V: Number(d.velocity1),
-                    W: Number(d.velocity2)
+                    // U: Number(d.velocity0),
+                    // V: Number(d.velocity1),
+                    // W: Number(d.velocity2)
                 });
-				// console.log(data);
+				// console.log(data(0));
             })
             // when done loading
             .get(function(error, rows, data) {
@@ -792,7 +821,7 @@ var ParticleSystem = function() {
             });
             // console.log(data);
     };
-	
+    // console.log("bounds.maxX :", bounds.maxX, bounds.minX );
     // publicly available functions
     var publiclyAvailable = {
 
