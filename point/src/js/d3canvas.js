@@ -106,6 +106,7 @@
 	      top5array.push([4,21,3,20,19]);
 	      top5array.push([12,10,5,16,6]);
 	      top5array.push([42,52,39,49,30]);
+		  top5array.push([0,1,2,3,4]);
 
 	     if(top5==true){
 	     		// console.log("top5 is ", top5);
@@ -179,6 +180,13 @@
 	              fourth = top5array[9][3];
 	              fifth = top5array[9][4];
 	          }
+			  else if(selected == "kmeans"){
+				first = top5array[9][0];
+				second = top5array[9][1];
+				third = top5array[9][2];
+				fourth = top5array[9][3];
+				fifth = top5array[9][4];
+			}
 	          
 	        }
 
@@ -423,6 +431,7 @@
 	                    proc_100_cor7: Number(d.proc_100_cor7),
 	                    proc_100_cor9: Number(d.proc_100_cor9),
 	                    cell:Number(d.cell),
+						kmeans: Number(d.kmeans),
 
 	                    timeframe: Number(d.timeframe),
 

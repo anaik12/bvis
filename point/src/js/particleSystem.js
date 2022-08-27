@@ -321,6 +321,7 @@ var ParticleSystem = function() {
       top5array.push([4,21,3,20,19]);
       top5array.push([12,10,5,16,6]);
       top5array.push([42,52,39,49,30]);
+      top5array.push([0,1,2,3,4]);
 
       console.log(top5array[0][2]);
 
@@ -413,6 +414,13 @@ var ParticleSystem = function() {
               fourth = top5array[9][3];
               fifth = top5array[9][4];
           }
+          else if(selected == "kmeans"){
+            first = top5array[10][0];
+           second = top5array[10][1];
+           third = top5array[10][2];
+           fourth = top5array[10][3];
+           fifth = top5array[10][4];
+       }
   
         }
 
@@ -762,6 +770,7 @@ var ParticleSystem = function() {
                     proc_100_cor5: Number(d.proc_100_cor5),
                     proc_100_cor7: Number(d.proc_100_cor7),
                     proc_100_cor9: Number(d.proc_100_cor9),
+                    kmeans: Number(d.kmeans),
 
                     cell:Number(d.cell),
 
