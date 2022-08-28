@@ -19,7 +19,7 @@
  * @param containerSelector A CSS selection indicating exactly one element in the document
  * @returns {{range: function(number, number), onChange: function(function)}}
  */
-function createD3RangeSlider (rangeMin, rangeMax, containerSelector, playButton) {
+ function createD3RangeSlider (rangeMin, rangeMax, containerSelector, playButton) {
     "use strict";
 
     var minWidth = 10;
@@ -77,15 +77,15 @@ function createD3RangeSlider (rangeMin, rangeMax, containerSelector, playButton)
 
         var h = containerHeight;
         var stopSymbol = playSVG.append("rect")
-            .attr("x", 0.3*h)
-            .attr("y", 0.3*h)
-            .attr("width", 0.4*h)
-            .attr("height", 0.4*h)
+            .attr("x", 0.01*h)
+            .attr("y", 0.01*h)
+            .attr("width", 0.3*h)
+            .attr("height", 0.3*h)
             .style("visibility", "hidden")
             .classed("stop", true);
 
         var playSymbol = playSVG.append("polygon")
-            .attr("points", (0.37*h) + "," + (0.2*h) + " " + (0.37*h) + "," + (0.8*h) + " " + (0.75*h) + "," + (0.5*h))
+            .attr("points", (0.2*h) + "," + (0.05*h) + " " + (0.2*h) + "," + (0.95*h) + " " + (0.9*h) + "," + (0.5*h))
             .classed("play", true);
 
         //Circle that captures mouse interactions
@@ -102,7 +102,7 @@ function createD3RangeSlider (rangeMin, rangeMax, containerSelector, playButton)
                     .transition()
                     .attr("r", 1.2 * containerHeight / 2)
                     .transition()
-                    .attr("r", containerHeight / 2);
+                    .attr("r", containerHeight);
             });
 
 
