@@ -420,7 +420,7 @@ var ParticleSystem = function() {
 
         
 
-        console.log(first, second, third, fourth, fifth);
+        // console.log(first, second, third, fourth, fifth);
         sceneObject.remove(cylinder); 
         sceneObject.remove(plane);
         positions = [];
@@ -486,11 +486,9 @@ var ParticleSystem = function() {
                   // }
                   var cz_val = color_cz(data[i][selected]) * 10;
                 
-  	            // if(data[i][selected]  < 0 || data[i][selected] > ftr_end){
-                if(data[i][selected]  < 0 || data[i][selected] > ftr_end){
+  	            //need ftr[0] instead of ftr_begin while using the range filter
+                if(data[i][selected]  < ftr[0] || data[i][selected] > ftr[1]){
   	            	cz = null;
-                  // cz = cz_val;
-                  // console.log("if:", cz_val)
   	            }
   	            else{
                   // console.log("else:", cz_val)
