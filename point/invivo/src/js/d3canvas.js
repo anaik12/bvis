@@ -35,7 +35,7 @@
 					// .attr("height", 512)
 					.attr("x", 20)
 					.attr("y", 20)
-					.attr("xlink:href", "https://anaik12.github.io/bvis/point/invivio/results3.png")
+					.attr("xlink:href", "https://anaik12.github.io/bvis/point/invivio/data/results3.png")
 					.attr("border", "10px solid white");
 
 		
