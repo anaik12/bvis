@@ -107,7 +107,7 @@
 
 	     if(top5==true){
 	     		// console.log("top5 is ", top5);
-	          if(selected == "comm0"){
+	          if(selected == "kmeans"){
 	              first = top5array[0][0];
 	              second = top5array[0][1];
 	              third = top5array[0][2];
@@ -400,7 +400,7 @@
 	                    // concentration density
 
 	                     // concentration: Number(d[selected]),
-	                    comm0: Number(d.comm0),
+	                    kmeans: Number(d.kmeans),
 	                    // comm1: Number(d.comm1),
 	                    // comm2: Number(d.comm2),
 	                    // comm3: Number(d.comm3),
