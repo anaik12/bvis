@@ -26,7 +26,7 @@ var App = App || {};
         // initialize the particle system
 
         var particleSystem = new ParticleSystem();
-        particleSystem.initialize('data/results2_invivo2-100.csv');
+        particleSystem.initialize('data/main_invivo.csv');
         //data/014_new.csv');
 
         App.scene.addObject( particleSystem.removeParticleSystems());

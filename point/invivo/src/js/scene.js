@@ -9,6 +9,10 @@ var Scene = function(options) {
     // setup the pointer to the scope 'this' variable
     var self = this;
 
+    var colorbool = false;
+    var clearColor = 0xABB2B9; 
+    // var clearColor = 0xFFFFFF; 
+
     var rotateYtrue = false;
     var buttonRotateY = document.getElementById("rotateY");
 
@@ -65,7 +69,7 @@ var Scene = function(options) {
     
     // self.renderer.setClearColor( 0xB8B8B8, 1 );
     
-    self.renderer.setClearColor( 0xABB2B9  , 1 )
+    self.renderer.setClearColor( clearColor  , 1 )
 
     // set the size and append it to the document
     self.renderer.setSize( width, height );
