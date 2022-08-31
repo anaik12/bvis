@@ -14,8 +14,9 @@ body {
 .label{
   width: 150px;
   height: 20px;
-  /*color:white;*/
-  color:white;
+  color:steelblue;
+  /* color:white;
+   */
 }
 
 .button{

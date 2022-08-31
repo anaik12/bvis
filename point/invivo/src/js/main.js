@@ -8,11 +8,13 @@ var App = App || {};
 
     // setup the pointer to the scope 'this' variable
     var self = this;
+    var colorbool = false;
 
     /* Entry point of the application */
     App.start = function()
     {
 		
+       
 		 
          var cellarray=[];
          cellarray.push("none");
