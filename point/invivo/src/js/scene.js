@@ -11,7 +11,7 @@ var Scene = function(options) {
 
     var colorbool = false;
     var clearColor = 0xABB2B9; 
-    // var clearColor = 0xFFFFFF; 
+    // var clearColor = 0xF1F5FA; 
 
     var rotateYtrue = false;
     var buttonRotateY = document.getElementById("rotateY");

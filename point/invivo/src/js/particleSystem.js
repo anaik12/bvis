@@ -270,7 +270,7 @@ var ParticleSystem = function() {
                 var refreshId = setInterval(function(){
 
                   if(play){
-                    if(plane.position.z <= -70.7) plane.position.z = 70.9;
+                    if(plane.position.z <= -70.9) plane.position.z = 70.9;
                     playbutton.value = "Pause";
                     // playincrement += 0.01;
                     plane.position.z -= 0.2;
@@ -474,7 +474,8 @@ var ParticleSystem = function() {
                 }
             }
             else if(selected == 'filtered' ){
-                //   
+                //   max 275.5066 min -188.546
+
         	   //for filtered intensities
   	        	  var color_cz = d3.scaleLinear()
   	              .domain([0, ftr_end])
@@ -484,7 +485,7 @@ var ParticleSystem = function() {
                   //   console.log("cellnumber: ", i);
                   //   console.log("data: ", data[i])
                   // }
-                  var cz_val = color_cz(data[i][selected]) * 10;
+                //   var cz_val = color_cz(data[i][selected]) * 10;
                 
   	            //need ftr[0] instead of ftr_begin while using the range filter
                 if(data[i][selected]  < ftr[0] || data[i][selected] > ftr[1]){
@@ -492,7 +493,7 @@ var ParticleSystem = function() {
   	            }
   	            else{
                   // console.log("else:", cz_val)
-  	            	cz = cz_val;
+  	            	cz = color_cz(data[i][selected]) * 10;;
   	            }
                 color.setRGB( cz, cz, cz );
   	            colors.push( cz, cz, cz);
