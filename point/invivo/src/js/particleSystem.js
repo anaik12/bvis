@@ -63,7 +63,7 @@ var ParticleSystem = function() {
 
         // var filtered_intensity_range =   rangeslider.range(0,10);
         var ftr_begin = 0;
-        var ftr_end = 276;
+        var ftr_end = 230;
 
         var ftr = [ftr_begin, ftr_end];
 
@@ -475,6 +475,7 @@ var ParticleSystem = function() {
             }
             else if(selected == 'filtered' ){
                 //   max 275.5066 min -188.546
+                //-153.0257988 229.4974709
 
         	   //for filtered intensities
   	        	  var color_cz = d3.scaleLinear()

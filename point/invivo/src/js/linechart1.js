@@ -68,7 +68,7 @@ var lineChart1 = function() {
         x.domain(d3.extent(data1, function(d, i) { return i; }));
         y0.domain([0, d3.max(data1, function(d) { return d.cell1; })]);
         // y1.domain([-4, d3.max(data2, function(d) { return d.cell1; })]);
-        y1.domain([-4, 276]);
+        y1.domain([-4, 230]);
      
         
         // Add the valueline path.
