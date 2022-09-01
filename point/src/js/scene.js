@@ -11,23 +11,18 @@ var Scene = function(options) {
 
       
     var clearColor = 0xABB2B9; 
-    // var clearColor = 0xF1F5FA; 
-    var buttonClicked = false;
+
+    var colorArr = ["#ABB2B9", "#181818", "#F1F5FA"]
+    var colorArrHex = [0xABB2B9, 0x181818, 0xF1F5FA ]
+    var colorCount = 0;
 
     var bcolorbutton = document.getElementById("bcolor");
     bcolorbutton.onclick =function(){
-        buttonClicked = !buttonClicked;
-        console.log("buttonClicked:", buttonClicked);
-          var backcolor = "";
-          if(!buttonClicked){
-            backcolor = "#ABB2B9";
-            clearColor = 0xABB2B9;
-          } 
-          else {
-            backcolor = "#F1F5FA";
-            clearColor = 0xF1F5FA;
-          }
-        //   var bodybackground = document.getElementById("body");
+        colorCount = colorCount + 1;
+        
+        if (colorCount == 3) colorCount = 0;
+        var backcolor = colorArr[colorCount];
+        clearColor = colorArrHex[colorCount];
         self.renderer.setClearColor( clearColor  , 1 )
         document.getElementsByTagName('body')[0].style.background = backcolor;
     }
