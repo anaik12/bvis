@@ -209,8 +209,8 @@ body {
   -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
     overflow: hidden;
-    width: 850px; /* Full-width */
-    height: 9.5px; /* Specified height */
+    width: 760px; /* Full-width */
+    height: 9.6px; /* Specified height */
     background: white; /*#d3d3d3; /* Grey background */
     /*outline: #8B008B;*/ /* Remove outline */
     outline: white;
