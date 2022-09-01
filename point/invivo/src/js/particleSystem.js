@@ -242,7 +242,7 @@ var ParticleSystem = function() {
 
         cylinder = new THREE.Points(geometry, material);
 
-        var geometry2 = new THREE.BoxGeometry( radius * 2.6, radius * 2.6, radius * 2.6);
+        var geometry2 = new THREE.BoxGeometry( radius * 2.6, radius * 2.6, radius * 4.2);
 
       	var color = new THREE.Color("rgb(100,100,0)");
       	var material = new THREE.MeshPhongMaterial( {color: 0x0000ff, transparent:true, opacity: 0.2});
@@ -270,10 +270,10 @@ var ParticleSystem = function() {
                 var refreshId = setInterval(function(){
 
                   if(play){
-                    if(plane.position.z <= -70.9) plane.position.z = 70.9;
+                    if(plane.position.z <= -141.8) plane.position.z = 141.8;
                     playbutton.value = "Pause";
                     // playincrement += 0.01;
-                    plane.position.z -= 0.2;
+                    plane.position.z -= 0.4;
                     var d3canvas = new d3Canvas();
                     d3canvas.clearCanvas(data, selected, (parseFloat(plane.position.z)).toFixed(2), top5);  
                   }
@@ -290,7 +290,7 @@ var ParticleSystem = function() {
         // var plus = false;
         var plusbutton = document.getElementById("plus");
         plusbutton.onclick =function(){
-            plane.position.z -= 0.2;
+            plane.position.z -= 0.4;
             var d3canvas = new d3Canvas();
             d3canvas.clearCanvas(data, selected, (parseFloat(plane.position.z)).toFixed(2), top5);
         }
@@ -298,7 +298,7 @@ var ParticleSystem = function() {
         // var plus = false;
         var minusbutton = document.getElementById("minus");
         minusbutton.onclick =function(){
-            plane.position.z += 0.2;
+            plane.position.z += 0.4;
             var d3canvas = new d3Canvas();
             d3canvas.clearCanvas(data, selected, (parseFloat(plane.position.z)).toFixed(2), top5);
         }
@@ -307,7 +307,7 @@ var ParticleSystem = function() {
         function movePlane(e){
           var target = (e.target) ? e.target : e.srcElement;
           // console.log("target value ", target.value);
-          plane.position.z = -(target.value - 70.9);
+          plane.position.z = -(target.value - 141.8);
           var d3canvas = new d3Canvas();
           d3canvas.clearCanvas(data, selected, (parseFloat(plane.position.z)).toFixed(2), top5);    
         } 
@@ -619,7 +619,7 @@ var ParticleSystem = function() {
 
           sceneObject.add(cylinder);
           //starting plane position at 0 depth (not z=0) for autoplay
-          plane.position.z = 0.5;
+          plane.position.z = 0.6;
           sceneObject.add(plane);
           console.log("plane pos :", plane.position);
 

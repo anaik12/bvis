@@ -10,7 +10,7 @@
 
 		self.data = [];
 
-		self.zvalueslider = 0.5;
+		self.zvalueslider = 0.6;
 
 		var showSimilar = false;
 
